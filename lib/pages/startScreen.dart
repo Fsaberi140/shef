@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:sheff_new/pages/loginScreen.dart';
+
 
 class StartScreen extends StatelessWidget {
   // final Function(int index) onTap;
