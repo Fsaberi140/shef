@@ -147,7 +147,7 @@ class _CalendarState extends State<HomeScreen> {
                                   Navigator.pushNamed(context, "/iranian");
                                 },
                                 child: Image.asset(
-                                  'assets/img/types/2.jpg',
+                                  'assets/img/types/5.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -214,7 +214,7 @@ class _CalendarState extends State<HomeScreen> {
                                   Navigator.pushNamed(context, "/american");
                                 },
                                 child: Image.asset(
-                                  'assets/img/types/5.jpg',
+                                  'assets/img/types/2.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -262,7 +262,7 @@ class _CalendarState extends State<HomeScreen> {
                       color: Colors.grey[300],
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     Column(
                       children: [
@@ -277,7 +277,7 @@ class _CalendarState extends State<HomeScreen> {
                                   selectedDate.year.toString(),
                               style: themeData.textTheme.subtitle2,
                             )),
-                        const SizedBox(height: 5),
+                        const SizedBox(height: 3),
                         SizedBox(
                             height: 85,
                             child: ListView.separated(
@@ -299,8 +299,8 @@ class _CalendarState extends State<HomeScreen> {
                                   },
                                   child: Container(
                                     margin:
-                                        const EdgeInsets.fromLTRB(0, 0, 0, 5),
-                                    height: 50,
+                                        const EdgeInsets.fromLTRB(0, 0, 0, 3),
+                                    height: 55,
                                     width: 70,
                                     alignment: Alignment.center,
                                     decoration: BoxDecoration(
@@ -359,6 +359,9 @@ class _CalendarState extends State<HomeScreen> {
                                                   ? Colors.white
                                                   : Colors.grey),
                                         ),
+                                        SizedBox(
+                                          height: 2,
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -368,7 +371,7 @@ class _CalendarState extends State<HomeScreen> {
                       ],
                     ),
                     const SizedBox(
-                      height: 15,
+                      height: 10,
                     ),
                     Divider(
                       thickness: 2,
@@ -2239,7 +2242,8 @@ class _CalendarState extends State<HomeScreen> {
                   onTap: () {},
                   child: Text(
                     AppLocalizations.of(context)!.header,
-                    style: themeData.textTheme.headline4,
+                    style: themeData.textTheme.headline4!
+                        .copyWith(color: themeData.primaryColor, fontSize: 31),
                   ),
                 ),
                 const SizedBox(
@@ -2250,7 +2254,6 @@ class _CalendarState extends State<HomeScreen> {
                   children: [
                     const Icon(
                       Icons.ondemand_video,
-                      size: 26,
                     ),
                     const SizedBox(
                       width: 10,
@@ -2259,7 +2262,7 @@ class _CalendarState extends State<HomeScreen> {
                       onTap: () {},
                       child: Text(
                         AppLocalizations.of(context)!.videos,
-                        style: themeData.textTheme.subtitle1,
+                        style: themeData.textTheme.bodyText2,
                       ),
                     ),
                   ],
@@ -2271,13 +2274,13 @@ class _CalendarState extends State<HomeScreen> {
                   onTap: () {},
                   child: Text(
                     AppLocalizations.of(context)!.buy,
-                    style: themeData.textTheme.subtitle1,
+                    style: themeData.textTheme.bodyText2,
                   ),
                 ),
               ],
             ),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             Column(
               children: [
@@ -2288,7 +2291,7 @@ class _CalendarState extends State<HomeScreen> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 250,
+                  height: 235,
                   decoration: BoxDecoration(
                     color: themeData.primaryColor,
                   ),
@@ -2336,13 +2339,13 @@ class _CalendarState extends State<HomeScreen> {
                     ),
                     Text(
                       AppLocalizations.of(context)!.promotion,
-                      style: themeData.textTheme.subtitle1!.copyWith(
+                      style: themeData.textTheme.subtitle2!.copyWith(
                         color: themeData.colorScheme.onPrimary,
-                        fontSize: 17,
+                        fontSize: 16,
                       ),
                     ),
                     const SizedBox(
-                      height: 35,
+                      height: 15,
                     ),
                   ]),
                 ),
@@ -2351,128 +2354,125 @@ class _CalendarState extends State<HomeScreen> {
                   height: 0,
                   color: Colors.black,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          AppLocalizations.of(context)!.customer,
-                          style: themeData.textTheme.subtitle2!.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: themeData.primaryColor,
+                Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.customer,
+                            style: themeData.textTheme.subtitle1!.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: themeData.primaryColor,
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          AppLocalizations.of(context)!.blog,
-                          style: themeData.textTheme.subtitle1!.copyWith(
-                            color: Colors.black,
+                          const SizedBox(
+                            height: 15,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          AppLocalizations.of(context)!.careers,
-                          style: themeData.textTheme.subtitle1!.copyWith(
-                            color: Colors.black,
+                          Text(
+                            AppLocalizations.of(context)!.blog,
+                            style: themeData.textTheme.subtitle2!.copyWith(
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          AppLocalizations.of(context)!.list,
-                          style: themeData.textTheme.subtitle1!.copyWith(
-                            color: Colors.black,
+                          const SizedBox(
+                            height: 10,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          AppLocalizations.of(context)!.gift,
-                          style: themeData.textTheme.subtitle1!.copyWith(
-                            color: Colors.black,
+                          Text(
+                            AppLocalizations.of(context)!.careers,
+                            style: themeData.textTheme.subtitle2!.copyWith(
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          AppLocalizations.of(context)!.corporate,
-                          style: themeData.textTheme.subtitle2!.copyWith(
-                            color: themeData.primaryColor,
-                            fontWeight: FontWeight.bold,
+                          const SizedBox(
+                            height: 10,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          AppLocalizations.of(context)!.about,
-                          style: themeData.textTheme.subtitle1!.copyWith(
-                            color: Colors.black,
+                          Text(
+                            AppLocalizations.of(context)!.list,
+                            style: themeData.textTheme.subtitle2!.copyWith(
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          AppLocalizations.of(context)!.food,
-                          style: themeData.textTheme.subtitle1!.copyWith(
-                            color: Colors.black,
+                          const SizedBox(
+                            height: 10,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          AppLocalizations.of(context)!.help,
-                          style: themeData.textTheme.subtitle1!.copyWith(
-                            color: Colors.black,
+                          Text(
+                            AppLocalizations.of(context)!.gift,
+                            style: themeData.textTheme.subtitle2!.copyWith(
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          AppLocalizations.of(context)!.become,
-                          style: themeData.textTheme.subtitle1!.copyWith(
-                            color: Colors.black,
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 20,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                      ],
-                    ),
-                  ],
+                          Text(
+                            AppLocalizations.of(context)!.corporate,
+                            style: themeData.textTheme.subtitle1!.copyWith(
+                              color: themeData.primaryColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.about,
+                            style: themeData.textTheme.subtitle2!.copyWith(
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.food,
+                            style: themeData.textTheme.subtitle2!.copyWith(
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.help,
+                            style: themeData.textTheme.subtitle2!.copyWith(
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.become,
+                            style: themeData.textTheme.subtitle2!.copyWith(
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
                 Text(
                   AppLocalizations.of(context)!.contact,
                   textAlign: TextAlign.center,
-                  style: themeData.textTheme.subtitle1!.copyWith(
+                  style: themeData.textTheme.caption!.copyWith(
                     color: Colors.black,
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
@@ -2487,7 +2487,7 @@ class _CalendarState extends State<HomeScreen> {
                       children: [
                         Text(
                           AppLocalizations.of(context)!.already,
-                          style: themeData.textTheme.subtitle1!.copyWith(
+                          style: themeData.textTheme.subtitle2!.copyWith(
                               color: themeData.colorScheme.onPrimary,
                               letterSpacing: 1.2,
                               fontWeight: FontWeight.w500),
@@ -2496,7 +2496,7 @@ class _CalendarState extends State<HomeScreen> {
                           onTap: () {},
                           child: Text(
                             AppLocalizations.of(context)!.login,
-                            style: themeData.textTheme.subtitle1!.copyWith(
+                            style: themeData.textTheme.subtitle2!.copyWith(
                                 color: themeData.colorScheme.onPrimary,
                                 letterSpacing: 1.2,
                                 fontWeight: FontWeight.w500),

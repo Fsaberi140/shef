@@ -117,7 +117,7 @@ class MyApp extends StatelessWidget {
           caption: TextStyle(fontFamily: defultFontFamily, fontSize: 15),
         ),
       ),
-      home: StartScreen(),
+      home: HomeScreen(),
     );
   }
 }
