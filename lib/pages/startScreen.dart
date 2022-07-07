@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class StartScreen extends StatelessWidget {
   // final Function(int index) onTap;
   const StartScreen({
@@ -30,10 +29,12 @@ class StartScreen extends StatelessWidget {
               color: themeData.primaryColor,
               size: 26,
             ),
-            suffixIcon: Icon(
-              Icons.check_circle,
-              color: themeData.primaryColor,
-            ),
+            suffixIcon: IconButton(
+                onPressed: () => {
+                      Navigator.pushNamed(context, "/home"),
+                    },
+                icon: Icon(Icons.check_circle,
+                    color: themeData.primaryColor, size: 26)),
           ),
         ),
       ),
@@ -241,9 +242,9 @@ class StartScreen extends StatelessWidget {
       ),
     );
   }
-  // @override
-  // void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  //   super.debugFillProperties(properties);
-  //   properties.add(ObjectFlagProperty<Function(int index)>.has('ontap', ontap));
-  // }
+// @override
+// void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+//   super.debugFillProperties(properties);
+//   properties.add(ObjectFlagProperty<Function(int index)>.has('ontap', ontap));
+// }
 }

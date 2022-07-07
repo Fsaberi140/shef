@@ -18,11 +18,12 @@ class CartScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    InkWell(
-                      onTap: () {},
-                      child: Icon(Icons.arrow_back_ios_new_outlined,
-                          color: Colors.grey[500]),
-                    ),
+                    IconButton(
+                        onPressed: () => {
+                              Navigator.pushNamed(context, "/home"),
+                            },
+                        icon: Icon(Icons.arrow_back_ios_new_outlined,
+                            color: Colors.grey[600])),
                     SizedBox(
                       child: Row(
                         children: [
@@ -43,7 +44,7 @@ class CartScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Divider(thickness: 2, color: Colors.grey[400]),
+                Divider(thickness: 2, color: Colors.grey[500]),
                 const SizedBox(
                   height: 10,
                 ),
@@ -95,8 +96,6 @@ class CartScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                   
-        
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -180,7 +179,6 @@ class CartScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                   
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -264,8 +262,6 @@ class CartScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    
-                    
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -318,7 +314,9 @@ class CartScreen extends StatelessWidget {
                 const Divider(
                   thickness: 2,
                 ),
-                const SizedBox(height: 2,),
+                const SizedBox(
+                  height: 2,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -358,7 +356,7 @@ class CartScreen extends StatelessWidget {
                   height: 5,
                 ),
                 Container(
-                  color:themeData.primaryColor,
+                  color: themeData.primaryColor,
                   height: 3,
                   width: 120,
                 ),

@@ -132,7 +132,9 @@ class DrawerWidget extends StatelessWidget {
                   width: 10,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, "/profile");
+                  },
                   child: Text(
                     AppLocalizations.of(context)!.profile,
                     style: themeData.textTheme.subtitle1,
@@ -154,7 +156,9 @@ class DrawerWidget extends StatelessWidget {
                   width: 10,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, "/cart");
+                  },
                   child: Text(
                     AppLocalizations.of(context)!.orders,
                     style:
@@ -246,7 +250,9 @@ class DrawerWidget extends StatelessWidget {
                   width: 10,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, "/login");
+                  },
                   child: Text(
                     AppLocalizations.of(context)!.login,
                     style:

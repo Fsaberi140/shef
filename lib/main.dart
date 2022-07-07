@@ -55,6 +55,8 @@ class MyApp extends StatelessWidget {
         "/iranian": (context) => IranianScreen(),
         "/japanese": (context) => JapaneseScreen(),
         "/american": (context) => AmericanScreen(),
+        "/drawer": (context) => DrawerWidget(),
+
       },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -115,7 +117,7 @@ class MyApp extends StatelessWidget {
           caption: TextStyle(fontFamily: defultFontFamily, fontSize: 15),
         ),
       ),
-      home: BasketScreen(),
+      home: StartScreen(),
     );
   }
 }

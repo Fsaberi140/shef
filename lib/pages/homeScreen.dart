@@ -412,7 +412,7 @@ class _CalendarState extends State<HomeScreen> {
                                 },
                                 child: Container(
                                   width: 300,
-                                  height: 275,
+                                  height: 260,
                                   margin: const EdgeInsets.all(1),
                                   decoration: const BoxDecoration(
                                       color: Colors.white,
