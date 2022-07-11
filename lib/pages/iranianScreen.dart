@@ -826,10 +826,14 @@ class _CalendarState extends State<IranianScreen> {
                         const SizedBox(
                           height: 10,
                         ),
-                        Text(
-                          AppLocalizations.of(context)!.become,
-                          style: themeData.textTheme.subtitle1!.copyWith(
-                            color: Colors.black,
+                        InkWell(onTap: () {
+                          Navigator.pushNamed(context, "/become");
+                        },
+                          child: Text(
+                            AppLocalizations.of(context)!.become,
+                            style: themeData.textTheme.subtitle1!.copyWith(
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                         const SizedBox(

@@ -15,6 +15,8 @@ import 'pages/japaneseScreen.dart';
 import 'pages/americanScreen.dart';
 import 'pages/add.dart';
 import 'pages/basketScreen.dart';
+import 'pages/becomeChef.dart';
+import 'pages/video.dart';
 import 'pages/servicesScreen.dart';
 import 'pages/privacyScreen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -48,14 +50,17 @@ class MyApp extends StatelessWidget {
         "/services": (context) => const ServicesScreen(),
         "/search": (context) => const SearchScreen(),
         "/privacy": (context) => const PrivacyScreen(),
-        "/home": (context) => HomeScreen(),
+        "/home": (context) => const HomeScreen(),
         "/cart": (context) => const CartScreen(),
-        "/person": (context) => PersonScreen(),
+        "/person": (context) => const PersonScreen(),
         "/profile": (context) => const ProfileScreen(),
         "/iranian": (context) => IranianScreen(),
         "/japanese": (context) => JapaneseScreen(),
         "/american": (context) => AmericanScreen(),
-        "/drawer": (context) => DrawerWidget(),
+        "/drawer": (context) => const DrawerWidget(),
+        "/become": (context) => const BecomeChefScreen(),
+
+
 
       },
       debugShowCheckedModeBanner: false,
@@ -142,7 +147,7 @@ class MyApp extends StatelessWidget {
 //         index: 1,
 //         children: [
 //           HomeScreen(),
-//           StartScreen(),        
+//           StartScreen(),
 //           PersonScreen(),
 //           ProfileScreen(),
 //           SearchScreen(),

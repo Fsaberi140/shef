@@ -41,33 +41,33 @@ class StartScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(children: [
+            Stack(
+              children: [
+                Image.asset(
+                  'assets/img/foods/1.jpg',
+                  width: MediaQuery.of(context).size.width,
+                  height: 262,
+                ),
+                Positioned(
+                  top: 125,
+                  left: 0,
+                  child: Text(
+                    AppLocalizations.of(context)!.delicious,
+                    style: themeData.textTheme.headline5!.copyWith(
+                      color: const Color.fromARGB(255, 30, 30, 40),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 60,
+            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
               child: Column(
                 children: [
-                  Stack(
-                    children: [
-                      Image.asset(
-                        'assets/img/foods/1.jpg',
-                        width: MediaQuery.of(context).size.width,
-                        height: 235,
-                      ),
-                      Positioned(
-                        top: 120,
-                        left: 8,
-                        child: Text(
-                          AppLocalizations.of(context)!.delicious,
-                          style: themeData.textTheme.headline5!.copyWith(
-                            color: const Color.fromARGB(255, 30, 30, 40),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 60,
-                  ),
                   Text(
                     AppLocalizations.of(context)!.aboutSite,
                     style: themeData.textTheme.headline6!.copyWith(
@@ -141,7 +141,8 @@ class StartScreen extends StatelessWidget {
                         Text(
                           AppLocalizations.of(context)!.aboutChef2,
                           style: themeData.textTheme.subtitle1!.copyWith(
-                              color: Colors.black, fontWeight: FontWeight.w400),
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400),
                         ),
                       ],
                     ),
@@ -191,8 +192,9 @@ class StartScreen extends StatelessWidget {
                       ),
                       backgroundColor: MaterialStateProperty.all<Color>(
                           themeData.primaryColor),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40))),
+                      shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40))),
                     ),
                   ),
                   const SizedBox(

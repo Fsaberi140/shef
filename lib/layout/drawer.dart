@@ -63,7 +63,9 @@ class DrawerWidget extends StatelessWidget {
                   width: 10,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, "/become");
+                  },
                   child: Text(
                     AppLocalizations.of(context)!.become,
                     style:

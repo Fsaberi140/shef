@@ -2450,10 +2450,16 @@ class _CalendarState extends State<HomeScreen> {
                           const SizedBox(
                             height: 10,
                           ),
-                          Text(
-                            AppLocalizations.of(context)!.become,
-                            style: themeData.textTheme.subtitle2!.copyWith(
-                              color: Colors.black,
+                          InkWell(
+                            onTap: (){
+                              Navigator.pushNamed(context, "/become");
+
+                            },
+                            child: Text(
+                              AppLocalizations.of(context)!.become,
+                              style: themeData.textTheme.subtitle2!.copyWith(
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                           const SizedBox(
