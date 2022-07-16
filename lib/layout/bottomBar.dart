@@ -21,7 +21,7 @@ class BottomScreen extends StatelessWidget {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 300,
+                  height: 235,
                   decoration: BoxDecoration(
                     color: themeData.primaryColor,
                   ),
@@ -30,40 +30,47 @@ class BottomScreen extends StatelessWidget {
                       height: 20,
                     ),
                     Text(
-                      AppLocalizations.of(context)!.follow,
-                      style: themeData.textTheme.subtitle1!.copyWith(
-                          color: themeData.colorScheme.onPrimary,
-                          letterSpacing: 1.2,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24),
-                    ),
+                        AppLocalizations.of(context)!.follow,
+                        style: themeData.textTheme.subtitle1!.copyWith(
+                            color: themeData.colorScheme.onPrimary,
+                            letterSpacing: 1.2,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24),
+                      ),
+
                     const SizedBox(
                       height: 15,
                     ),
-                    Text(
+                  InkWell(
+                      onTap: (){},
+                      child: Text(
                       AppLocalizations.of(context)!.facebookB,
                       style: themeData.textTheme.subtitle1!.copyWith(
                         color: themeData.colorScheme.onPrimary,
                       ),
-                    ),
+                    ),),
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(
+                  InkWell(
+                      onTap: (){},
+                      child: Text(
                       AppLocalizations.of(context)!.instagram,
                       style: themeData.textTheme.subtitle1!.copyWith(
                         color: themeData.colorScheme.onPrimary,
                       ),
-                    ),
+                    ),),
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(
+                  InkWell(
+                      onTap: (){},
+                      child:Text(
                       AppLocalizations.of(context)!.twitter,
                       style: themeData.textTheme.subtitle1!.copyWith(
                         color: themeData.colorScheme.onPrimary,
                       ),
-                    ),
+                    ),),
                     const SizedBox(
                       height: 20,
                     ),
@@ -75,17 +82,9 @@ class BottomScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      height: 35,
+                      height: 15,
                     ),
-                    InkWell(
-                      onTap: () {},
-                      child: Text(
-                        AppLocalizations.of(context)!.header,
-                        style: themeData.textTheme.headline5!.copyWith(
-                          color: themeData.colorScheme.onPrimary,
-                        ),
-                      ),
-                    ),
+
                   ]),
                 ),
                 const Divider(
@@ -104,7 +103,7 @@ class BottomScreen extends StatelessWidget {
                         ),
                         Text(
                           AppLocalizations.of(context)!.customer,
-                          style: themeData.textTheme.subtitle2!.copyWith(
+                          style: themeData.textTheme.subtitle1!.copyWith(
                             fontWeight: FontWeight.bold,
                             color: themeData.primaryColor,
                           ),
@@ -114,42 +113,48 @@ class BottomScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: (){
-                            Navigator.pushNamed(context, "/become");
+                            // Navigator.pushNamed(context, "/become");
 
                           },
                           child: Text(
-                          AppLocalizations.of(context)!.become,
-                          style: themeData.textTheme.subtitle1!.copyWith(
+                          AppLocalizations.of(context)!.blog,
+                          style: themeData.textTheme.subtitle2!.copyWith(
                             color: Colors.black,
                           ),
                         ),),
                         const SizedBox(
                           height: 10,
                         ),
-                        Text(
-                          AppLocalizations.of(context)!.blog,
-                          style: themeData.textTheme.subtitle1!.copyWith(
-                            color: Colors.black,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
+                        InkWell(
+                          onTap: (){},
+                          child:Text(
                           AppLocalizations.of(context)!.careers,
-                          style: themeData.textTheme.subtitle1!.copyWith(
+                          style: themeData.textTheme.subtitle2!.copyWith(
                             color: Colors.black,
                           ),
-                        ),
+                        ),),
                         const SizedBox(
                           height: 10,
                         ),
-                        Text(
-                          AppLocalizations.of(context)!.gift,
-                          style: themeData.textTheme.subtitle1!.copyWith(
+                        InkWell(
+                          onTap: (){},
+                          child:Text(
+                          AppLocalizations.of(context)!.list,
+                          style: themeData.textTheme.subtitle2!.copyWith(
                             color: Colors.black,
                           ),
+                        ),),
+                        const SizedBox(
+                          height: 10,
                         ),
+                        InkWell(
+                          onTap: (){},
+                          child:Text(
+                          AppLocalizations.of(context)!.gift,
+                          style: themeData.textTheme.subtitle2!.copyWith(
+                            color: Colors.black,
+                          ),
+                        ),),
                         const SizedBox(
                           height: 20,
                         ),
@@ -163,7 +168,7 @@ class BottomScreen extends StatelessWidget {
                         ),
                         Text(
                           AppLocalizations.of(context)!.corporate,
-                          style: themeData.textTheme.subtitle2!.copyWith(
+                          style: themeData.textTheme.subtitle1!.copyWith(
                             color: themeData.primaryColor,
                             fontWeight: FontWeight.bold,
                           ),
@@ -171,55 +176,66 @@ class BottomScreen extends StatelessWidget {
                         const SizedBox(
                           height: 15,
                         ),
-                        Text(
+                        InkWell(
+                          onTap: (){},
+                          child:Text(
                           AppLocalizations.of(context)!.about,
-                          style: themeData.textTheme.subtitle1!.copyWith(
+                          style: themeData.textTheme.subtitle2!.copyWith(
                             color: Colors.black,
                           ),
-                        ),
+                        ),),
                         const SizedBox(
                           height: 10,
                         ),
-                        Text(
-                          AppLocalizations.of(context)!.become,
-                          style: themeData.textTheme.subtitle1!.copyWith(
-                            color: Colors.black,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
+                        InkWell(
+                          onTap: (){},
+                          child:Text(
                           AppLocalizations.of(context)!.food,
-                          style: themeData.textTheme.subtitle1!.copyWith(
+                          style: themeData.textTheme.subtitle2!.copyWith(
                             color: Colors.black,
                           ),
-                        ),
+                        ),),
                         const SizedBox(
                           height: 10,
                         ),
-                        Text(
+                        InkWell(
+                          onTap: (){},
+                          child:Text(
                           AppLocalizations.of(context)!.help,
                           style: themeData.textTheme.subtitle1!.copyWith(
                             color: Colors.black,
                           ),
-                        ),
+                        ),),
                         const SizedBox(
-                          height: 30,
+                          height: 10,
+                        ),
+                        InkWell(
+                          onTap: (){},
+                          child:Text(
+                          AppLocalizations.of(context)!.become,
+                          style: themeData.textTheme.subtitle2!.copyWith(
+                            color: Colors.black,
+                          ),
+                        ),),
+                        const SizedBox(
+                          height: 20,
                         ),
                       ],
                     ),
                   ],
                 ),
-                Text(
+            InkWell(
+              onTap: (){},
+              child:Text(
                   AppLocalizations.of(context)!.contact,
                   textAlign: TextAlign.center,
                   style: themeData.textTheme.subtitle1!.copyWith(
                     color: Colors.black,
                   ),
                 ),
+            ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
@@ -234,7 +250,7 @@ class BottomScreen extends StatelessWidget {
                       children: [
                         Text(
                           AppLocalizations.of(context)!.already,
-                          style: themeData.textTheme.subtitle1!.copyWith(
+                          style: themeData.textTheme.subtitle2!.copyWith(
                               color: themeData.colorScheme.onPrimary,
                               letterSpacing: 1.2,
                               fontWeight: FontWeight.w500),
@@ -243,7 +259,7 @@ class BottomScreen extends StatelessWidget {
                           onTap: () {},
                           child: Text(
                             AppLocalizations.of(context)!.login,
-                            style: themeData.textTheme.subtitle1!.copyWith(
+                            style: themeData.textTheme.subtitle2!.copyWith(
                                 color: themeData.colorScheme.onPrimary,
                                 letterSpacing: 1.2,
                                 fontWeight: FontWeight.w500),
@@ -263,7 +279,7 @@ class BottomScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {},
                           child: Text(
-                            AppLocalizations.of(context)!.policy,
+                            AppLocalizations.of(context)!.privacy,
                             style: themeData.textTheme.subtitle2!.copyWith(
                               color: themeData.colorScheme.onPrimary,
                               fontSize: 15,
@@ -271,7 +287,7 @@ class BottomScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(
-                          width: 10,
+                          width: 15,
                         ),
                         InkWell(
                           onTap: () {},

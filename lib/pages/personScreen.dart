@@ -188,25 +188,26 @@ class _CalendarState extends State<PersonScreen> {
                           const SizedBox(
                             height: 10,
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
+                          RichText(
+                            text: TextSpan(
+
+                              text:
                                 AppLocalizations.of(context)!.i,
                                 style: themeData.textTheme.subtitle2,
-                              ),
-                              InkWell(
-                                onTap: () {},
-                                child: Text(AppLocalizations.of(context)!.more,
-                                    style: themeData.textTheme.subtitle2!
-                                        .copyWith(
-                                            fontStyle: FontStyle.italic,
-                                            color: Colors.black87)),
-                              ),
-                            ],
+
+                              children: <TextSpan>[
+                                TextSpan(text:  AppLocalizations.of(context)!.more,
+                                  style: themeData.textTheme.subtitle2!
+                                      .copyWith(
+                                      fontStyle: FontStyle.italic,
+                                      color: Colors.black87),),
+
+                              ],
+                            ),
                           ),
+
                           const SizedBox(
-                            height: 20,
+                            height: 25,
                           ),
                           Divider(
                             thickness: 2,
@@ -338,7 +339,7 @@ class _CalendarState extends State<PersonScreen> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: const [
+                          boxShadow: [
                             BoxShadow(
                               blurRadius: 2,
                             ),
@@ -420,7 +421,7 @@ class _CalendarState extends State<PersonScreen> {
                                                   onPressed: () {},
                                                   style: ElevatedButton.styleFrom(
                                                       shape:
-                                                          const CircleBorder(),
+                                                          CircleBorder(),
                                                       primary:
                                                           Color(0xffA3DD45),
                                                       minimumSize:
@@ -472,7 +473,7 @@ class _CalendarState extends State<PersonScreen> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: const [
+                          boxShadow: [
                             BoxShadow(
                               blurRadius: 2,
                             ),
@@ -553,7 +554,7 @@ class _CalendarState extends State<PersonScreen> {
                                                   onPressed: () {},
                                                   style: ElevatedButton.styleFrom(
                                                       shape:
-                                                          const CircleBorder(),
+                                                           CircleBorder(),
                                                       primary:
                                                           Color(0xffA3DD45),
                                                       minimumSize:

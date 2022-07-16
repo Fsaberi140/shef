@@ -18,7 +18,7 @@ class BasketScreen extends StatelessWidget {
               height: 400,
               decoration: BoxDecoration(
                   color: Colors.white,
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
                       blurRadius: 2,
                     ),

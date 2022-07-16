@@ -406,7 +406,7 @@ class _CalendarState extends State<JapaneseScreen> {
                                 width: 300,
                                 height: 260,
                                 margin: const EdgeInsets.all(1),
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(
@@ -502,7 +502,7 @@ class _CalendarState extends State<JapaneseScreen> {
                                 width: 300,
                                 height: 260,
                                 margin: const EdgeInsets.all(1),
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(
@@ -598,7 +598,7 @@ class _CalendarState extends State<JapaneseScreen> {
                                 width: 300,
                                 height: 260,
                                 margin: const EdgeInsets.all(1),
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(

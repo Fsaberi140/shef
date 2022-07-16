@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:flutter/gestures.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -69,8 +69,8 @@ class SignUpScreen extends StatelessWidget {
                   height: 20,
                 ),
                 Row(children: [
-                  const Expanded(
-                      child: Divider(
+                  Expanded(
+                      child: const Divider(
                     thickness: 2,
                   )),
                   const SizedBox(width: 10),
@@ -82,8 +82,8 @@ class SignUpScreen extends StatelessWidget {
                   const SizedBox(
                     width: 10,
                   ),
-                  const Expanded(
-                      child: Divider(
+                   Expanded(
+                      child: const Divider(
                     thickness: 2,
                   )),
                 ]),
@@ -178,51 +178,35 @@ class SignUpScreen extends StatelessWidget {
                 const SizedBox(
                   height: 18,
                 ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!.description,
-                          textAlign: TextAlign.start,
-                          style: themeData.textTheme.subtitle1!
-                              .copyWith(height: 1.7),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(context, "/services");
-                            },
-                            child: Text(
-                              AppLocalizations.of(context)!.term,
-                              style: themeData.textTheme.subtitle1!
-                                  .apply(color: themeData.primaryColor),
-                            )),
-                        Text(
-                          AppLocalizations.of(context)!.and,
-                          style: themeData.textTheme.subtitle1,
-                        ),
-                        InkWell(
-                          child: Text(
-                            AppLocalizations.of(context)!.policy,
-                            style: themeData.textTheme.subtitle1!
-                                .apply(color: themeData.primaryColor),
-                          ),
-                          onTap: () {
+                RichText(
+                  text: TextSpan(
+                    text: AppLocalizations.of(context)!.description,
+                    style: themeData.textTheme.subtitle1!.copyWith(height: 1.7),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: AppLocalizations.of(context)!.term,
+                        style: themeData.textTheme.subtitle1!
+                            .apply(color: themeData.primaryColor),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.pushNamed(context, "/services");
+                          },
+                      ),
+                      TextSpan(
+                        text: AppLocalizations.of(context)!.and,
+                        style: themeData.textTheme.subtitle1,
+                      ),
+                      TextSpan(
+                        text: AppLocalizations.of(context)!.policy,
+                        style: themeData.textTheme.subtitle1!
+                            .apply(color: themeData.primaryColor),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
                             Navigator.pushNamed(context, "/privacy");
                           },
-                        ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: 25,

@@ -33,6 +33,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const MaterialApp(
+
+      initialRoute: "/",
+
       title: 'Localizations Sample App',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
@@ -122,7 +125,7 @@ class MyApp extends StatelessWidget {
           caption: TextStyle(fontFamily: defultFontFamily, fontSize: 15),
         ),
       ),
-      home: HomeScreen(),
+      home: StartScreen(),
     );
   }
 }

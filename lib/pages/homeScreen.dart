@@ -417,7 +417,7 @@ class _CalendarState extends State<HomeScreen> {
                                   width: 300,
                                   height: 260,
                                   margin: const EdgeInsets.all(1),
-                                  decoration: const BoxDecoration(
+                                  decoration:  BoxDecoration(
                                       color: Colors.white,
                                       boxShadow: [
                                         BoxShadow(
@@ -521,7 +521,7 @@ class _CalendarState extends State<HomeScreen> {
                                 width: 300,
                                 height: 260,
                                 margin: const EdgeInsets.all(1),
-                                decoration: const BoxDecoration(
+                                decoration:  BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(
@@ -617,7 +617,7 @@ class _CalendarState extends State<HomeScreen> {
                                 width: 300,
                                 height: 260,
                                 margin: const EdgeInsets.all(1),
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(
@@ -745,7 +745,7 @@ class _CalendarState extends State<HomeScreen> {
                                   width: 300,
                                   height: 260,
                                   margin: const EdgeInsets.all(1),
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                       color: Colors.white,
                                       boxShadow: [
                                         BoxShadow(
@@ -842,7 +842,7 @@ class _CalendarState extends State<HomeScreen> {
                                   width: 300,
                                   height: 260,
                                   margin: const EdgeInsets.all(1),
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                       color: Colors.white,
                                       boxShadow: [
                                         BoxShadow(
@@ -939,7 +939,7 @@ class _CalendarState extends State<HomeScreen> {
                                   width: 300,
                                   height: 260,
                                   margin: const EdgeInsets.all(1),
-                                  decoration: const BoxDecoration(
+                                  decoration:  BoxDecoration(
                                       color: Colors.white,
                                       boxShadow: [
                                         BoxShadow(
@@ -1065,7 +1065,7 @@ class _CalendarState extends State<HomeScreen> {
                                 width: 300,
                                 height: 260,
                                 margin: const EdgeInsets.all(1),
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(
@@ -1161,7 +1161,7 @@ class _CalendarState extends State<HomeScreen> {
                                 width: 300,
                                 height: 260,
                                 margin: const EdgeInsets.all(1),
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(
@@ -2319,21 +2319,25 @@ class _CalendarState extends State<HomeScreen> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(
+                  InkWell(
+                      onTap: (){},
+                      child: Text(
                       AppLocalizations.of(context)!.instagram,
                       style: themeData.textTheme.subtitle1!.copyWith(
                         color: themeData.colorScheme.onPrimary,
                       ),
-                    ),
+                    ),),
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(
+                  InkWell(
+                      onTap: (){},
+                      child: Text(
                       AppLocalizations.of(context)!.twitter,
                       style: themeData.textTheme.subtitle1!.copyWith(
                         color: themeData.colorScheme.onPrimary,
                       ),
-                    ),
+                    ),),
                     const SizedBox(
                       height: 20,
                     ),
@@ -2522,7 +2526,7 @@ class _CalendarState extends State<HomeScreen> {
                         InkWell(
                           onTap: () {},
                           child: Text(
-                            AppLocalizations.of(context)!.policy,
+                            AppLocalizations.of(context)!.privacy,
                             style: themeData.textTheme.subtitle2!.copyWith(
                               color: themeData.colorScheme.onPrimary,
                               fontSize: 15,
@@ -2530,7 +2534,7 @@ class _CalendarState extends State<HomeScreen> {
                           ),
                         ),
                         const SizedBox(
-                          width: 10,
+                          width: 15,
                         ),
                         InkWell(
                           onTap: () {},

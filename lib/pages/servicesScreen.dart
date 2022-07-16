@@ -37,6 +37,8 @@ class ServicesScreen extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     AppLocalizations.of(context)!.text1,
+                    textAlign: TextAlign.justify,
+                    textDirection: TextDirection.ltr,
                     style: themeData.textTheme.subtitle1!.copyWith(
                         color: Colors.black54, fontWeight: FontWeight.w400),
                   ),
@@ -45,6 +47,8 @@ class ServicesScreen extends StatelessWidget {
                   ),
                   Text(
                     AppLocalizations.of(context)!.text2,
+                    textAlign: TextAlign.justify,
+                    textDirection: TextDirection.ltr,
                     style: themeData.textTheme.subtitle1!.copyWith(
                         color: Colors.black54, fontWeight: FontWeight.w400),
                   ),
@@ -53,6 +57,8 @@ class ServicesScreen extends StatelessWidget {
                   ),
                   Text(
                     AppLocalizations.of(context)!.text3,
+                    textAlign: TextAlign.justify,
+                    textDirection: TextDirection.ltr,
                     style: themeData.textTheme.subtitle1!.copyWith(
                         color: Colors.black54, fontWeight: FontWeight.w400),
                   ),
@@ -61,6 +67,8 @@ class ServicesScreen extends StatelessWidget {
                   ),
                   Text(
                     AppLocalizations.of(context)!.text4,
+                    textAlign: TextAlign.justify,
+                    textDirection: TextDirection.ltr,
                     style: themeData.textTheme.subtitle1!.copyWith(
                         color: Colors.black54, fontWeight: FontWeight.w400),
                   ),

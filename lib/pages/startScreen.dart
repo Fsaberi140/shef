@@ -49,8 +49,8 @@ class StartScreen extends StatelessWidget {
                   height: 262,
                 ),
                 Positioned(
-                  top: 125,
-                  left: 0,
+                  top: 140,
+                  left: 8,
                   child: Text(
                     AppLocalizations.of(context)!.delicious,
                     style: themeData.textTheme.headline5!.copyWith(
@@ -100,10 +100,13 @@ class StartScreen extends StatelessWidget {
                   Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
+
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           AppLocalizations.of(context)!.aboutChef1,
+                          textAlign: TextAlign.justify,
+                          textDirection: TextDirection.ltr,
                           style: themeData.textTheme.subtitle1!
                               .apply(color: Colors.black),
                         ),
@@ -140,6 +143,8 @@ class StartScreen extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           AppLocalizations.of(context)!.aboutChef2,
+                          textAlign: TextAlign.justify,
+                          textDirection: TextDirection.ltr,
                           style: themeData.textTheme.subtitle1!.copyWith(
                               color: Colors.black,
                               fontWeight: FontWeight.w400),

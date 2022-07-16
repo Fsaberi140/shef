@@ -143,6 +143,8 @@ class BecomeChefScreen extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           AppLocalizations.of(context)!.it,
+                          textAlign: TextAlign.justify,
+                          textDirection: TextDirection.ltr,
                           style: themeData.textTheme.subtitle1!
                               .apply(color: Colors.black),
                         ),
@@ -166,6 +168,8 @@ class BecomeChefScreen extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           AppLocalizations.of(context)!.design,
+                          textAlign: TextAlign.justify,
+                          textDirection: TextDirection.ltr,
                           style: themeData.textTheme.subtitle1!
                               .apply(color: Colors.black),
                         ),
@@ -225,14 +229,15 @@ class BecomeChefScreen extends StatelessWidget {
                     ),
                     Text(
                       AppLocalizations.of(context)!.step1,
-                      style: themeData.textTheme.headline5!.copyWith(
+                      style: themeData.textTheme.headline6!.copyWith(
                         color: themeData.primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      AppLocalizations.of(context)!.approved,
+                      AppLocalizations.of(context)!.approved,textAlign: TextAlign.justify,
+                      textDirection: TextDirection.ltr,
                       style: themeData.textTheme.headline6!.copyWith(
                         color: Colors.black87,
                         fontWeight: FontWeight.bold,
@@ -256,7 +261,7 @@ class BecomeChefScreen extends StatelessWidget {
                     ),
                     Text(
                       AppLocalizations.of(context)!.step2,
-                      style: themeData.textTheme.headline5!.copyWith(
+                      style: themeData.textTheme.headline6!.copyWith(
                         color: themeData.primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
@@ -265,7 +270,8 @@ class BecomeChefScreen extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      AppLocalizations.of(context)!.pick,
+                      AppLocalizations.of(context)!.pick,textAlign: TextAlign.justify,
+                      textDirection: TextDirection.ltr,
                       style: themeData.textTheme.headline6!.copyWith(
                         color: Colors.black87,
                         fontWeight: FontWeight.bold,
@@ -289,7 +295,7 @@ class BecomeChefScreen extends StatelessWidget {
                     ),
                     Text(
                       AppLocalizations.of(context)!.step3,
-                      style: themeData.textTheme.headline5!.copyWith(
+                      style: themeData.textTheme.headline6!.copyWith(
                         color: themeData.primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
@@ -311,7 +317,8 @@ class BecomeChefScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
                         Text(
-                          AppLocalizations.of(context)!.can,
+                          AppLocalizations.of(context)!.can,textAlign: TextAlign.justify,
+                          textDirection: TextDirection.ltr,
                           style: themeData.textTheme.subtitle1!
                               .apply(color: Colors.black),
                         ),
@@ -322,7 +329,7 @@ class BecomeChefScreen extends StatelessWidget {
                     ),
                     Text(
                       AppLocalizations.of(context)!.step4,
-                      style: themeData.textTheme.headline5!.copyWith(
+                      style: themeData.textTheme.headline6!.copyWith(
                         color: themeData.primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
@@ -345,6 +352,8 @@ class BecomeChefScreen extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           AppLocalizations.of(context)!.once,
+                          textAlign: TextAlign.justify,
+                          textDirection: TextDirection.ltr,
                           style: themeData.textTheme.subtitle1!
                               .apply(color: Colors.black),
                         ),
@@ -355,7 +364,7 @@ class BecomeChefScreen extends StatelessWidget {
                     ),
                     Text(
                       AppLocalizations.of(context)!.step5,
-                      style: themeData.textTheme.headline5!.copyWith(
+                      style: themeData.textTheme.headline6!.copyWith(
                         color: themeData.primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
@@ -378,6 +387,8 @@ class BecomeChefScreen extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           AppLocalizations.of(context)!.we,
+                          textAlign: TextAlign.justify,
+                          textDirection: TextDirection.ltr,
                           style: themeData.textTheme.subtitle1!
                               .apply(color: Colors.black),
                         ),
@@ -419,7 +430,7 @@ class BecomeChefScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 15,
                     ),
                     Text(
                       AppLocalizations.of(context)!.does,
