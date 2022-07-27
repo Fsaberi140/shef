@@ -43,6 +43,12 @@ dependencies:
   google_fonts: ^3.0.1
   flutter_signin_button: ^2.0.0
   autocomplete_textfield_ns: ^2.0.0
+  video_player: ^2.4.5
+  video_box: ^0.16.1
+  accordion: ^2.5.1
+
+
+
 
 
   
@@ -116,6 +122,9 @@ flutter:
     - assets/img/types/4.jpg
     - assets/img/types/5.jpg
     - assets/img/types/6.jpg
+
+    - assets/video/1.mp4
+
 
 
 

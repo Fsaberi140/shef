@@ -1,65 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:sheff_new/layout/drawer.dart';
-// import 'package:sheff_new/widgets/home.dart';
 
-class HomeScreen extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
-
-  HomeScreen({Key? key}) : super(key: key);
-
+class MyAnotherWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Theme.of(context);
+    return SafeArea(
+      child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 0, 20),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
-    return Scaffold(
-      key: _key,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 2,
-        shadowColor: themeData.primaryColor,
-        leading: IconButton(
-          onPressed: () => {_key.currentState!.openDrawer()},
-          icon: const Icon(
-            Icons.menu,
-            color: Colors.black,
-            size: 26,
-          ),
+                    AppBar(),
+                    Menu(),
+                    _Calendar(),
+                    _Favorites()
+
+          ]),
         ),
-        title: Padding(
-          padding: const EdgeInsets.only(left: 0),
-          child: Text(AppLocalizations.of(context)!.header,
-              style: themeData.textTheme.headline4!.copyWith(fontSize: 26)),
-        ),
-        actions: [
-          IconButton(
-              onPressed: () => {
-                Navigator.pushNamed(context, "/search"),
-              },
-              icon: const Icon(
-                Icons.search,
-                color: Colors.black,
-                size: 26,
-              )),
-          IconButton(
-              onPressed: () => {
-                Navigator.pushNamed(context, "/cart"),
-              },
-              icon: const Icon(Icons.shopping_cart,
-                  color: Colors.black, size: 26)),
-          IconButton(
-            onPressed: () => {
-              Navigator.pushNamed(context, "/profile"),
-            },
-            icon: const Icon(
-              Icons.person_sharp,
-              color: Colors.black,
-              size: 26,
-            ),
-          ),
-          const SizedBox(width: 10),
-        ],
-      ),);
+      ),
+    );
   }
 }
 
@@ -245,11 +206,12 @@ class _Calendar extends StatefulWidget {
   @override
   _CalendarState createState() => _CalendarState();
 }
+
 class _CalendarState extends State<_Calendar> {
   DateTime selectedDate = DateTime.now(); // TO tracking date
   int currentDateSelectedIndex = 0; //For Horizontal Date
   ScrollController scrollController =
-  ScrollController(); //To Track Scroll of ListView
+      ScrollController(); //To Track Scroll of ListView
 
   List<String> listOfMonths = [
     "Jan",
@@ -322,9 +284,9 @@ class _CalendarState extends State<_Calendar> {
                     children: [
                       Text(
                         listOfMonths[DateTime.now()
-                            .add(Duration(days: index))
-                            .month -
-                            1]
+                                    .add(Duration(days: index))
+                                    .month -
+                                1]
                             .toString(),
                         style: TextStyle(
                             fontSize: 16,
@@ -346,9 +308,9 @@ class _CalendarState extends State<_Calendar> {
                       ),
                       Text(
                         listOfDays[DateTime.now()
-                            .add(Duration(days: index))
-                            .weekday -
-                            1]
+                                    .add(Duration(days: index))
+                                    .weekday -
+                                1]
                             .toString(),
                         style: TextStyle(
                             fontSize: 16,
@@ -424,7 +386,7 @@ class _Favorites extends StatelessWidget {
                       ),
                     ],
                     borderRadius:
-                    BorderRadius.vertical(top: Radius.circular(10.0))),
+                        BorderRadius.vertical(top: Radius.circular(10.0))),
                 child: Stack(
                   children: [
                     ClipRRect(
@@ -511,11 +473,11 @@ class _Favorites extends StatelessWidget {
                     ),
                   ],
                   borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(10.0))),
+                      BorderRadius.vertical(top: Radius.circular(10.0))),
               child: Stack(children: [
                 ClipRRect(
                   borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10.0)),
+                      const BorderRadius.vertical(top: Radius.circular(10.0)),
                   child: Image.asset(
                     'assets/img/foods/16.jpg',
                     width: 300,
@@ -595,11 +557,11 @@ class _Favorites extends StatelessWidget {
                     ),
                   ],
                   borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(10.0))),
+                      BorderRadius.vertical(top: Radius.circular(10.0))),
               child: Stack(children: [
                 ClipRRect(
                   borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10.0)),
+                      const BorderRadius.vertical(top: Radius.circular(10.0)),
                   child: Image.asset(
                     'assets/img/foods/12.jpg',
                     width: 300,
@@ -721,11 +683,11 @@ class _Newest extends StatelessWidget {
                       ),
                     ],
                     borderRadius:
-                    BorderRadius.vertical(top: Radius.circular(10.0))),
+                        BorderRadius.vertical(top: Radius.circular(10.0))),
                 child: Stack(children: [
                   ClipRRect(
                     borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(10.0)),
+                        const BorderRadius.vertical(top: Radius.circular(10.0)),
                     child: Image.asset(
                       'assets/img/foods/12.jpg',
                       width: 300,
@@ -806,11 +768,11 @@ class _Newest extends StatelessWidget {
                     ),
                   ],
                   borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(10.0))),
+                      BorderRadius.vertical(top: Radius.circular(10.0))),
               child: Stack(children: [
                 ClipRRect(
                   borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10.0)),
+                      const BorderRadius.vertical(top: Radius.circular(10.0)),
                   child: Image.asset(
                     'assets/img/foods/14.jpg',
                     width: 300,
@@ -890,11 +852,11 @@ class _Newest extends StatelessWidget {
                     ),
                   ],
                   borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(10.0))),
+                      BorderRadius.vertical(top: Radius.circular(10.0))),
               child: Stack(children: [
                 ClipRRect(
                   borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10.0)),
+                      const BorderRadius.vertical(top: Radius.circular(10.0)),
                   child: Image.asset(
                     'assets/img/foods/15.jpg',
                     width: 300,
@@ -1012,11 +974,11 @@ class _Discount extends StatelessWidget {
                     ),
                   ],
                   borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(10.0))),
+                      BorderRadius.vertical(top: Radius.circular(10.0))),
               child: Stack(children: [
                 ClipRRect(
                   borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10.0)),
+                      const BorderRadius.vertical(top: Radius.circular(10.0)),
                   child: Image.asset(
                     'assets/img/foods/13.jpg',
                     width: 300,
@@ -1096,11 +1058,11 @@ class _Discount extends StatelessWidget {
                     ),
                   ],
                   borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(10.0))),
+                      BorderRadius.vertical(top: Radius.circular(10.0))),
               child: Stack(children: [
                 ClipRRect(
                   borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10.0)),
+                      const BorderRadius.vertical(top: Radius.circular(10.0)),
                   child: Image.asset(
                     'assets/img/foods/15.jpg',
                     width: 300,
@@ -1180,11 +1142,11 @@ class _Discount extends StatelessWidget {
                     ),
                   ],
                   borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(10.0))),
+                      BorderRadius.vertical(top: Radius.circular(10.0))),
               child: Stack(children: [
                 ClipRRect(
                   borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10.0)),
+                      const BorderRadius.vertical(top: Radius.circular(10.0)),
                   child: Image.asset(
                     'assets/img/foods/12.jpg',
                     width: 300,
@@ -1306,11 +1268,11 @@ class _Iranian extends StatelessWidget {
                       ),
                     ],
                     borderRadius:
-                    BorderRadius.vertical(top: Radius.circular(10.0))),
+                        BorderRadius.vertical(top: Radius.circular(10.0))),
                 child: Stack(children: [
                   ClipRRect(
                     borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(10.0)),
+                        const BorderRadius.vertical(top: Radius.circular(10.0)),
                     child: Image.asset(
                       'assets/img/foods/14.jpg',
                       width: 300,
@@ -1391,11 +1353,11 @@ class _Iranian extends StatelessWidget {
                     ),
                   ],
                   borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(10.0))),
+                      BorderRadius.vertical(top: Radius.circular(10.0))),
               child: Stack(children: [
                 ClipRRect(
                   borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10.0)),
+                      const BorderRadius.vertical(top: Radius.circular(10.0)),
                   child: Image.asset(
                     'assets/img/foods/12.jpg',
                     width: 300,
@@ -1517,11 +1479,11 @@ class _Japanese extends StatelessWidget {
                       ),
                     ],
                     borderRadius:
-                    BorderRadius.vertical(top: Radius.circular(10.0))),
+                        BorderRadius.vertical(top: Radius.circular(10.0))),
                 child: Stack(children: [
                   ClipRRect(
                     borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(10.0)),
+                        const BorderRadius.vertical(top: Radius.circular(10.0)),
                     child: Image.asset(
                       'assets/img/foods/16.jpg',
                       width: 300,
@@ -1602,11 +1564,11 @@ class _Japanese extends StatelessWidget {
                     ),
                   ],
                   borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(10.0))),
+                      BorderRadius.vertical(top: Radius.circular(10.0))),
               child: Stack(children: [
                 ClipRRect(
                   borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10.0)),
+                      const BorderRadius.vertical(top: Radius.circular(10.0)),
                   child: Image.asset(
                     'assets/img/foods/14.jpg',
                     width: 300,
@@ -1686,11 +1648,11 @@ class _Japanese extends StatelessWidget {
                     ),
                   ],
                   borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(10.0))),
+                      BorderRadius.vertical(top: Radius.circular(10.0))),
               child: Stack(children: [
                 ClipRRect(
                   borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10.0)),
+                      const BorderRadius.vertical(top: Radius.circular(10.0)),
                   child: Image.asset(
                     'assets/img/foods/15.jpg',
                     width: 300,
@@ -1812,11 +1774,11 @@ class _American extends StatelessWidget {
                       ),
                     ],
                     borderRadius:
-                    BorderRadius.vertical(top: Radius.circular(10.0))),
+                        BorderRadius.vertical(top: Radius.circular(10.0))),
                 child: Stack(children: [
                   ClipRRect(
                     borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(10.0)),
+                        const BorderRadius.vertical(top: Radius.circular(10.0)),
                     child: Image.asset(
                       'assets/img/foods/15.jpg',
                       width: 300,
@@ -1897,11 +1859,11 @@ class _American extends StatelessWidget {
                     ),
                   ],
                   borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(10.0))),
+                      BorderRadius.vertical(top: Radius.circular(10.0))),
               child: Stack(children: [
                 ClipRRect(
                   borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10.0)),
+                      const BorderRadius.vertical(top: Radius.circular(10.0)),
                   child: Image.asset(
                     'assets/img/foods/12.jpg',
                     width: 300,
@@ -1981,12 +1943,12 @@ class _American extends StatelessWidget {
                     ),
                   ],
                   borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(10.0))),
+                      BorderRadius.vertical(top: Radius.circular(10.0))),
               child: Stack(
                 children: [
                   ClipRRect(
                     borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(10.0)),
+                        const BorderRadius.vertical(top: Radius.circular(10.0)),
                     child: Image.asset(
                       'assets/img/foods/11.jpg',
                       width: 300,
