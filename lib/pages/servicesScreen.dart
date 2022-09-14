@@ -13,71 +13,80 @@ class ServicesScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(15, 10, 15, 20),
+            padding: const EdgeInsets.fromLTRB(14, 40, 14, 20),
             child: Column(children: [
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.customer,
-                    style: themeData.textTheme.headline6!
-                        .apply(color: themeData.primaryColor),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 25,
-              ),
+              _text1(context, themeData),
+              const SizedBox(height: 25),
               Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    AppLocalizations.of(context)!.text1,
-                    textAlign: TextAlign.justify,
-                    textDirection: TextDirection.ltr,
-                    style: themeData.textTheme.subtitle1!.copyWith(
-                        color: Colors.black54, fontWeight: FontWeight.w400),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Text(
-                    AppLocalizations.of(context)!.text2,
-                    textAlign: TextAlign.justify,
-                    textDirection: TextDirection.ltr,
-                    style: themeData.textTheme.subtitle1!.copyWith(
-                        color: Colors.black54, fontWeight: FontWeight.w400),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Text(
-                    AppLocalizations.of(context)!.text3,
-                    textAlign: TextAlign.justify,
-                    textDirection: TextDirection.ltr,
-                    style: themeData.textTheme.subtitle1!.copyWith(
-                        color: Colors.black54, fontWeight: FontWeight.w400),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Text(
-                    AppLocalizations.of(context)!.text4,
-                    textAlign: TextAlign.justify,
-                    textDirection: TextDirection.ltr,
-                    style: themeData.textTheme.subtitle1!.copyWith(
-                        color: Colors.black54, fontWeight: FontWeight.w400),
-                  ),
+                  _text2(context, themeData),
+                  const SizedBox(height: 15),
+                  _text3(context, themeData),
+                  const SizedBox(height: 15),
+                  _text4(context, themeData),
+                  const SizedBox(height: 15),
+                  _text5(context, themeData),
                 ],
               ),
             ]),
           ),
         ),
       ),
+    );
+  }
+
+  Text _text5(BuildContext context, ThemeData themeData) {
+    return Text(
+      AppLocalizations.of(context)!.text4,
+      textAlign: TextAlign.justify,
+      textDirection: TextDirection.ltr,
+      style: themeData.textTheme.subtitle1!
+          .copyWith(color: Colors.black54, fontWeight: FontWeight.w400),
+    );
+  }
+
+  Text _text4(BuildContext context, ThemeData themeData) {
+    return Text(
+      AppLocalizations.of(context)!.text3,
+      textAlign: TextAlign.justify,
+      textDirection: TextDirection.ltr,
+      style: themeData.textTheme.subtitle1!
+          .copyWith(color: Colors.black54, fontWeight: FontWeight.w400),
+    );
+  }
+
+  Text _text3(BuildContext context, ThemeData themeData) {
+    return Text(
+      AppLocalizations.of(context)!.text2,
+      textAlign: TextAlign.justify,
+      textDirection: TextDirection.ltr,
+      style: themeData.textTheme.subtitle1!
+          .copyWith(color: Colors.black54, fontWeight: FontWeight.w400),
+    );
+  }
+
+  Text _text2(BuildContext context, ThemeData themeData) {
+    return Text(
+      AppLocalizations.of(context)!.text1,
+      textAlign: TextAlign.justify,
+      textDirection: TextDirection.ltr,
+      style: themeData.textTheme.subtitle1!
+          .copyWith(color: Colors.black54, fontWeight: FontWeight.w400),
+    );
+  }
+
+  Row _text1(BuildContext context, ThemeData themeData) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          AppLocalizations.of(context)!.customer,
+          style: themeData.textTheme.headline6!
+              .copyWith(color: themeData.primaryColor),
+        ),
+      ],
     );
   }
 }

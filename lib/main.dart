@@ -5,7 +5,7 @@ import 'pages/startScreen.dart';
 import 'pages/homeScreen.dart';
 import 'pages/searchScreen.dart';
 import 'layout/appBar.dart';
-import 'layout/bottomBar.dart';
+import 'pages/bottomBar.dart';
 import 'pages/loginScreen.dart';
 import 'pages/personScreen.dart';
 import 'pages/profileScreen.dart';
@@ -16,35 +16,36 @@ import 'pages/americanScreen.dart';
 import 'pages/add.dart';
 import 'pages/basketScreen.dart';
 import 'pages/becomeChef.dart';
-import 'pages/home.dart';
 import 'pages/servicesScreen.dart';
 import 'pages/privacyScreen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'widgets/videoWidget.dart';
 import 'pages/test.dart';
+import 'pages/chef.dart';
+import 'pages/aboutUs.dart';
+
 // import 'package:responsive_framework/responsive_framework.dart';
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  static const defultFontFamily = 'Brandon';
+  static const defaultFontFamily = 'Brandon';
+
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     const MaterialApp(
-
       title: 'Localizations Sample App',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
     );
-    const primeryTextColor = Colors.black87;
+    const primaryTextColor = Colors.black87;
     const secondaryTextColor = Colors.black54;
     const thirdTextColor = Colors.deepOrange;
     const fourTextColor = Colors.white;
-    const defaultTextStyle = TextStyle(fontFamily: 'OpenSans');
     return MaterialApp(
       routes: {
         '/start': (context) => const StartScreen(),
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
         "/services": (context) => const ServicesScreen(),
         "/search": (context) => const SearchScreen(),
         "/privacy": (context) => const PrivacyScreen(),
-        "/home": (context) => HomeScreen(),
+        "/home": (context) => const HomeScreen(),
         "/cart": (context) => const CartScreen(),
         "/person": (context) => const PersonScreen(),
         "/profile": (context) => const ProfileScreen(),
@@ -61,10 +62,9 @@ class MyApp extends StatelessWidget {
         "/japanese": (context) => JapaneseScreen(),
         "/american": (context) => AmericanScreen(),
         "/drawer": (context) => const DrawerWidget(),
-        "/become": (context) => const BecomeChefScreen(),
-
-
-
+        "/become": (context) => BecomeChefScreen(),
+        "/chef": (context) => const ChefScreen(),
+        "/about": (context) => const AboutUsScreen(),
       },
       // builder: (context, widget) => ResponsiveWrapper.builder(
       //   ClampingScrollWrapper.builder(context, widget!),
@@ -92,54 +92,54 @@ class MyApp extends StatelessWidget {
         Locale('en', ''), // English, no country code
         Locale('fa', ''), // Spanish, no country code
       ],
-      locale: Locale('en'),
+      locale: const Locale('en'),
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColor: Colors.deepOrange,
         textTheme: const TextTheme(
           headline6: TextStyle(
-            fontFamily: defultFontFamily,
+            fontFamily: defaultFontFamily,
             fontWeight: FontWeight.bold,
             color: fourTextColor,
             fontSize: 22,
           ),
           headline4: TextStyle(
-            fontFamily: defultFontFamily,
+            fontFamily: defaultFontFamily,
             fontWeight: FontWeight.bold,
             color: thirdTextColor,
             fontSize: 34,
           ),
           headline5: TextStyle(
-            fontFamily: defultFontFamily,
+            fontFamily: defaultFontFamily,
             fontWeight: FontWeight.bold,
             color: fourTextColor,
             fontSize: 26,
           ),
-          headline3: TextStyle(fontFamily: defultFontFamily),
+          headline3: TextStyle(fontFamily: defaultFontFamily),
           subtitle1: TextStyle(
-            fontFamily: defultFontFamily,
+            fontFamily: defaultFontFamily,
             fontSize: 19,
-            color: primeryTextColor,
+            color: primaryTextColor,
           ),
           bodyText1: TextStyle(
-            fontFamily: defultFontFamily,
+            fontFamily: defaultFontFamily,
             color: secondaryTextColor,
             fontSize: 19,
           ),
           subtitle2: TextStyle(
-            fontFamily: defultFontFamily,
+            fontFamily: defaultFontFamily,
             color: secondaryTextColor,
             fontSize: 17,
           ),
           bodyText2: TextStyle(
-            fontFamily: defultFontFamily,
-            color: primeryTextColor,
+            fontFamily: defaultFontFamily,
+            color: primaryTextColor,
             fontSize: 17,
           ),
-          caption: TextStyle(fontFamily: defultFontFamily, fontSize: 15),
+          caption: TextStyle(fontFamily: defaultFontFamily, fontSize: 15),
         ),
       ),
-      home: BecomeChefScreen(),
+      home: StartScreen(),
     );
   }
 }

@@ -4,6 +4,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class AppBarWidget extends StatelessWidget {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
+  AppBarWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
@@ -24,9 +26,11 @@ class AppBarWidget extends StatelessWidget {
           ),
           title: Padding(
             padding: const EdgeInsets.only(left: 0),
-            child: Text(AppLocalizations.of(context)!.header,
+            child: InkWell(
+    onTap: (){Navigator.pushNamed(context, "/home");},
+    child:Text(AppLocalizations.of(context)!.header,
                 style: themeData.textTheme.headline4!.copyWith(fontSize: 26)),
-          ),
+          ),),
           actions: [
             IconButton(
                 onPressed: () => {

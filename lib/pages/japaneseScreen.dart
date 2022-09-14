@@ -51,9 +51,11 @@ class _CalendarState extends State<JapaneseScreen> {
         ),
         title: Padding(
           padding: const EdgeInsets.only(left: 0),
-          child: Text(AppLocalizations.of(context)!.header,
+          child: InkWell(
+    onTap: (){Navigator.pushNamed(context, "/home");},
+    child:Text(AppLocalizations.of(context)!.header,
               style: themeData.textTheme.headline4!.copyWith(fontSize: 26)),
-        ),
+        ),),
         actions: [
           IconButton(
               onPressed: () => {},
@@ -698,7 +700,7 @@ class _CalendarState extends State<JapaneseScreen> {
             Column(
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: (){Navigator.pushNamed(context, "/home");},
                   child: Text(
                     AppLocalizations.of(context)!.header,
                     style: themeData.textTheme.headline4,
@@ -807,8 +809,8 @@ class _CalendarState extends State<JapaneseScreen> {
                       height: 35,
                     ),
                     InkWell(
-                      onTap: () {},
-                      child: Text(
+                        onTap: (){Navigator.pushNamed(context, "/home");},
+                        child:Text(
                         AppLocalizations.of(context)!.header,
                         style: themeData.textTheme.headline5!.copyWith(
                           color: themeData.colorScheme.onPrimary,

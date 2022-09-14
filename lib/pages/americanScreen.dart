@@ -51,9 +51,11 @@ class _CalendarState extends State<AmericanScreen> {
         ),
         title: Padding(
           padding: const EdgeInsets.only(left: 0),
-          child: Text(AppLocalizations.of(context)!.header,
+          child: InkWell(
+    onTap: (){Navigator.pushNamed(context, "/home");},
+    child:Text(AppLocalizations.of(context)!.header,
               style: themeData.textTheme.headline4!.copyWith(fontSize: 26)),
-        ),
+        ),),
         actions: [
           IconButton(
               onPressed: () => {},
@@ -702,7 +704,8 @@ class _CalendarState extends State<AmericanScreen> {
             Column(
               children: [
                 InkWell(
-                  onTap: () {},
+                      onTap: (){Navigator.pushNamed(context, "/home");},
+
                   child: Text(
                     AppLocalizations.of(context)!.header,
                     style: themeData.textTheme.headline4,
@@ -811,7 +814,8 @@ class _CalendarState extends State<AmericanScreen> {
                       height: 35,
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {Navigator.pushNamed(context, "/home");},
+
                       child: Text(
                         AppLocalizations.of(context)!.header,
                         style: themeData.textTheme.headline5!.copyWith(

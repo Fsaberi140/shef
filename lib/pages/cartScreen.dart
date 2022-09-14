@@ -11,7 +11,7 @@ class CartScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -44,26 +44,28 @@ class CartScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Divider(thickness: 2, color: Colors.grey[500]),
+                Divider(thickness: 2, color: themeData.primaryColor),
                 const SizedBox(
-                  height: 10,
+                  height: 25,
                 ),
                 Text(
                   AppLocalizations.of(context)!.yourFoods,
-                  style: themeData.textTheme.headline6!.copyWith(
-                    color: Color.fromARGB(200, 0, 0, 0),
+                  style: themeData.textTheme.headline5!.copyWith(
+                    color: themeData.primaryColor,
+                    // color: const Color.fromARGB(255, 255, 220, 600),
+                      fontWeight: FontWeight.w500
                   ),
                 ),
+                // const SizedBox(
+                //   height: 5,
+                // ),
+                // Container(
+                //   color: Colors.deepOrange,
+                //   height: 3,
+                //   width: 80,
+                // ),
                 const SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  color: Colors.deepOrange,
-                  height: 3,
-                  width: 80,
-                ),
-                const SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 Row(
                   children: <Widget>[
@@ -115,7 +117,6 @@ class CartScreen extends StatelessWidget {
                             ),
                             onTap: () {},
                           ),
-                          //  onpress : quantity == 0 ? null : () => decrement(),
                           Container(
                             decoration: BoxDecoration(
                                 border: Border.all(
@@ -145,9 +146,12 @@ class CartScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                const SizedBox(height: 5,),
+
                 const Divider(
                   thickness: 2,
                 ),
+                const SizedBox(height: 5,),
                 Row(
                   children: <Widget>[
                     ClipRRect(
@@ -198,7 +202,6 @@ class CartScreen extends StatelessWidget {
                             ),
                             onTap: () {},
                           ),
-                          //  onpress : quantity == 0 ? null : () => decrement(),
                           Container(
                             decoration: BoxDecoration(
                                 border: Border.all(
@@ -228,9 +231,13 @@ class CartScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                const SizedBox(height: 5,),
+
                 const Divider(
                   thickness: 2,
                 ),
+                const SizedBox(height: 5,),
+
                 Row(
                   children: <Widget>[
                     ClipRRect(
@@ -281,7 +288,6 @@ class CartScreen extends StatelessWidget {
                             ),
                             onTap: () {},
                           ),
-                          //  onpress : quantity == 0 ? null : () => decrement(),
                           Container(
                             decoration: BoxDecoration(
                                 border: Border.all(
@@ -311,11 +317,13 @@ class CartScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                const SizedBox(height: 5,),
+
                 const Divider(
                   thickness: 2,
                 ),
                 const SizedBox(
-                  height: 2,
+                  height: 5,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -337,7 +345,7 @@ class CartScreen extends StatelessWidget {
                           ),
                           Text(
                             AppLocalizations.of(context)!.total,
-                            style: themeData.textTheme.subtitle1,
+                            style: themeData.textTheme.bodyText2,
                           ),
                         ],
                       ),
@@ -345,23 +353,25 @@ class CartScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 40,
                 ),
                 Text(
                   AppLocalizations.of(context)!.information,
-                  style: themeData.textTheme.headline6!
-                      .copyWith(color: Colors.black87),
+                  style: themeData.textTheme.headline5!
+                      .copyWith( color: themeData.primaryColor,
+                      // color: const Color.fromARGB(255, 255, 220, 600),
+                      fontWeight: FontWeight.w500),
                 ),
+                // const SizedBox(
+                //   height: 5,
+                // ),
+                // Container(
+                //   color: themeData.primaryColor,
+                //   height: 3,
+                //   width: 120,
+                // ),
                 const SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  color: themeData.primaryColor,
-                  height: 3,
-                  width: 120,
-                ),
-                const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 Text(
                   AppLocalizations.of(context)!.phone,
@@ -397,8 +407,10 @@ class CartScreen extends StatelessWidget {
                   height: 5,
                 ),
                 SizedBox(
-                  height: 50,
+
                   child: TextField(
+                    textAlignVertical: TextAlignVertical.top,
+                    maxLines: null,
                     cursorColor: themeData.primaryColor,
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -423,6 +435,7 @@ class CartScreen extends StatelessWidget {
                   height: 5,
                 ),
                 SizedBox(
+
                   child: TextField(
                     textAlignVertical: TextAlignVertical.top,
                     maxLines: null,
@@ -436,12 +449,12 @@ class CartScreen extends StatelessWidget {
                       hintStyle: themeData.textTheme.bodyText1!.apply(
                         color: Colors.grey,
                       ),
-                      hintText: AppLocalizations.of(context)!.instructionshint,
+                      hintText: AppLocalizations.of(context)!.instructionsHint,
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 50,
                 ),
                 Row(
                   children: [
@@ -453,23 +466,28 @@ class CartScreen extends StatelessWidget {
                       width: 5,
                     ),
                     Text(
-                      AppLocalizations.of(context)!.miniuts,
+                      AppLocalizations.of(context)!.minutes,
                       style: themeData.textTheme.subtitle1,
                     ),
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 3,
                 ),
                 const Divider(
-                  thickness: 3,
+                  thickness: 2,
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 20,
                 ),
                 Text(
                   AppLocalizations.of(context)!.payment,
-                  style: themeData.textTheme.subtitle1,
+                  style: themeData.textTheme.headline5!
+                      .copyWith( color: themeData.primaryColor,
+                      fontWeight: FontWeight.w500),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
               ],
             ),

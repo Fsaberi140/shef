@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StartScreen extends StatelessWidget {
-  // final Function(int index) onTap;
   const StartScreen({
     Key? key,
-    // required this.onTap
   }) : super(key: key);
 
   @override
@@ -46,7 +44,7 @@ class StartScreen extends StatelessWidget {
                 Image.asset(
                   'assets/img/foods/1.jpg',
                   width: MediaQuery.of(context).size.width,
-                  height: 262,
+
                 ),
                 Positioned(
                   top: 140,
@@ -100,15 +98,13 @@ class StartScreen extends StatelessWidget {
                   Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
-
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           AppLocalizations.of(context)!.aboutChef1,
                           textAlign: TextAlign.justify,
                           textDirection: TextDirection.ltr,
-                          style: themeData.textTheme.subtitle1!
-                              .apply(color: Colors.black),
+                          style: themeData.textTheme.subtitle1
                         ),
                       ],
                     ),
@@ -145,9 +141,7 @@ class StartScreen extends StatelessWidget {
                           AppLocalizations.of(context)!.aboutChef2,
                           textAlign: TextAlign.justify,
                           textDirection: TextDirection.ltr,
-                          style: themeData.textTheme.subtitle1!.copyWith(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400),
+                          style: themeData.textTheme.subtitle1
                         ),
                       ],
                     ),
@@ -197,9 +191,8 @@ class StartScreen extends StatelessWidget {
                       ),
                       backgroundColor: MaterialStateProperty.all<Color>(
                           themeData.primaryColor),
-                      shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40))),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40))),
                     ),
                   ),
                   const SizedBox(
@@ -207,8 +200,7 @@ class StartScreen extends StatelessWidget {
                   ),
                   Text(
                     AppLocalizations.of(context)!.get,
-                    style: themeData.textTheme.subtitle1!
-                        .apply(color: Colors.black),
+                    style: themeData.textTheme.subtitle1
                   ),
                   const SizedBox(
                     height: 10,
@@ -225,13 +217,20 @@ class StartScreen extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    AppLocalizations.of(context)!.header,
-                    style: themeData.textTheme.headline3!.copyWith(
-                        color: themeData.colorScheme.onPrimary,
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.italic),
-                  ),
+                  InkWell(
+                    onTap: (){
+
+                    },
+                    child:InkWell(
+                      onTap: (){Navigator.pushNamed(context, "/home");},
+                      child: Text(
+                      AppLocalizations.of(context)!.header,
+                      style: themeData.textTheme.headline3!.copyWith(
+                          color: themeData.colorScheme.onPrimary,
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.italic),
+                    ),
+                  ),),
                   const SizedBox(
                     height: 10,
                   ),

@@ -3,6 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/layout/drawer.dart';
 
 class IranianScreen extends StatefulWidget {
+  const IranianScreen({Key? key}) : super(key: key);
+
   @override
   _CalendarState createState() => _CalendarState();
 }
@@ -51,9 +53,11 @@ class _CalendarState extends State<IranianScreen> {
         ),
         title: Padding(
           padding: const EdgeInsets.only(left: 0),
-          child: Text(AppLocalizations.of(context)!.header,
+          child: InkWell(
+    onTap: (){Navigator.pushNamed(context, "/home");},
+    child:Text(AppLocalizations.of(context)!.header,
               style: themeData.textTheme.headline4!.copyWith(fontSize: 26)),
-        ),
+        ),),
         actions: [
           IconButton(
               onPressed: () => {},
@@ -601,13 +605,18 @@ class _CalendarState extends State<IranianScreen> {
             ),
             Column(
               children: [
-                InkWell(
-                  onTap: () {},
-                  child: Text(
+
+
+        InkWell(
+            onTap: (){Navigator.pushNamed(context, "/home");},
+
+                  child: InkWell(
+                    onTap: (){Navigator.pushNamed(context, "/home");},
+                    child:Text(
                     AppLocalizations.of(context)!.header,
                     style: themeData.textTheme.headline4,
                   ),
-                ),
+                ),),
                 const SizedBox(
                   height: 10,
                 ),
@@ -711,7 +720,7 @@ class _CalendarState extends State<IranianScreen> {
                       height: 35,
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: (){Navigator.pushNamed(context, "/home");},
                       child: Text(
                         AppLocalizations.of(context)!.header,
                         style: themeData.textTheme.headline5!.copyWith(
