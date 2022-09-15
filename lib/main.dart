@@ -58,11 +58,11 @@ class MyApp extends StatelessWidget {
         "/cart": (context) => const CartScreen(),
         "/person": (context) => const PersonScreen(),
         "/profile": (context) => const ProfileScreen(),
-        "/iranian": (context) => IranianScreen(),
+        "/iranian": (context) => const IranianScreen(),
         "/japanese": (context) => JapaneseScreen(),
         "/american": (context) => AmericanScreen(),
         "/drawer": (context) => const DrawerWidget(),
-        "/become": (context) => BecomeChefScreen(),
+        "/become": (context) => const BecomeChefScreen(),
         "/chef": (context) => const ChefScreen(),
         "/about": (context) => const AboutUsScreen(),
       },
@@ -143,55 +143,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class MainScreen extends StatefulWidget {
-//   const MainScreen({Key? key}) : super(key: key);
-
-//   @override
-//   State<MainScreen> createState() => _MainScreenState();
-// }
-
-// const int HomeIndex = 0;
-// const int MenuIndex = 1;
-// const int LoginIndex = 2;
-
-// class _MainScreenState extends State<MainScreen> {
-//   int SelectedScreenIndex = HomeIndex;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: IndexedStack(
-//         index: 1,
-//         children: [
-//           HomeScreen(),
-//           StartScreen(),
-//           PersonScreen(),
-//           ProfileScreen(),
-//           SearchScreen(),
-//           SignUpScreen(),
-//           LoginScreen(),
-//           CartScreen(),
-//           PrivacyScreen(),
-//           ServicesScreen(),
-//           BasketScreen(),
-//           CartScreen(),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-// class HomeScreen extends StatelessWidget {
-//   const HomeScreen({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Scaffold(
-//       body: SingleChildScrollView(
-//         child: Padding(
-//           padding: EdgeInsets.all(32),
-//         ),
-//       ),
-//     );
-//   }
-// }
