@@ -99,9 +99,10 @@ class MyApp extends StatelessWidget {
         textTheme: const TextTheme(
           headline6: TextStyle(
             fontFamily: defaultFontFamily,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
             color: fourTextColor,
             fontSize: 22,
+
           ),
           headline4: TextStyle(
             fontFamily: defaultFontFamily,

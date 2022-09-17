@@ -48,7 +48,7 @@ class StartScreen extends StatelessWidget {
                 ],
               ),
             ),
-            _bottomBar(themeData: themeData)
+            _BottomBar(themeData: themeData)
           ]),
         ),
       ),
@@ -63,7 +63,7 @@ class StartScreen extends StatelessWidget {
   Widget _button(BuildContext context, ThemeData themeData) {
     return ElevatedButton(
       child: Text(AppLocalizations.of(context)!.signUp,
-          style: themeData.textTheme.headline6),
+          style: themeData.textTheme.headline6!.copyWith(fontWeight: FontWeight.w500)),
       onPressed: () {
         Navigator.pushNamed(context, "/signup");
       },
@@ -83,7 +83,7 @@ class StartScreen extends StatelessWidget {
     return Text(
       AppLocalizations.of(context)!.doYou,
       style: themeData.textTheme.headline6!
-          .copyWith(color: Colors.black, fontWeight: FontWeight.w400),
+          .copyWith(color: Colors.black,fontSize: 21, fontWeight: FontWeight.w400),
       textAlign: TextAlign.center,
     );
   }
@@ -99,6 +99,7 @@ class StartScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         child: Image.asset(
           'assets/img/foods/23.jpg',
+
           width: 250,
           height: 250,
         ),
@@ -127,12 +128,13 @@ class StartScreen extends StatelessWidget {
         boxShadow: [
           BoxShadow(color: Colors.grey, offset: Offset(3, 3), blurRadius: 5)
         ],
+
       ),
       child: ClipRRect(
         child: Image.asset(
           'assets/img/foods/22.jpg',
-          width: 360,
-          height: 230,
+fit: BoxFit.cover,
+
         ),
       ),
     );
@@ -182,8 +184,8 @@ class StartScreen extends StatelessWidget {
 
   Widget _textOnImage(BuildContext context, ThemeData themeData) {
     return Positioned(
-      top: 140,
-      left: 8,
+      bottom: 10,
+      left: 10,
       child: Text(
         AppLocalizations.of(context)!.delicious,
         style: themeData.textTheme.headline5!.copyWith(
@@ -236,8 +238,8 @@ class StartScreen extends StatelessWidget {
 // }
 }
 
-class _bottomBar extends StatelessWidget {
-  const _bottomBar({
+class _BottomBar extends StatelessWidget {
+  const _BottomBar({
     Key? key,
     required this.themeData,
   }) : super(key: key);

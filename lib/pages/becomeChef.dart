@@ -11,8 +11,10 @@ class BecomeChefScreen extends StatefulWidget {
   @override
   State<BecomeChefScreen> createState() => _BecomeChefScreenState();
 }
+
 class _BecomeChefScreenState extends State<BecomeChefScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
@@ -38,7 +40,7 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             _Image$text(themeData: themeData),
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 40, 20, 10),
+              padding: const EdgeInsets.fromLTRB(20, 30, 20, 10),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -48,17 +50,13 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                         color: themeData.primaryColor,
                       ),
                     ),
-                    const SizedBox(
-                      height: 15
-                    ),
+                    const SizedBox(height: 15),
                     Text(
                       AppLocalizations.of(context)!.make,
-                      style: themeData.textTheme.bodyText1!.copyWith(
-                          color: Colors.black87, fontWeight: FontWeight.bold),
+                      style: themeData.textTheme.subtitle1!.copyWith(
+                           fontWeight: FontWeight.w600),
                     ),
-                    const SizedBox(
-                      height: 5
-                    ),
+                    const SizedBox(height: 5),
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
@@ -66,22 +64,17 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                           AppLocalizations.of(context)!.it,
                           textAlign: TextAlign.justify,
                           textDirection: TextDirection.ltr,
-                          style: themeData.textTheme.subtitle1!
-                              .apply(color: Colors.black),
+                          style: themeData.textTheme.bodyText2,
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 15
-                    ),
+                    const SizedBox(height: 15),
                     Text(
                       AppLocalizations.of(context)!.be,
-                      style: themeData.textTheme.bodyText1!.copyWith(
-                          color: Colors.black87, fontWeight: FontWeight.bold),
+                      style: themeData.textTheme.subtitle1!.copyWith(
+                          fontWeight: FontWeight.w600),
                     ),
-                    const SizedBox(
-                      height: 5
-                    ),
+                    const SizedBox(height: 5),
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
@@ -89,23 +82,18 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                           AppLocalizations.of(context)!.design,
                           textAlign: TextAlign.justify,
                           textDirection: TextDirection.ltr,
-                          style: themeData.textTheme.subtitle1!
-                              .apply(color: Colors.black),
+                          style: themeData.textTheme.bodyText2,
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 40
-                    ),
+                    const SizedBox(height: 40),
                     Text(
                       AppLocalizations.of(context)!.success,
                       style: themeData.textTheme.headline6!.apply(
                         color: themeData.primaryColor,
                       ),
                     ),
-                    const SizedBox(
-                      height: 15
-                    ),
+                    const SizedBox(height: 15),
                     // Container(
                     //   width: MediaQuery.of(context).size.width,
                     //   height: 360,
@@ -157,9 +145,9 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                       AppLocalizations.of(context)!.approved,
                       textAlign: TextAlign.justify,
                       textDirection: TextDirection.ltr,
-                      style: themeData.textTheme.bodyText1!.copyWith(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
+                      style: themeData.textTheme.subtitle1!.copyWith(
+
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     const SizedBox(
@@ -169,7 +157,7 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
                         Text(
-                          AppLocalizations.of(context)!.submit,
+                          AppLocalizations.of(context)!.sample,
                           style: themeData.textTheme.subtitle1!
                               .apply(color: Colors.black),
                         ),
@@ -191,9 +179,9 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                       AppLocalizations.of(context)!.pick,
                       textAlign: TextAlign.justify,
                       textDirection: TextDirection.ltr,
-                      style: themeData.textTheme.bodyText1!.copyWith(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
+                      style: themeData.textTheme.subtitle1!.copyWith(
+
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     const SizedBox(
@@ -204,8 +192,7 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                       children: <Widget>[
                         Text(
                           AppLocalizations.of(context)!.choose,
-                          style: themeData.textTheme.subtitle1!
-                              .apply(color: Colors.black),
+                          style: themeData.textTheme.bodyText2,
                         ),
                       ],
                     ),
@@ -223,9 +210,9 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                     ),
                     Text(
                       AppLocalizations.of(context)!.prepare,
-                      style: themeData.textTheme.bodyText1!.copyWith(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
+                      style: themeData.textTheme.subtitle1!.copyWith(
+
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     const SizedBox(
@@ -238,8 +225,7 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                           AppLocalizations.of(context)!.can,
                           textAlign: TextAlign.justify,
                           textDirection: TextDirection.ltr,
-                          style: themeData.textTheme.subtitle1!
-                              .apply(color: Colors.black),
+                          style: themeData.textTheme.bodyText2,
                         ),
                       ],
                     ),
@@ -257,9 +243,8 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                     ),
                     Text(
                       AppLocalizations.of(context)!.cool,
-                      style: themeData.textTheme.bodyText1!.copyWith(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
+                      style: themeData.textTheme.subtitle1!.copyWith(
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     const SizedBox(
@@ -272,8 +257,7 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                           AppLocalizations.of(context)!.once,
                           textAlign: TextAlign.justify,
                           textDirection: TextDirection.ltr,
-                          style: themeData.textTheme.subtitle1!
-                              .apply(color: Colors.black),
+                          style: themeData.textTheme.bodyText2,
                         ),
                       ],
                     ),
@@ -291,9 +275,8 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                     ),
                     Text(
                       AppLocalizations.of(context)!.serve,
-                      style: themeData.textTheme.bodyText1!.copyWith(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
+                      style: themeData.textTheme.subtitle1!.copyWith(
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     const SizedBox(
@@ -306,8 +289,7 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                           AppLocalizations.of(context)!.we,
                           textAlign: TextAlign.justify,
                           textDirection: TextDirection.ltr,
-                          style: themeData.textTheme.subtitle1!
-                              .apply(color: Colors.black),
+                          style: themeData.textTheme.bodyText2,
                         ),
                       ],
                     ),
@@ -316,37 +298,32 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                     ),
                     Center(
                       child: ElevatedButton(
-                          child: Text(AppLocalizations.of(context)!.started,
-                              style: themeData.textTheme.headline6!
-                                  .copyWith(fontWeight: FontWeight.w500)),
-                          onPressed: () { Navigator.pushNamed(context, "/chef");
-    },
-                            style:
-                            ButtonStyle(
-                              minimumSize: MaterialStateProperty.all(
-                                const Size(200, 45),
-                              ),
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  themeData.primaryColor),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(40))),
-                            ),
+                        child: Text(AppLocalizations.of(context)!.started,
+                            style: themeData.textTheme.headline6),
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/chef");
+                        },
+                        style: ButtonStyle(
+                          minimumSize: MaterialStateProperty.all(
+                            const Size(200, 45),
                           ),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              themeData.primaryColor),
+                          shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(40))),
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       height: 60,
                     ),
-
                     Text(
                       AppLocalizations.of(context)!.frequently,
                       style: themeData.textTheme.headline6!.apply(
                         color: themeData.primaryColor,
                       ),
                     ),
-                    // const SizedBox(
-                    //   height: 5,
-                    // ),
 
                     Accordion(
                       maxOpenSections: 2,
@@ -359,12 +336,8 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                       children: [
                         AccordionSection(
                           isOpen: false,
-                          header: Text(
-                            AppLocalizations.of(context)!.does,
-                            style: themeData.textTheme.subtitle1!.copyWith(
-                              fontSize: 20,
-                            ),
-                          ),
+                          header: Text(AppLocalizations.of(context)!.does,
+                              style: themeData.textTheme.bodyText2),
                           content: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -379,11 +352,8 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                         ),
                         AccordionSection(
                           isOpen: false,
-                          header: Text(
-                            AppLocalizations.of(context)!.paid,
-                            style: themeData.textTheme.subtitle1!
-                                .copyWith(fontSize: 20),
-                          ),
+                          header: Text(AppLocalizations.of(context)!.paid,
+                              style: themeData.textTheme.bodyText2),
                           content: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -400,11 +370,8 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                         ),
                         AccordionSection(
                           isOpen: false,
-                          header: Text(
-                            AppLocalizations.of(context)!.what,
-                            style: themeData.textTheme.subtitle1!
-                                .copyWith(fontSize: 20),
-                          ),
+                          header: Text(AppLocalizations.of(context)!.what,
+                              style: themeData.textTheme.bodyText2),
                           content: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -420,11 +387,8 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                         ),
                         AccordionSection(
                           isOpen: false,
-                          header: Text(
-                            AppLocalizations.of(context)!.cooking,
-                            style: themeData.textTheme.subtitle1!
-                                .copyWith(fontSize: 20),
-                          ),
+                          header: Text(AppLocalizations.of(context)!.cooking,
+                              style: themeData.textTheme.bodyText2),
                           content: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -441,10 +405,10 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                     ),
                   ]),
             ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 0),
-                  child: BottomBar(themeData: themeData),
-                ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 0),
+              child: BottomBar(themeData: themeData),
+            ),
           ]),
         ),
       ),
@@ -456,55 +420,54 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
 
   IconButton appBarIcon3(BuildContext context) {
     return IconButton(
-          onPressed: () => {
-            Navigator.pushNamed(context, "/profile"),
-          },
-          icon: const Icon(
-            Icons.person_sharp,
-            color: Colors.black,
-            size: 26,
-          ),
-        );
+      onPressed: () => {
+        Navigator.pushNamed(context, "/profile"),
+      },
+      icon: const Icon(
+        Icons.person_sharp,
+        color: Colors.black,
+        size: 26,
+      ),
+    );
   }
 
   IconButton appBarIcon2(BuildContext context) {
     return IconButton(
-            onPressed: () => {
-                  Navigator.pushNamed(context, "/cart"),
-                },
-            icon: const Icon(Icons.shopping_cart,
-                color: Colors.black, size: 26));
+        onPressed: () => {
+              Navigator.pushNamed(context, "/cart"),
+            },
+        icon: const Icon(Icons.shopping_cart, color: Colors.black, size: 26));
   }
 
   IconButton appBarIcon1(BuildContext context) {
     return IconButton(
-            onPressed: () => {
-                  Navigator.pushNamed(context, "/search"),
-                },
-            icon: const Icon(
-              Icons.search,
-              color: Colors.black,
-              size: 26,
-            ));
+        onPressed: () => {
+              Navigator.pushNamed(context, "/search"),
+            },
+        icon: const Icon(
+          Icons.search,
+          color: Colors.black,
+          size: 26,
+        ));
   }
 
   Padding title(BuildContext context, ThemeData themeData) {
     return Padding(
-        padding: const EdgeInsets.only(left: 0),
-        child: Text(AppLocalizations.of(context)!.header,
-            style: themeData.textTheme.headline4!.copyWith(fontSize: 26)),
-      );
+      padding: const EdgeInsets.only(left: 0),
+      child: Text(AppLocalizations.of(context)!.header,
+          style: themeData.textTheme.headline4!.copyWith(fontSize: 26)),
+    );
   }
 
   IconButton leading() {
     return IconButton(
-        onPressed: () => {_key.currentState!.openDrawer()},
-        icon: const Icon(
-          Icons.menu,
-          color: Colors.black,
-          size: 26,
-        ),
-      );
+      onPressed: () => {_key.currentState!.openDrawer()},
+      icon: const Icon(
+        Icons.menu,
+        color: Colors.black,
+        size: 26,
+      ),
+    );
   }
 }
 
@@ -523,18 +486,15 @@ class _Image$text extends StatelessWidget {
         Image.asset(
           'assets/img/foods/41.jpg',
           width: MediaQuery.of(context).size.width,
-
-
         ),
         Positioned(
-          top: 132,
-          left: 8,
+          bottom: 10,
+          left: 10,
           child: Text(
             AppLocalizations.of(context)!.earn,
             style: themeData.textTheme.headline6!.copyWith(
-              color: themeData.colorScheme.onPrimary,
-              fontSize: 22,
-            ),
+                color: themeData.colorScheme.onPrimary,
+                fontWeight: FontWeight.w600),
           ),
         ),
       ],
