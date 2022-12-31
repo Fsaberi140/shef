@@ -1,32 +1,41 @@
 import 'package:flutter/material.dart';
-import 'pages/cartScreen.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:sheff_new/data/repo/product_repository.dart';
+import 'package:sheff_new/pages/auth.dart';
+import 'package:sheff_new/pages/authUp.dart';
+import 'package:sheff_new/pages/booksScreen.dart';
+import 'package:sheff_new/pages/ordersScreen.dart';
+import 'package:sheff_new/pages/splash.dart';
 import 'layout/drawer.dart';
-import 'pages/startScreen.dart';
+import 'pages/aboutUs.dart';
+import 'pages/americanScreen.dart';
+import 'pages/becomeChef.dart';
+import 'pages/booksScreen.dart';
+import 'pages/cartScreen.dart';
+import 'pages/chef.dart';
 import 'pages/homeScreen.dart';
-import 'pages/searchScreen.dart';
-import 'layout/appBar.dart';
-import 'pages/bottomBar.dart';
-import 'pages/loginScreen.dart';
-import 'pages/personScreen.dart';
-import 'pages/profileScreen.dart';
-import 'pages/signUpScreen.dart';
 import 'pages/iranianScreen.dart';
 import 'pages/japaneseScreen.dart';
-import 'pages/americanScreen.dart';
-import 'pages/add.dart';
-import 'pages/basketScreen.dart';
-import 'pages/becomeChef.dart';
-import 'pages/servicesScreen.dart';
+import 'pages/loginScreen.dart';
+import 'pages/personScreen.dart';
 import 'pages/privacyScreen.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'widgets/videoWidget.dart';
-import 'pages/test.dart';
-import 'pages/chef.dart';
-import 'pages/aboutUs.dart';
+import 'pages/profileScreen.dart';
+import 'pages/searchScreen.dart';
+import 'pages/servicesScreen.dart';
+import 'pages/signUpScreen.dart';
+import 'pages/startScreen.dart';
 
-// import 'package:responsive_framework/responsive_framework.dart';
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.white,
+    statusBarIconBrightness: Brightness.dark,
+    systemNavigationBarColor: Colors.white,
+    systemNavigationBarIconBrightness: Brightness.dark,
+  ));
   runApp(const MyApp());
 }
 
@@ -37,15 +46,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+    productRepository.search('کفش').then((value) {
+      debugPrint(value.toString());
+    }).catchError((e) {
+      debugPrint(e.toString());
+    });
     const MaterialApp(
       title: 'Localizations Sample App',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
     );
     const primaryTextColor = Colors.black87;
-    const secondaryTextColor = Colors.black54;
-    const thirdTextColor = Colors.deepOrange;
-    const fourTextColor = Colors.white;
+    const secondaryTextColor = Color(0xff757575);
+    const thirdTextColor = Colors.white;
+    const primaryColor = Colors.deepOrange;
+    const secondaryColor = Color(0xFFFBE9E7);
     return MaterialApp(
       routes: {
         '/start': (context) => const StartScreen(),
@@ -64,22 +80,11 @@ class MyApp extends StatelessWidget {
         "/drawer": (context) => const DrawerWidget(),
         "/become": (context) => const BecomeChefScreen(),
         "/chef": (context) => const ChefScreen(),
-        "/about": (context) => const AboutUsScreen(),
+        // "/about": (context) => const AboutUsScreen(),
+        "/splash": (context) => const SplashScreen(),
+        "/orders": (context) => const OrdersScreen(),
+        "/books": (context) => BooksScreen(),
       },
-      // builder: (context, widget) => ResponsiveWrapper.builder(
-      //   ClampingScrollWrapper.builder(context, widget!),
-      //
-      //     maxWidth: 1200,
-      //     minWidth: 480,
-      //     defaultScale: true,
-      //     breakpoints: [
-      //       const ResponsiveBreakpoint.resize(480, name: MOBILE),
-      //       const ResponsiveBreakpoint.autoScale(800, name: TABLET),
-      //       const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
-      //
-      //     ],
-      //     background: Container(color: const Color(0xFFF5F5F5))),
-      // initialRoute: "/",
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       localizationsDelegates: const [
@@ -96,24 +101,29 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColor: Colors.deepOrange,
+        inputDecorationTheme: InputDecorationTheme(
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: themeData.primaryColor, width: 2)),
+          border: const OutlineInputBorder(),
+          labelStyle: themeData.textTheme.subtitle2,
+        ),
         textTheme: const TextTheme(
           headline6: TextStyle(
             fontFamily: defaultFontFamily,
             fontWeight: FontWeight.w600,
-            color: fourTextColor,
+            color: thirdTextColor,
             fontSize: 22,
-
           ),
           headline4: TextStyle(
             fontFamily: defaultFontFamily,
             fontWeight: FontWeight.bold,
-            color: thirdTextColor,
+            color: primaryColor,
             fontSize: 34,
           ),
           headline5: TextStyle(
             fontFamily: defaultFontFamily,
             fontWeight: FontWeight.bold,
-            color: fourTextColor,
+            color: thirdTextColor,
             fontSize: 26,
           ),
           headline3: TextStyle(fontFamily: defaultFontFamily),
@@ -140,7 +150,7 @@ class MyApp extends StatelessWidget {
           caption: TextStyle(fontFamily: defaultFontFamily, fontSize: 15),
         ),
       ),
-      home: StartScreen(),
+      home: const SignUpScreen(),
     );
   }
 }

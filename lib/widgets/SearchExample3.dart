@@ -12,10 +12,13 @@ class SearchExample3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Image.asset(
-          'assets/img/persons/4.jpg',
-          width: 70,
-          height: 70,
+        ClipRRect(
+          child: Image.asset(
+            'assets/img/persons/person_4.jpg',
+            width: 70,
+            height: 70,
+          ),
+          borderRadius: BorderRadius.circular(3),
         ),
         const SizedBox(
           width: 20,

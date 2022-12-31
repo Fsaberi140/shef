@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class IranianChefsList extends StatelessWidget {
   const IranianChefsList({
     Key? key,
@@ -35,169 +36,159 @@ class IranianChefsList extends StatelessWidget {
 
   Widget _item2(BuildContext context) {
     return Container(
-          width: 300,
-          height: 260,
-          margin: const EdgeInsets.all(1),
-          decoration: const BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 2,
-                ),
-              ],
-              borderRadius:
-              BorderRadius.vertical(top: Radius.circular(10.0))),
-          child: Stack(children: [
-            ClipRRect(
-              borderRadius:
-              const BorderRadius.vertical(top: Radius.circular(10.0)),
+      width: 300,
+      height: 260,
+      margin: const EdgeInsets.all(1),
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 2,
+            ),
+          ],
+          borderRadius: BorderRadius.vertical(top: Radius.circular(10.0))),
+      child: Stack(children: [
+        ClipRRect(
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(10.0)),
+          child: Image.asset(
+            'assets/img/foodData/foodData_2.jpg',
+            fit: BoxFit.cover,
+          ),
+        ),
+        Positioned(
+          top: 120,
+          left: 115,
+          child: Container(
+            margin: const EdgeInsets.all(1),
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(68)),
+            padding: const EdgeInsets.all(4),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(72),
               child: Image.asset(
-                'assets/img/foods/12.jpg',
-                width: 300,
-                height: 150,
+                'assets/img/persons/person_2.jpg',
+                width: 70,
+                height: 70,
               ),
             ),
-            Positioned(
-              top: 120,
-              left: 115,
-              child: Container(
-                margin: const EdgeInsets.all(1),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(68)),
-                padding: const EdgeInsets.all(4),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(72),
-                  child: Image.asset(
-                    'assets/img/persons/2.jpg',
-                    width: 70,
-                    height: 70,
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 5,
-              left: 15,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          ),
+        ),
+        Positioned(
+          bottom: 5,
+          left: 15,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      Text(AppLocalizations.of(context)!.wahid,
-                          style: themeData.textTheme.bodyText1!
-                              .copyWith(height: 1.5)),
-                      const SizedBox(
-                        width: 12,
-                      ),
-                      Row(children: [
-                        Text(
-                          AppLocalizations.of(context)!.no3,
-                          style: themeData.textTheme.bodyText2!
-                              .copyWith(color: themeData.primaryColor),
-                        ),
-                        const SizedBox(
-                          width: 3,
-                        ),
-                        Icon(
-                          Icons.star_outlined,
-                          size: 20,
-                          color: themeData.primaryColor,
-                        ),
-                      ]),
-                    ],
+                  Text(AppLocalizations.of(context)!.wahid,
+                      style:
+                          themeData.textTheme.bodyText1!.copyWith(height: 1.5)),
+                  const SizedBox(
+                    width: 12,
                   ),
-                  Text(AppLocalizations.of(context)!.iranianF,
-                      style: themeData.textTheme.bodyText1!
-                          .copyWith(height: 1.5)),
+                  Row(children: [
+                    Text(
+                      AppLocalizations.of(context)!.no3,
+                      style: themeData.textTheme.bodyText2!
+                          .copyWith(color: themeData.primaryColor),
+                    ),
+                    const SizedBox(
+                      width: 3,
+                    ),
+                    Icon(
+                      Icons.star_outlined,
+                      size: 20,
+                      color: themeData.primaryColor,
+                    ),
+                  ]),
                 ],
               ),
-            ),
-          ]),
-        );
+              Text(AppLocalizations.of(context)!.iranianF,
+                  style: themeData.textTheme.bodyText1!.copyWith(height: 1.5)),
+            ],
+          ),
+        ),
+      ]),
+    );
   }
 
   Widget _item(BuildContext context) {
     return Container(
-            width: 300,
-            height: 260,
+      width: 300,
+      height: 260,
+      margin: const EdgeInsets.all(1),
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 2,
+            ),
+          ],
+          borderRadius: BorderRadius.vertical(top: Radius.circular(10.0))),
+      child: Stack(children: [
+        ClipRRect(
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(10.0)),
+          child: Image.asset(
+            'assets/img/foodData/foodData_4.jpg',
+            fit: BoxFit.cover,
+          ),
+        ),
+        Positioned(
+          top: 120,
+          left: 115,
+          child: Container(
             margin: const EdgeInsets.all(1),
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 2,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(68)),
+            padding: const EdgeInsets.all(4),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(72),
+              child: Image.asset(
+                'assets/img/persons/person_3.jpg',
+                width: 70,
+                height: 70,
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: 5,
+          left: 15,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text(AppLocalizations.of(context)!.maryam,
+                      style:
+                          themeData.textTheme.bodyText1!.copyWith(height: 1.5)),
+                  const SizedBox(
+                    width: 12,
                   ),
+                  Row(children: [
+                    Text(
+                      AppLocalizations.of(context)!.no1,
+                      style: themeData.textTheme.bodyText2!
+                          .copyWith(color: themeData.primaryColor),
+                    ),
+                    const SizedBox(
+                      width: 3,
+                    ),
+                    Icon(
+                      Icons.star_outlined,
+                      size: 20,
+                      color: themeData.primaryColor,
+                    ),
+                  ]),
                 ],
-                borderRadius:
-                BorderRadius.vertical(top: Radius.circular(10.0))),
-            child: Stack(children: [
-              ClipRRect(
-                borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(10.0)),
-                child: Image.asset(
-                  'assets/img/foods/14.jpg',
-                  width: 300,
-                  height: 150,
-                ),
               ),
-              Positioned(
-                top: 120,
-                left: 115,
-                child: Container(
-                  margin: const EdgeInsets.all(1),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(68)),
-                  padding: const EdgeInsets.all(4),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(72),
-                    child: Image.asset(
-                      'assets/img/persons/3.jpg',
-                      width: 70,
-                      height: 70,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                bottom: 5,
-                left: 15,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(AppLocalizations.of(context)!.maryam,
-                            style: themeData.textTheme.bodyText1!
-                                .copyWith(height: 1.5)),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        Row(children: [
-                          Text(
-                            AppLocalizations.of(context)!.no1,
-                            style: themeData.textTheme.bodyText2!
-                                .copyWith(color: themeData.primaryColor),
-                          ),
-                          const SizedBox(
-                            width: 3,
-                          ),
-                          Icon(
-                            Icons.star_outlined,
-                            size: 20,
-                            color: themeData.primaryColor,
-                          ),
-                        ]),
-                      ],
-                    ),
-                    Text(AppLocalizations.of(context)!.iranianF,
-                        style: themeData.textTheme.bodyText1!
-                            .copyWith(height: 1.5)),
-                  ],
-                ),
-              ),
-            ]),
-          );
+              Text(AppLocalizations.of(context)!.iranianF,
+                  style: themeData.textTheme.bodyText1!.copyWith(height: 1.5)),
+            ],
+          ),
+        ),
+      ]),
+    );
   }
 }

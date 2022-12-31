@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class _Calendar extends StatefulWidget {
-  _Calendar({Key? key}) : super(key: key);
+  const _Calendar({Key? key}) : super(key: key);
 
   @override
   _CalendarState createState() => _CalendarState();
@@ -32,6 +30,7 @@ class _CalendarState extends State<_Calendar> {
 
   List<String> listOfDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
+  @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
 
@@ -120,7 +119,7 @@ class _CalendarState extends State<_Calendar> {
                                 ? Colors.white
                                 : Colors.grey),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 2,
                       ),
                     ],

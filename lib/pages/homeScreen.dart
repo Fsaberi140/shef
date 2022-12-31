@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/layout/drawer.dart';
-import '../widgets/FavoritesList.dart';
+import 'package:sheff_new/pages/bottomNavigation.dart';
 import '../widgets/Menu.dart';
+import '../widgets/FavoritesList.dart';
 import 'bottomBar.dart';
 import '../widgets/AmericanChefsList.dart';
 import '../widgets/JapaneseChefsList.dart';
@@ -15,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 
   @override
   _CalendarState createState() => _CalendarState();
+
+
 }
 
 class _CalendarState extends State<HomeScreen> {
@@ -22,7 +25,7 @@ class _CalendarState extends State<HomeScreen> {
   DateTime selectedDate = DateTime.now(); // TO tracking date
   int currentDateSelectedIndex = 0; //For Horizontal Date
   ScrollController scrollController =
-  ScrollController(); //To Track Scroll of ListView
+      ScrollController(); //To Track Scroll of ListView
 
   List<String> listOfMonths = [
     "Jan",
@@ -47,63 +50,15 @@ class _CalendarState extends State<HomeScreen> {
 
     return Scaffold(
       key: _key,
-      appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 2,
-          shadowColor: themeData.primaryColor,
-          leading: IconButton(
-            onPressed: () => {_key.currentState!.openDrawer()},
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.black,
-              size: 26,
-            ),
-          ),
-          title: Padding(
-            padding: const EdgeInsets.only(left: 0),
-            child: InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, "/home");
-              },
-              child: Text(AppLocalizations.of(context)!.header,
-                  style: themeData.textTheme.headline4!.copyWith(fontSize: 26)),
-            ),
-          ),
-          actions: [
-            IconButton(
-                onPressed: () => {
-                  Navigator.pushNamed(context, "/search"),
-                },
-                icon: const Icon(
-                  Icons.search,
-                  color: Colors.black,
-                  size: 26,
-                )),
-            IconButton(
-                onPressed: () => {
-                  Navigator.pushNamed(context, "/cart"),
-                },
-                icon: const Icon(Icons.shopping_cart,
-                    color: Colors.black, size: 26)),
-            IconButton(
-              onPressed: () => {
-                Navigator.pushNamed(context, "/profile"),
-              },
-              icon: const Icon(
-                Icons.person_sharp,
-                color: Colors.black,
-                size: 26,
-              ),
-            ),
-            const SizedBox(width: 10),
-          ]),
+      appBar: _appBar(themeData, context),
+      bottomNavigationBar: const BottomNavigation(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                child: Menu(themeData: themeData),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(5, 8, 0, 0),
+                child: Menu(),
               ),
               Divider(
                 thickness: 2,
@@ -125,55 +80,51 @@ class _CalendarState extends State<HomeScreen> {
                 color: Colors.grey[300],
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
+                padding: const EdgeInsets.fromLTRB(20, 25, 0, 0),
                 child: Column(children: [
                   _favorites(context, themeData),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 8),
                   FavoritesList(themeData: themeData),
                 ]),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
+                padding: const EdgeInsets.fromLTRB(20, 25, 0, 0),
                 child: Column(children: [
                   _newest(context, themeData),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 8),
                   NewestList(themeData: themeData),
                 ]),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
+                padding: const EdgeInsets.fromLTRB(20, 25, 0, 0),
                 child: Column(children: [
                   _discount(context, themeData),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 8),
                   DiscountList(themeData: themeData),
                 ]),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
+                padding: const EdgeInsets.fromLTRB(20, 25, 0, 0),
                 child: Column(children: [
                   _iranianChefs(context, themeData),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 8),
                   IranianChefsList(themeData: themeData),
                 ]),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
+                padding: const EdgeInsets.fromLTRB(20, 25, 0, 0),
                 child: Column(children: [
                   _japaneseChefs(context, themeData),
-                  const SizedBox(
-                    height: 12
-                  ),
+                  const SizedBox(height: 8),
                   JapaneseChefsList(themeData: themeData),
                 ]),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
+                padding: const EdgeInsets.fromLTRB(20, 25, 0, 0),
                 child: Column(children: [
                   _americanChefs(context, themeData),
-                  const SizedBox(
-                    height: 12
-                  ),
-                 AmericanChefsList(themeData: themeData),
+                  const SizedBox(height: 8),
+                  AmericanChefsList(themeData: themeData),
                 ]),
               ),
               Padding(
@@ -192,6 +143,59 @@ class _CalendarState extends State<HomeScreen> {
         child: DrawerWidget(),
       ),
     );
+  }
+
+  AppBar _appBar(ThemeData themeData, BuildContext context) {
+    return AppBar(
+        backgroundColor: Colors.white,
+        elevation: 2,
+        shadowColor: themeData.primaryColor,
+        leading: IconButton(
+          onPressed: () => {_key.currentState!.openDrawer()},
+          icon: const Icon(
+            Icons.menu,
+            color: Colors.black,
+            size: 26,
+          ),
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 0),
+          child: InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, "/home");
+            },
+            child: Text(AppLocalizations.of(context)!.header,
+                style: themeData.textTheme.headline4!.copyWith(fontSize: 26)),
+          ),
+        ),
+        actions: [
+          IconButton(
+              onPressed: () => {
+                    Navigator.pushNamed(context, "/search"),
+                  },
+              icon: const Icon(
+                Icons.search,
+                color: Colors.black,
+                size: 26,
+              )),
+          IconButton(
+              onPressed: () => {
+                    Navigator.pushNamed(context, "/cart"),
+                  },
+              icon: const Icon(Icons.shopping_cart,
+                  color: Colors.black, size: 26)),
+          IconButton(
+            onPressed: () => {
+              Navigator.pushNamed(context, "/profile"),
+            },
+            icon: const Icon(
+              Icons.person_sharp,
+              color: Colors.black,
+              size: 26,
+            ),
+          ),
+          const SizedBox(width: 10),
+        ]);
   }
 
   Widget _upBottom(BuildContext context, ThemeData themeData) {
@@ -368,8 +372,8 @@ class _CalendarState extends State<HomeScreen> {
                   children: [
                     Text(
                       listOfMonths[
-                      DateTime.now().add(Duration(days: index)).month -
-                          1]
+                              DateTime.now().add(Duration(days: index)).month -
+                                  1]
                           .toString(),
                       style: TextStyle(
                           fontSize: 16,
@@ -388,9 +392,9 @@ class _CalendarState extends State<HomeScreen> {
                     ),
                     Text(
                       listOfDays[DateTime.now()
-                          .add(Duration(days: index))
-                          .weekday -
-                          1]
+                                  .add(Duration(days: index))
+                                  .weekday -
+                              1]
                           .toString(),
                       style: TextStyle(
                           fontSize: 16,

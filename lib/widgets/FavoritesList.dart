@@ -17,7 +17,8 @@ class FavoritesList extends StatelessWidget {
       child: SizedBox(
         height: 260,
         width: double.infinity,
-        child: ListView(scrollDirection: Axis.horizontal, children: <Widget>[
+        child: ListView(
+            scrollDirection: Axis.horizontal, children: <Widget>[
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, "/person");
@@ -56,9 +57,9 @@ class FavoritesList extends StatelessWidget {
               borderRadius:
               const BorderRadius.vertical(top: Radius.circular(10.0)),
               child: Image.asset(
-                'assets/img/foods/12.jpg',
-                width: 300,
-                height: 150,
+                'assets/img/foodData/foodData_2.jpg',fit: BoxFit.cover,
+                // width: 300,
+                // height: 150,
               ),
             ),
             Positioned(
@@ -73,7 +74,7 @@ class FavoritesList extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(72),
                   child: Image.asset(
-                    'assets/img/persons/2.jpg',
+                    'assets/img/persons/person_2.jpg',
                     width: 70,
                     height: 70,
                   ),
@@ -140,10 +141,9 @@ class FavoritesList extends StatelessWidget {
               borderRadius:
               const BorderRadius.vertical(top: Radius.circular(10.0)),
               child: Image.asset(
-                'assets/img/foods/16.jpg',
-                width: 300,
-                height: 150,
-              ),
+                'assets/img/foodData/foodData_6.jpg',
+            fit: BoxFit.cover,
+          ),
             ),
             Positioned(
               top: 120,
@@ -157,7 +157,7 @@ class FavoritesList extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(72),
                   child: Image.asset(
-                    'assets/img/persons/4.jpg',
+                    'assets/img/persons/person_4.jpg',
                     width: 70,
                     height: 70,
                   ),
@@ -225,9 +225,8 @@ class FavoritesList extends StatelessWidget {
                   borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(10.0)),
                   child: Image.asset(
-                    'assets/img/foods/11.jpg',
-                    width: 300,
-                    height: 150,
+                    'assets/img/foodData/foodData_1.jpg',fit: BoxFit.cover,
+
                   ),
                 ),
                 Positioned(
@@ -242,7 +241,7 @@ class FavoritesList extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(72),
                       child: Image.asset(
-                        'assets/img/persons/4.jpg',
+                        'assets/img/persons/person_4.jpg',
                         width: 70,
                         height: 70,
                       ),

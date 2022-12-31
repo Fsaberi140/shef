@@ -29,7 +29,7 @@ class DrawerWidget extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(60),
               child: Image.asset(
-                'assets/img/persons/1.jpg',
+                'assets/img/persons/person_1.jpg',
                 width: 70,
                 height: 70,
               ),
@@ -40,7 +40,7 @@ class DrawerWidget extends StatelessWidget {
             Text(
               AppLocalizations.of(context)!.zyazdani,
               style:
-                  themeData.textTheme.headline6!.apply(color: Colors.black87),
+                  themeData.textTheme.headline6!.copyWith(fontWeight:FontWeight.w600, color: Colors.black87),
             ),
             const SizedBox(
               height: 10,

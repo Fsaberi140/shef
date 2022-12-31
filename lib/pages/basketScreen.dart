@@ -41,7 +41,7 @@ class BasketScreen extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Image.asset(
-                              'assets/img/foods/5.jpg',
+                              'assets/img/foods/person_5.jpg',
                               width: 90,
                               height: 90,
                             ),
@@ -59,7 +59,7 @@ class BasketScreen extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(72),
                               child: Image.asset(
-                                'assets/img/persons/4.jpg',
+                                'assets/img/persons/person_4.jpg',
                                 width: 55,
                                 height: 55,
                               ),

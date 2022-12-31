@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/layout/drawer.dart';
+import '../data/chefsData.dart';
 import '../widgets/PersonItem1.dart';
 import '../widgets/PersonItem2.dart';
 import 'bottomBar.dart';
 import 'package:flutter/gestures.dart';
 
 class PersonScreen extends StatefulWidget {
-  const PersonScreen({Key? key}) : super(key: key);
+  const PersonScreen
+    ({Key? key,
+  }) : super(key: key);
 
   @override
   _CalendarState createState() => _CalendarState();
 }
-
 class _CalendarState extends State<PersonScreen> {
-  DateTime selectedDate = DateTime.now(); // TO tracking date
+  DateTime selectedDate = DateTime.now();
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   int currentDateSelectedIndex = 0; //For Horizontal Date
-  ScrollController scrollController =
-      ScrollController(); //To Track Scroll of ListView
+  ScrollController scrollController = ScrollController();
 
   List<String> listOfMonths = [
     "Jan",
@@ -40,60 +41,9 @@ class _CalendarState extends State<PersonScreen> {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-
     return Scaffold(
       key: _key,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 1,
-        shadowColor: themeData.primaryColor,
-        leading: IconButton(
-          onPressed: () => {_key.currentState!.openDrawer()},
-          icon: const Icon(
-            Icons.menu,
-            color: Colors.black,
-            size: 26,
-          ),
-        ),
-        title: Padding(
-          padding: const EdgeInsets.only(left: 0),
-          child: InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, "/home");
-            },
-            child: Text(AppLocalizations.of(context)!.header,
-                style: themeData.textTheme.headline4!.copyWith(fontSize: 26)),
-          ),
-        ),
-        actions: [
-          IconButton(
-              onPressed: () => {
-                    Navigator.pushNamed(context, "/search"),
-                  },
-              icon: const Icon(
-                Icons.search,
-                color: Colors.black,
-                size: 26,
-              )),
-          IconButton(
-              onPressed: () => {
-                    Navigator.pushNamed(context, "/cart"),
-                  },
-              icon: const Icon(Icons.shopping_cart,
-                  color: Colors.black, size: 26)),
-          IconButton(
-            onPressed: () => {
-              Navigator.pushNamed(context, "/profile"),
-            },
-            icon: const Icon(
-              Icons.person_sharp,
-              color: Colors.black,
-              size: 26,
-            ),
-          ),
-          const SizedBox(width: 10),
-        ],
-      ),
+      appBar: _appBar(themeData, context),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(children: [
@@ -102,7 +52,7 @@ class _CalendarState extends State<PersonScreen> {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _profileImage(themeData),
+                    // _profileImage(),
                     const SizedBox(height: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -118,58 +68,34 @@ class _CalendarState extends State<PersonScreen> {
                         ),
                         _star(context, themeData),
                         _slogan(themeData, context),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        const SizedBox(height: 10),
                         _profileDescription(context, themeData),
-                        const SizedBox(
-                          height: 25,
-                        ),
+                        const SizedBox(height: 25),
                         Divider(
-                          thickness: 2,
-                          height: 0,
-                          color: Colors.grey[300],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
+                            thickness: 2, height: 0, color: Colors.grey[300]),
+                        const SizedBox(height: 15),
                         _calendar(),
-                        const SizedBox(
-                          height: 15,
-                        ),
+                        const SizedBox(height: 15),
                         Divider(
-                          thickness: 2,
-                          height: 0,
-                          color: Colors.grey[300],
-                        ),
-                        const SizedBox(
-                          height: 25,
-                        ),
+                            thickness: 2, height: 0, color: Colors.grey[300]),
+                        const SizedBox(height: 25),
                         Row(
                           children: [
-                            Text(
-                              AppLocalizations.of(context)!.items,
-                              style: themeData.textTheme.headline4!.copyWith(
-                                  color: Colors.black87,
-                                  fontWeight: FontWeight.w400),
-                            ),
+                            Text(AppLocalizations.of(context)!.items,
+                                style: themeData.textTheme.headline4!.copyWith(
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.w400)),
                           ],
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 15,
-                    ),
+                    const SizedBox(height: 15),
                     PersonItem1(themeData: themeData),
-                    const SizedBox(
-                      height: 18,
-                    ),
+                    const SizedBox(height: 18),
                     PersonItem2(themeData: themeData),
                   ]),
             ),
-            const SizedBox(
-              height: 40,
-            ),
+            const SizedBox(height: 40),
             InkWell(
               onTap: () {},
               child: InkWell(
@@ -182,9 +108,7 @@ class _CalendarState extends State<PersonScreen> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             InkWell(
               onTap: () {},
               child: Text(
@@ -192,9 +116,7 @@ class _CalendarState extends State<PersonScreen> {
                 style: themeData.textTheme.subtitle1,
               ),
             ),
-            const SizedBox(
-              height: 25,
-            ),
+            const SizedBox(height: 25),
             Padding(
               padding: const EdgeInsets.only(bottom: 0),
               child: BottomBar(themeData: themeData),
@@ -205,6 +127,60 @@ class _CalendarState extends State<PersonScreen> {
       drawer: const Drawer(
         child: DrawerWidget(),
       ),
+    );
+  }
+
+  AppBar _appBar(ThemeData themeData, BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.white,
+      elevation: 1,
+      shadowColor: themeData.primaryColor,
+      leading: IconButton(
+        onPressed: () => {_key.currentState!.openDrawer()},
+        icon: const Icon(
+          Icons.menu,
+          color: Colors.black,
+          size: 26,
+        ),
+      ),
+      title: Padding(
+        padding: const EdgeInsets.only(left: 0),
+        child: InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, "/home");
+          },
+          child: Text(AppLocalizations.of(context)!.header,
+              style: themeData.textTheme.headline4!.copyWith(fontSize: 26)),
+        ),
+      ),
+      actions: [
+        IconButton(
+            onPressed: () => {
+                  Navigator.pushNamed(context, "/search"),
+                },
+            icon: const Icon(
+              Icons.search,
+              color: Colors.black,
+              size: 26,
+            )),
+        IconButton(
+            onPressed: () => {
+                  Navigator.pushNamed(context, "/cart"),
+                },
+            icon:
+                const Icon(Icons.shopping_cart, color: Colors.black, size: 26)),
+        IconButton(
+          onPressed: () => {
+            Navigator.pushNamed(context, "/profile"),
+          },
+          icon: const Icon(
+            Icons.person_sharp,
+            color: Colors.black,
+            size: 26,
+          ),
+        ),
+        const SizedBox(width: 10),
+      ],
     );
   }
 
@@ -359,7 +335,10 @@ class _CalendarState extends State<PersonScreen> {
         ));
   }
 
-  Widget _profileImage(ThemeData themeData) {
+  Widget _profileImage(ChefData chefData) {
+    final ThemeData themeData = Theme.of(context);
+
+
     return Container(
       width: 150,
       height: 150,
@@ -373,18 +352,13 @@ class _CalendarState extends State<PersonScreen> {
         padding: const EdgeInsets.all(4),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(76),
-          child: Image.asset(
-            'assets/img/persons/4.jpg',
-            width: 147,
-            height: 147,
-          ),
+          // child: Image.asset(
+          //   'assets/img/chefData/${widget.chefData.imageChef.indexOf('0')}',
+          //   width: 147,
+          //   height: 147,
+          // ),
         ),
       ),
     );
   }
 }
-
-
-
-
-

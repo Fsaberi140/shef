@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "5b0e7e5b-82b6-4a0c-9470-12ac2d2139dd",
+		"name": "Flutter Expert",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register Student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"first_name\":\"a\",\"last_name\":\"a\",\"course\":\"a\",\"score\":\"a\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://expertdevelopers.ir/api/v1/experts/student",
+					"protocol": "http",
+					"host": [
+						"expertdevelopers",
+						"ir"
+					],
+					"path": [
+						"api",
+						"v1",
+						"experts",
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Students",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://expertdevelopers.ir/api/v1/experts/student",
+					"protocol": "http",
+					"host": [
+						"expertdevelopers",
+						"ir"
+					],
+					"path": [
+						"api",
+						"v1",
+						"experts",
+						"student"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

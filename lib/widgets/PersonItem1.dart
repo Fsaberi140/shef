@@ -44,13 +44,12 @@ class PersonItem1 extends StatelessWidget {
 
   Widget _image() {
     return ClipRRect(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(10.0)),
-        child: Image.asset(
-          'assets/img/foods/32.jpg',
-          width: 360,
-          height: 240,
-        ),
-      );
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(10.0)),
+      child: Image.asset(
+        'assets/img/foods/32.jpg',
+        fit: BoxFit.cover,
+      ),
+    );
   }
 
   Widget _row3(BuildContext context) {

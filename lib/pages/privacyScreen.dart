@@ -42,8 +42,7 @@ class PrivacyScreen extends StatelessWidget {
       AppLocalizations.of(context)!.text4,
       textAlign: TextAlign.justify,
       textDirection: TextDirection.ltr,
-      style: themeData.textTheme.subtitle1!
-          .copyWith(color: Colors.black54, fontWeight: FontWeight.w400),
+      style: themeData.textTheme.bodyText2
     );
   }
 
@@ -52,8 +51,7 @@ class PrivacyScreen extends StatelessWidget {
       AppLocalizations.of(context)!.text3,
       textAlign: TextAlign.justify,
       textDirection: TextDirection.ltr,
-      style: themeData.textTheme.subtitle1!
-          .copyWith(color: Colors.black54, fontWeight: FontWeight.w400),
+      style: themeData.textTheme.bodyText2
     );
   }
 
@@ -62,8 +60,7 @@ class PrivacyScreen extends StatelessWidget {
       AppLocalizations.of(context)!.text2,
       textAlign: TextAlign.justify,
       textDirection: TextDirection.ltr,
-      style: themeData.textTheme.subtitle1!
-          .copyWith(color: Colors.black54, fontWeight: FontWeight.w400),
+      style: themeData.textTheme.bodyText2
     );
   }
 
@@ -72,8 +69,7 @@ class PrivacyScreen extends StatelessWidget {
       AppLocalizations.of(context)!.text1,
       textAlign: TextAlign.justify,
       textDirection: TextDirection.ltr,
-      style: themeData.textTheme.subtitle1!
-          .copyWith(color: Colors.black54, fontWeight: FontWeight.w400),
+      style: themeData.textTheme.bodyText2
     );
   }
 

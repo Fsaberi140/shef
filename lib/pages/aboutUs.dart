@@ -18,19 +18,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
     final ThemeData themeData = Theme.of(context);
     return Scaffold(
       key: _key,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 2,
-        shadowColor: themeData.primaryColor,
-        leading: _leading(),
-        title: _title(context, themeData),
-        actions: [
-          appBarIcon1(context),
-          appBarIcon2(context),
-          appBarIcon3(context),
-          const SizedBox(width: 10),
-        ],
-      ),
+      appBar: _AppBar(themeData, context),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(children: [
@@ -52,7 +40,23 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
     );
   }
 
-  IconButton appBarIcon3(BuildContext context) {
+  AppBar _AppBar(ThemeData themeData, BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.white,
+      elevation: 2,
+      shadowColor: themeData.primaryColor,
+      leading: _leading(),
+      title: _title(context, themeData),
+      actions: [
+        appBarIcon1(context),
+        appBarIcon2(context),
+        appBarIcon3(context),
+        const SizedBox(width: 10),
+      ],
+    );
+  }
+
+  Widget appBarIcon3(BuildContext context) {
     return IconButton(
           onPressed: () => {
             Navigator.pushNamed(context, "/profile"),
@@ -65,7 +69,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
         );
   }
 
-  IconButton appBarIcon2(BuildContext context) {
+  Widget appBarIcon2(BuildContext context) {
     return IconButton(
             onPressed: () => {
                   Navigator.pushNamed(context, "/cart"),
@@ -74,7 +78,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                 color: Colors.black, size: 26));
   }
 
-  IconButton appBarIcon1(BuildContext context) {
+  Widget appBarIcon1(BuildContext context) {
     return IconButton(
             onPressed: () => {
                   Navigator.pushNamed(context, "/search"),
@@ -86,7 +90,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
             ));
   }
 
-  Padding _title(BuildContext context, ThemeData themeData) {
+  Widget _title(BuildContext context, ThemeData themeData) {
     return Padding(
         padding: const EdgeInsets.only(left: 0),
         child: InkWell(
@@ -99,7 +103,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
       );
   }
 
-  IconButton _leading() {
+  Widget _leading() {
     return IconButton(
         onPressed: () => {_key.currentState!.openDrawer()},
         icon: const Icon(
@@ -124,9 +128,7 @@ class _Body extends StatelessWidget {
     Key? key,
     required this.themeData,
   }) : super(key: key);
-
   final ThemeData themeData;
-
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -176,9 +178,7 @@ class _Body extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(5),
         child: Image.asset(
-          'assets/img/foods/53.jpg',
-          width: 360,
-          height: 240,
+          'assets/img/foods/53.jpg',fit: BoxFit.cover,
         ),
       ),
     );

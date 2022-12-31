@@ -5,7 +5,8 @@ class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+  {
     final ThemeData themeData = Theme.of(context);
     return Scaffold(
       body: SafeArea(
@@ -72,7 +73,7 @@ class CartScreen extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(5),
                       child: Image.asset(
-                        'assets/img/foods/5.jpg',
+                        'assets/img/foods/4.jpg',
                         width: 70,
                         height: 70,
                       ),
@@ -157,7 +158,7 @@ class CartScreen extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(5),
                       child: Image.asset(
-                        'assets/img/foods/4.jpg',
+                        'assets/img/foods/5.jpg',
                         width: 70,
                         height: 70,
                       ),

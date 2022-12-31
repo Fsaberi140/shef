@@ -52,7 +52,7 @@
     "i": "I grew up in Punjab, where I learned to cook, Punjabi dishes from my mother... ",
     "more": "More",
     "items": "ITEMS",
-    "asian": "Asian Chiken Salad Meal",
+    "asian": "Asian Chicken Salad Meal",
     "include": "Includes: 1 Main, 1 Side, 1 Dessert",
     "price": "$24.98",
     "add": "Add to Cart",
@@ -73,7 +73,7 @@
     "aboutChef1": "A chef is a trained professional cook and tradesman who is proficient in all aspects of food preparation, often focusing on a particular cuisine. The word chef is derived from the term chef de cuisine (French pronunciation), the director or head of a kitchen. Chefs can receive formal training from an institution, as well as by apprenticing with an experienced chef.",
     "aboutChef2": "There are different terms that use the word chef in their titles, and deal with specific areas of food preparation. Examples include the sous-chef, who acts as the second-in-command in a kitchen, and the chef de partie, who handles a specific area of production. The kitchen brigade system is a hierarchy found in restaurants and hotels employing extensive staff,many of which use the word chef in their titles.",
     "doYou": "Do you want food with various and delicious flavors or will you become one of the chefs?",
-    "all": "all",
+    "all": "All",
     "iranian": "Iranian",
     "japanese": "Japanese",
     "korean": "Korean",
@@ -169,9 +169,17 @@
     "cuisine": "Pick a cuisine",
     "zip": "Zip Code",
     "agree": "I agree with ",
-    "home": "Home Chef brings people together around the \ndinner table.",
+    "homeChef": "Home Chef brings people together around the \ndinner table.",
     "helping": "Helping you save time while enjoying real home cooking and the joy that comes with it.We are proud to support and champion advocacy efforts to expand home cooking laws across the country so that talented cooks everywhere can earn a meaningful income from their own kitchens.",
     "three": "In the three years since we delivered our very first order, we have now expanded to serve more than 70 million people in 10 states and over 2 million dishes have made their way onto tables across the country.\nEach prepared with love and care by passionate neighbors and reminding us that there’s no taste like home.",
     "alvin": "We’re Alvin and Joey, two sons of immigrants from Iran and Italy who grew up eating delicious, homemade food from scratch.\nOur stories are those of so many immigrant families who make their way to the United States, filled with uncertainty, hope, and dreams of building a better life for their loved ones.",
-    "our": "Our founding story"
+    "our": "Our founding story",
+    "order": "Orders",
+    "books": "Books",
+    "home": "Home",
+    "invoice": "Invoice",
+    "reOrder": "ReOrder",
+    "remove": "Remove",
+    "detail": "detail and order"
+
 }

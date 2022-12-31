@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sheff_new/pages/homeScreen.dart';
+import 'package:sheff_new/pages/startScreen.dart';
 
 class SplashScreen extends StatefulWidget{
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class SplashScreen extends StatefulWidget{
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 3)).then((value) => Navigator.of(context).pushReplacement(MaterialPageRoute (builder: (context)=>HomeScreen())));
+    Future.delayed(const Duration(seconds: 3)).then((value) => Navigator.of(context).pushReplacement(MaterialPageRoute (builder: (context)=>const StartScreen())));
     super.initState();
   }
   @override
@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
         // crossAxisAlignment: CrossAxisAlignment.center,
         // mainAxisAlignment: MainAxisAlignment.center,
         child:
-          Image.asset('assets/img/foods/logo.jpg',width: 90, height: 90,
+          Image.asset('assets/img/foods/logo1.png',width: 110, height: 110,
           )
 
       ),

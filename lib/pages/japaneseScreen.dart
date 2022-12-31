@@ -119,7 +119,7 @@ class _CalendarState extends State<JapaneseScreen> {
                                   Navigator.pushNamed(context, "/home");
                                 },
                                 child: Image.asset(
-                                  'assets/img/types/1.jpg',
+                                  'assets/img/types/person_1.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -142,7 +142,7 @@ class _CalendarState extends State<JapaneseScreen> {
                                   Navigator.pushNamed(context, "/iranian");
                                 },
                                 child: Image.asset(
-                                  'assets/img/types/2.jpg',
+                                  'assets/img/types/person_2.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -165,7 +165,7 @@ class _CalendarState extends State<JapaneseScreen> {
                                   Navigator.pushNamed(context, "/japanese");
                                 },
                                 child: Image.asset(
-                                  'assets/img/types/3.jpg',
+                                  'assets/img/types/person_3.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -186,7 +186,7 @@ class _CalendarState extends State<JapaneseScreen> {
                               InkWell(
                                 onTap: () {},
                                 child: Image.asset(
-                                  'assets/img/types/4.jpg',
+                                  'assets/img/types/person_4.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -209,7 +209,7 @@ class _CalendarState extends State<JapaneseScreen> {
                                   Navigator.pushNamed(context, "/american");
                                 },
                                 child: Image.asset(
-                                  'assets/img/types/5.jpg',
+                                  'assets/img/types/person_5.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -230,7 +230,7 @@ class _CalendarState extends State<JapaneseScreen> {
                               InkWell(
                                 onTap: () {},
                                 child: Image.asset(
-                                  'assets/img/types/6.jpg',
+                                  'assets/img/types/person_6.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -440,7 +440,7 @@ class _CalendarState extends State<JapaneseScreen> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(72),
                                         child: Image.asset(
-                                          'assets/img/persons/4.jpg',
+                                          'assets/img/persons/person_4.jpg',
                                           width: 70,
                                           height: 70,
                                         ),
@@ -465,25 +465,28 @@ class _CalendarState extends State<JapaneseScreen> {
                                             const SizedBox(
                                               width: 12,
                                             ),
-                                            Row(children: [
-                                              Text(
-                                                AppLocalizations.of(context)!
-                                                    .no1,
-                                                style: themeData
-                                                    .textTheme.bodyText2!
-                                                    .copyWith(
-                                                        color: themeData
-                                                            .primaryColor),
-                                              ),
-                                              const SizedBox(
-                                                width: 3,
-                                              ),
-                                              Icon(
-                                                Icons.star_outlined,
-                                                size: 20,
-                                                color: themeData.primaryColor,
-                                              ),
-                                            ]),
+                                            InkWell(
+                                              onTap: (){},
+                                              child: Row(children: [
+                                                Text(
+                                                  AppLocalizations.of(context)!
+                                                      .no1,
+                                                  style: themeData
+                                                      .textTheme.bodyText2!
+                                                      .copyWith(
+                                                          color: themeData
+                                                              .primaryColor),
+                                                ),
+                                                const SizedBox(
+                                                  width: 3,
+                                                ),
+                                                Icon(
+                                                  Icons.star_outlined,
+                                                  size: 20,
+                                                  color: themeData.primaryColor,
+                                                ),
+                                              ]),
+                                            ),
                                           ],
                                         ),
                                         Text(
@@ -536,7 +539,7 @@ class _CalendarState extends State<JapaneseScreen> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(72),
                                         child: Image.asset(
-                                          'assets/img/persons/3.jpg',
+                                          'assets/img/persons/person_3.jpg',
                                           width: 70,
                                           height: 70,
                                         ),
@@ -632,7 +635,7 @@ class _CalendarState extends State<JapaneseScreen> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(72),
                                         child: Image.asset(
-                                          'assets/img/persons/6.jpg',
+                                          'assets/img/persons/person_6.jpg',
                                           width: 70,
                                           height: 70,
                                         ),

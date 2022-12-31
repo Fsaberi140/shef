@@ -26,7 +26,7 @@ class StartScreen extends StatelessWidget {
               child: Column(
                 children: [
                   _text1(context, themeData),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
                   _image2(),
                   const SizedBox(height: 50),
                   _headLine1(context, themeData),
@@ -38,7 +38,7 @@ class StartScreen extends StatelessWidget {
                   _text3(context, themeData),
                   const SizedBox(height: 20),
                   _image4(),
-                  const SizedBox(height: 70),
+                  const SizedBox(height:40),
                   _shortText(context, themeData),
                   const SizedBox(height: 20),
                   _button(context, themeData),
@@ -90,6 +90,8 @@ class StartScreen extends StatelessWidget {
 
   Widget _image4() {
     return Container(
+      width: 250,
+      height: 250,
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(color: Colors.grey, offset: Offset(3, 3), blurRadius: 5)
@@ -99,9 +101,6 @@ class StartScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         child: Image.asset(
           'assets/img/foods/23.jpg',
-
-          width: 250,
-          height: 250,
         ),
       ),
     );
@@ -128,12 +127,11 @@ class StartScreen extends StatelessWidget {
         boxShadow: [
           BoxShadow(color: Colors.grey, offset: Offset(3, 3), blurRadius: 5)
         ],
-
       ),
       child: ClipRRect(
         child: Image.asset(
           'assets/img/foods/22.jpg',
-fit: BoxFit.cover,
+          fit: BoxFit.cover,
 
         ),
       ),
@@ -158,7 +156,7 @@ fit: BoxFit.cover,
   Widget _headLine1(BuildContext context, ThemeData themeData) {
     return Text(
       AppLocalizations.of(context)!.works,
-      style: themeData.textTheme.headline5!.apply(color: Colors.black),
+      style: themeData.textTheme.headline5!.copyWith(color: Colors.black87,fontWeight: FontWeight.w500 ),
     );
   }
 
@@ -167,8 +165,8 @@ fit: BoxFit.cover,
       borderRadius: BorderRadius.circular(30),
       child: Image.asset(
         'assets/img/foods/21.jpg',
-        width: 235,
-        height: 235,
+        width: 200,
+        height: 200,
       ),
     );
   }
@@ -190,15 +188,15 @@ fit: BoxFit.cover,
         AppLocalizations.of(context)!.delicious,
         style: themeData.textTheme.headline5!.copyWith(
           color: const Color.fromARGB(255, 30, 30, 40),
-          fontWeight: FontWeight.bold,
+         fontSize: 24
         ),
       ),
     );
   }
 
-  Image _image1(BuildContext context) {
+  Widget _image1(BuildContext context) {
     return Image.asset(
-      'assets/img/foods/1.jpg',
+      'assets/img/foods/person_1.jpg',
       width: MediaQuery.of(context).size.width,
     );
   }
@@ -243,9 +241,7 @@ class _BottomBar extends StatelessWidget {
     Key? key,
     required this.themeData,
   }) : super(key: key);
-
   final ThemeData themeData;
-
   @override
   Widget build(BuildContext context) {
     return Container(

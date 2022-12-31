@@ -57,9 +57,9 @@ class AmericanChefsList extends StatelessWidget {
                 borderRadius:
                 const BorderRadius.vertical(top: Radius.circular(10.0)),
                 child: Image.asset(
-                  'assets/img/foods/11.jpg',
-                  width: 300,
-                  height: 150,
+                  'assets/img/foodData/foodData_1.jpg',
+                  fit: BoxFit.cover,
+
                 ),
               ),
               Positioned(
@@ -74,7 +74,7 @@ class AmericanChefsList extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(72),
                     child: Image.asset(
-                      'assets/img/persons/4.jpg',
+                      'assets/img/persons/person_4.jpg',
                       width: 70,
                       height: 70,
                     ),
@@ -142,9 +142,9 @@ class AmericanChefsList extends StatelessWidget {
               borderRadius:
               const BorderRadius.vertical(top: Radius.circular(10.0)),
               child: Image.asset(
-                'assets/img/foods/12.jpg',
-                width: 300,
-                height: 150,
+                'assets/img/foodData/foodData_2.jpg',
+                fit: BoxFit.cover,
+
               ),
             ),
             Positioned(
@@ -159,7 +159,7 @@ class AmericanChefsList extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(72),
                   child: Image.asset(
-                    'assets/img/persons/2.jpg',
+                    'assets/img/persons/person_2.jpg',
                     width: 70,
                     height: 70,
                   ),
@@ -226,9 +226,9 @@ class AmericanChefsList extends StatelessWidget {
                 borderRadius:
                 const BorderRadius.vertical(top: Radius.circular(10.0)),
                 child: Image.asset(
-                  'assets/img/foods/15.jpg',
-                  width: 300,
-                  height: 150,
+                  'assets/img/foodData/foodData_5.jpg',
+                  fit: BoxFit.cover,
+
                 ),
               ),
               Positioned(
@@ -243,7 +243,7 @@ class AmericanChefsList extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(72),
                     child: Image.asset(
-                      'assets/img/persons/6.jpg',
+                      'assets/img/persons/person_6.jpg',
                       width: 70,
                       height: 70,
                     ),

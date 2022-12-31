@@ -119,7 +119,7 @@ class _CalendarState extends State<AmericanScreen> {
                                   Navigator.pushNamed(context, "/home");
                                 },
                                 child: Image.asset(
-                                  'assets/img/types/1.jpg',
+                                  'assets/img/types/person_1.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -142,7 +142,7 @@ class _CalendarState extends State<AmericanScreen> {
                                   Navigator.pushNamed(context, "/iranian");
                                 },
                                 child: Image.asset(
-                                  'assets/img/types/2.jpg',
+                                  'assets/img/types/person_2.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -165,7 +165,7 @@ class _CalendarState extends State<AmericanScreen> {
                                   Navigator.pushNamed(context, "/japanese");
                                 },
                                 child: Image.asset(
-                                  'assets/img/types/3.jpg',
+                                  'assets/img/types/person_3.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -186,7 +186,7 @@ class _CalendarState extends State<AmericanScreen> {
                               InkWell(
                                 onTap: () {},
                                 child: Image.asset(
-                                  'assets/img/types/4.jpg',
+                                  'assets/img/types/person_4.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -209,7 +209,7 @@ class _CalendarState extends State<AmericanScreen> {
                                   Navigator.pushNamed(context, "/american");
                                 },
                                 child: Image.asset(
-                                  'assets/img/types/5.jpg',
+                                  'assets/img/types/person_5.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -230,7 +230,7 @@ class _CalendarState extends State<AmericanScreen> {
                               InkWell(
                                 onTap: () {},
                                 child: Image.asset(
-                                  'assets/img/types/6.jpg',
+                                  'assets/img/types/person_6.jpg',
                                   width: 75,
                                   height: 60,
                                 ),
@@ -441,7 +441,7 @@ class _CalendarState extends State<AmericanScreen> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(72),
                                         child: Image.asset(
-                                          'assets/img/persons/6.jpg',
+                                          'assets/img/persons/person_6.jpg',
                                           width: 70,
                                           height: 70,
                                         ),
@@ -537,7 +537,7 @@ class _CalendarState extends State<AmericanScreen> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(72),
                                         child: Image.asset(
-                                          'assets/img/persons/2.jpg',
+                                          'assets/img/persons/person_2.jpg',
                                           width: 70,
                                           height: 70,
                                         ),
@@ -635,7 +635,7 @@ class _CalendarState extends State<AmericanScreen> {
                                           borderRadius:
                                               BorderRadius.circular(72),
                                           child: Image.asset(
-                                            'assets/img/persons/4.jpg',
+                                            'assets/img/persons/person_4.jpg',
                                             width: 70,
                                             height: 70,
                                           ),
