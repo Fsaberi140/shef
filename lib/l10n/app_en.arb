@@ -180,6 +180,8 @@
     "invoice": "Invoice",
     "reOrder": "ReOrder",
     "remove": "Remove",
-    "detail": "detail and order"
+    "detail": "detail and order",
+    "doWant": "Do you want to get a Discount?",
+    "introduce": "Introduce us to your Friends"
 
 }

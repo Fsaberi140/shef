@@ -196,7 +196,7 @@ class StartScreen extends StatelessWidget {
 
   Widget _image1(BuildContext context) {
     return Image.asset(
-      'assets/img/foods/person_1.jpg',
+      'assets/img/foods/1.jpg',
       width: MediaQuery.of(context).size.width,
     );
   }
@@ -221,7 +221,7 @@ class StartScreen extends StatelessWidget {
           ),
           suffixIcon: IconButton(
               onPressed: () => {
-                    Navigator.pushNamed(context, "/home"),
+                    Navigator.pushNamed(context, "/root"),
                   },
               icon: Icon(Icons.check_circle,
                   color: themeData.primaryColor, size: 26)),

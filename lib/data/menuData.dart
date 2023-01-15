@@ -1,5 +1,3 @@
-
-
 class FoodType {
   final int id;
   final Type type;

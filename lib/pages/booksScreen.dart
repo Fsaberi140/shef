@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/layout/drawer.dart';
-import 'bottomNavigation.dart';
 
 class BooksScreen extends StatelessWidget {
   BooksScreen({Key? key}) : super(key: key);
@@ -13,7 +12,7 @@ class BooksScreen extends StatelessWidget {
     return Scaffold(
       key: _key,
       appBar: _appBar(themeData, context),
-      bottomNavigationBar: const BottomNavigation(),
+      // bottomNavigationBar: const RootScreen(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
@@ -27,7 +26,7 @@ class BooksScreen extends StatelessWidget {
               const SizedBox(height: 10),
               Container(
                 width: MediaQuery.of(context).size.width - 20,
-                height: 150,
+                height: 157,
                 decoration: BoxDecoration(
                     color: Colors.deepOrange[50],
                     boxShadow: const [
@@ -87,7 +86,7 @@ class BooksScreen extends StatelessWidget {
                               ])
                         ],
                       ),
-                      const SizedBox(height: 3),
+                      const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -145,7 +144,7 @@ class BooksScreen extends StatelessWidget {
               ),
               Container(
                 width: MediaQuery.of(context).size.width - 20,
-                height: 150,
+                height: 157,
                 decoration: BoxDecoration(
                     color: Colors.deepOrange[50],
                     boxShadow: const [
@@ -205,7 +204,7 @@ class BooksScreen extends StatelessWidget {
                               ])
                         ],
                       ),
-                      const SizedBox(height: 3),
+                      const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -258,6 +257,10 @@ class BooksScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 50),
+              Text(AppLocalizations.of(context)!.doWant, style: themeData.textTheme.subtitle1,),
+              const SizedBox(height: 10),
+              Text(AppLocalizations.of(context)!.introduce, style: themeData.textTheme.bodyText2!.copyWith(color: themeData.primaryColor,fontWeight: FontWeight.w500 ),),
             ],
           ),
         ),

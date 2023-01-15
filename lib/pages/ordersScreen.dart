@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/pages/bottomNavigation.dart';
 import 'package:sheff_new/layout/drawer.dart';
+import 'package:sheff_new/pages/root.dart';
 
 class OrdersScreen extends StatefulWidget {
   const OrdersScreen({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
     return Scaffold(
       key: _key,
       appBar: _appBar(themeData, context),
-      bottomNavigationBar: const BottomNavigation(),
+      // bottomNavigationBar: const RootScreen(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -35,7 +36,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                   Container(
                     // alignment: Alignment.center,
                     width: MediaQuery.of(context).size.width - 30,
-                    height: 150,
+                    height: 157,
                     decoration: BoxDecoration(
                         color: Colors.deepOrange[50],
                         boxShadow: const [
@@ -80,7 +81,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                   ])
                             ],
                           ),
-                          const SizedBox(height: 3),
+                          const SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -144,7 +145,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                   const SizedBox(height: 20),
                   Container(
                     width: MediaQuery.of(context).size.width - 30,
-                    height: 150,
+                    height: 157,
                     decoration: BoxDecoration(
                         color: Colors.deepOrange[50],
                         boxShadow: const [
@@ -189,7 +190,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                   ])
                             ],
                           ),
-                          const SizedBox(height: 3),
+                          const SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

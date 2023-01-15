@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/layout/drawer.dart';
 import 'package:sheff_new/pages/bottomNavigation.dart';
+import 'package:sheff_new/pages/root.dart';
 import '../widgets/Menu.dart';
 import '../widgets/FavoritesList.dart';
 import 'bottomBar.dart';
@@ -51,7 +52,6 @@ class _CalendarState extends State<HomeScreen> {
     return Scaffold(
       key: _key,
       appBar: _appBar(themeData, context),
-      bottomNavigationBar: const BottomNavigation(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -184,16 +184,7 @@ class _CalendarState extends State<HomeScreen> {
                   },
               icon: const Icon(Icons.shopping_cart,
                   color: Colors.black, size: 26)),
-          IconButton(
-            onPressed: () => {
-              Navigator.pushNamed(context, "/profile"),
-            },
-            icon: const Icon(
-              Icons.person_sharp,
-              color: Colors.black,
-              size: 26,
-            ),
-          ),
+
           const SizedBox(width: 10),
         ]);
   }

@@ -4,10 +4,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:sheff_new/data/repo/product_repository.dart';
+import 'package:sheff_new/layout/profileDrawer.dart';
 import 'package:sheff_new/pages/auth.dart';
 import 'package:sheff_new/pages/authUp.dart';
 import 'package:sheff_new/pages/booksScreen.dart';
 import 'package:sheff_new/pages/ordersScreen.dart';
+import 'package:sheff_new/pages/root.dart';
 import 'package:sheff_new/pages/splash.dart';
 import 'layout/drawer.dart';
 import 'pages/aboutUs.dart';
@@ -47,11 +49,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-    productRepository.search('کفش').then((value) {
-      debugPrint(value.toString());
-    }).catchError((e) {
-      debugPrint(e.toString());
-    });
+
     const MaterialApp(
       title: 'Localizations Sample App',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -84,6 +82,8 @@ class MyApp extends StatelessWidget {
         "/splash": (context) => const SplashScreen(),
         "/orders": (context) => const OrdersScreen(),
         "/books": (context) => BooksScreen(),
+        "/profileDrawer": (context) => const ProfileDrawer(),
+
       },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -150,7 +150,7 @@ class MyApp extends StatelessWidget {
           caption: TextStyle(fontFamily: defaultFontFamily, fontSize: 15),
         ),
       ),
-      home: const SignUpScreen(),
+      home:  const RootScreen(),
     );
   }
 }
