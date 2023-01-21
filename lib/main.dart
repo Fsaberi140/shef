@@ -4,11 +4,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:sheff_new/data/repo/product_repository.dart';
-import 'package:sheff_new/layout/profileDrawer.dart';
+import 'package:sheff_new/layout/userProfile.dart';
 import 'package:sheff_new/pages/auth.dart';
 import 'package:sheff_new/pages/authUp.dart';
 import 'package:sheff_new/pages/booksScreen.dart';
 import 'package:sheff_new/pages/ordersScreen.dart';
+import 'package:sheff_new/pages/productDetails.dart';
 import 'package:sheff_new/pages/root.dart';
 import 'package:sheff_new/pages/splash.dart';
 import 'layout/drawer.dart';
@@ -78,11 +79,12 @@ class MyApp extends StatelessWidget {
         "/drawer": (context) => const DrawerWidget(),
         "/become": (context) => const BecomeChefScreen(),
         "/chef": (context) => const ChefScreen(),
-        // "/about": (context) => const AboutUsScreen(),
+        "/about": (context) => const AboutUsScreen(),
         "/splash": (context) => const SplashScreen(),
         "/orders": (context) => const OrdersScreen(),
         "/books": (context) => BooksScreen(),
-        "/profileDrawer": (context) => const ProfileDrawer(),
+        "/profileDrawer": (context) => const UserProfile(),
+        "/product": (context) => ProductDetails(),
 
       },
       debugShowCheckedModeBanner: false,
@@ -150,7 +152,7 @@ class MyApp extends StatelessWidget {
           caption: TextStyle(fontFamily: defaultFontFamily, fontSize: 15),
         ),
       ),
-      home:  const RootScreen(),
+      home: const SplashScreen(),
     );
   }
 }

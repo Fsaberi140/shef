@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sheff_new/pages/booksScreen.dart';
-import '../layout/profileDrawer.dart';
+import '../layout/userProfile.dart';
 import 'homeScreen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'ordersScreen.dart';
@@ -61,20 +61,20 @@ class _RootScreenState extends State<RootScreen> {
               _navigator(_homeKey, homeIndex, const HomeScreen()),
               _navigator(_booksKey, booksIndex, BooksScreen()),
               _navigator(_ordersKey, ordersIndex, const OrdersScreen()),
-              _navigator(_profileKey, profileIndex, const ProfileDrawer() ),
+              _navigator(_profileKey, profileIndex, const UserProfile() ),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(
             type : BottomNavigationBarType.fixed,
             items:  [
               BottomNavigationBarItem(
-                  icon: const Icon(Icons.home,size: 26,), label: AppLocalizations.of(context)!.home),
+                  icon: const Icon(Icons.home,), label: AppLocalizations.of(context)!.home),
               BottomNavigationBarItem(
-                  icon: const Icon(Icons.bookmark_added,size: 26,), label:AppLocalizations.of(context)!.books ),
+                  icon: const Icon(Icons.bookmark_added,), label:AppLocalizations.of(context)!.books ),
               BottomNavigationBarItem(
-                  icon: const Icon(Icons.emoji_food_beverage_outlined, size: 26,), label:AppLocalizations.of(context)!.orders ),
+                  icon: const Icon(Icons.emoji_food_beverage_outlined,), label:AppLocalizations.of(context)!.orders ),
               BottomNavigationBarItem(
-                  icon: const Icon(Icons.person, size: 26,), label: AppLocalizations.of(context)!.profile),
+                  icon: const Icon(Icons.person,), label: AppLocalizations.of(context)!.profile),
             ],
             unselectedItemColor: Colors.white60,
             backgroundColor: Colors.deepOrange,

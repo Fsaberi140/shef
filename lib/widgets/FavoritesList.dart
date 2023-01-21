@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../pages/personScreen.dart';
 class FavoritesList extends StatelessWidget {
   const FavoritesList({
     Key? key,
@@ -21,7 +23,10 @@ class FavoritesList extends StatelessWidget {
             scrollDirection: Axis.horizontal, children: <Widget>[
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, "/person");
+              Navigator.of(context, rootNavigator: true).push(
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const PersonScreen()));
             },
             child: _item1(context),
           ),

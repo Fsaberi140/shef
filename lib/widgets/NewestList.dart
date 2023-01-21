@@ -212,9 +212,14 @@ class NewestList extends StatelessWidget {
       child: Stack(children: [
         ClipRRect(
           borderRadius: const BorderRadius.vertical(top: Radius.circular(10.0)),
-          child: Image.asset(
-            'assets/img/foodData/foodData_2.jpg',
-            fit: BoxFit.cover,
+          child: InkWell(
+            onTap: (){
+              Navigator.pushNamed(context, "/product");
+            },
+            child: Image.asset(
+              'assets/img/foodData/foodData_2.jpg',
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         Positioned(

@@ -11,7 +11,8 @@ class Part2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return
+      Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Column(

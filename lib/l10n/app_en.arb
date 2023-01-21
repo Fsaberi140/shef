@@ -182,6 +182,17 @@
     "remove": "Remove",
     "detail": "detail and order",
     "doWant": "Do you want to get a Discount?",
-    "introduce": "Introduce us to your Friends"
+    "introduce": "Introduce us to your Friends",
+    "ingredients": "Ingredients",
+    "egg": "egg",
+    "sugar": "sugar",
+    "milk": "milk",
+    "butter": "butter",
+    "coffee": "coffee",
+    "biscuit": "biscuit",
+    "salt": "salt",
+    "recipes": "Recipes",
+    "logOut": "Log Out"
+
 
 }

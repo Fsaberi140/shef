@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sheff_new/pages/aboutUs.dart';
+import 'package:sheff_new/pages/becomeChef.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({Key? key}) : super(key: key);
@@ -14,7 +16,8 @@ class DrawerWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             IconButton(
-              onPressed: () => {
+              onPressed: () =>
+              {
                 Navigator.pop(context),
               },
               icon: const Icon(
@@ -23,34 +26,60 @@ class DrawerWidget extends StatelessWidget {
                 size: 30,
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(60),
-              child: Image.asset(
-                'assets/img/persons/person_1.jpg',
-                width: 70,
-                height: 70,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              AppLocalizations.of(context)!.zyazdani,
-              style:
-                  themeData.textTheme.headline6!.copyWith(fontWeight:FontWeight.w600, color: Colors.black87),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Divider(
-              thickness: 3,
-              color: themeData.primaryColor,
-            ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
+            // ClipRRect(
+            //   borderRadius: BorderRadius.circular(60),
+            //   child: Image.asset(
+            //     'assets/img/persons/person_1.jpg',
+            //     width: 70,
+            //     height: 70,
+            //   ),
+            // ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
+            // Text(
+            //   AppLocalizations.of(context)!.zyazdani,
+            //   style:
+            //       themeData.textTheme.headline6!.copyWith(fontWeight:FontWeight.w600, color: Colors.black87),
+            // ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            // Divider(
+            //   thickness: 3,
+            //   color: themeData.primaryColor,
+            // ),
             const SizedBox(
               height: 25,
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.emoji_emotions_outlined,
+                  color: themeData.primaryColor,
+                  size: 30,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => const AboutUsScreen()));
+                  },
+                  child: Text(
+                    AppLocalizations.of(context)!.about,
+                    style:
+                    themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+                height: 20
             ),
             Row(
               children: [
@@ -64,41 +93,19 @@ class DrawerWidget extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, "/become");
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => const BecomeChefScreen()));
                   },
                   child: Text(
                     AppLocalizations.of(context)!.become,
                     style:
-                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
+                    themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
                 ),
               ],
             ),
             const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Icon(
-                  Icons.place_outlined,
-                  color: themeData.primaryColor,
-                  size: 30,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Text(
-                    AppLocalizations.of(context)!.browsing,
-                    style:
-                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
+                height: 20
             ),
             Row(
               children: [
@@ -115,132 +122,15 @@ class DrawerWidget extends StatelessWidget {
                   child: Text(
                     AppLocalizations.of(context)!.gift,
                     style:
-                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
+                    themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
                 ),
               ],
             ),
             const SizedBox(
-              height: 20,
+                height: 20
             ),
-            Row(
-              children: [
-                Icon(
-                  Icons.person,
-                  color: themeData.primaryColor,
-                  size: 30,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, "/profile");
-                  },
-                  child: Text(
-                    AppLocalizations.of(context)!.profile,
-                    style: themeData.textTheme.subtitle1,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Icon(
-                  Icons.access_time_outlined,
-                  color: themeData.primaryColor,
-                  size: 30,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, "/cart");
-                  },
-                  child: Text(
-                    AppLocalizations.of(context)!.orders,
-                    style:
-                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Icon(
-                  Icons.message_outlined,
-                  color: themeData.primaryColor,
-                  size: 30,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Text(
-                    AppLocalizations.of(context)!.message,
-                    style:
-                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Icon(
-                  Icons.bookmark_outline,
-                  color: themeData.primaryColor,
-                  size: 30,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Text(
-                    AppLocalizations.of(context)!.following,
-                    style:
-                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Icon(
-                  Icons.place_outlined,
-                  color: themeData.primaryColor,
-                  size: 30,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Text(
-                    AppLocalizations.of(context)!.delivery,
-                    style:
-                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
+
             Row(
               children: [
                 Icon(
@@ -252,13 +142,11 @@ class DrawerWidget extends StatelessWidget {
                   width: 10,
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, "/login");
-                  },
+                  onTap: () {},
                   child: Text(
-                    AppLocalizations.of(context)!.login,
+                    AppLocalizations.of(context)!.logOut,
                     style:
-                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
+                    themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
                 ),
               ],

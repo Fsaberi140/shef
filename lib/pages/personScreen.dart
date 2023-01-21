@@ -169,16 +169,6 @@ class _CalendarState extends State<PersonScreen> {
                 },
             icon:
                 const Icon(Icons.shopping_cart, color: Colors.black, size: 26)),
-        IconButton(
-          onPressed: () => {
-            Navigator.pushNamed(context, "/profile"),
-          },
-          icon: const Icon(
-            Icons.person_sharp,
-            color: Colors.black,
-            size: 26,
-          ),
-        ),
         const SizedBox(width: 10),
       ],
     );

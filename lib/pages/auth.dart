@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter/gestures.dart';
+import 'package:sheff_new/pages/root.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({
@@ -57,11 +57,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 25),
-                  // _facebook(context, themeData),
-                  // const SizedBox(height: 8),
-                  // _google(context, themeData),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 35),
                   _email(themeData, context),
                   const SizedBox(height: 13),
                   const Password(),
@@ -92,16 +88,58 @@ class LoginScreen extends StatelessWidget {
                         .copyWith(fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [],
-                  )
+                  svg()
                 ],
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Row svg() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(
+          'assets/svg/telegram_svg.png',
+          width: 20,
+          height: 20,
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Image.asset(
+          'assets/svg/facebook_svg.png',
+          width: 20,
+          height: 20,
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Image.asset(
+          'assets/svg/google_svg.png',
+          width: 20,
+          height: 20,
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Image.asset(
+          'assets/svg/linkedin_svg.png',
+          width: 20,
+          height: 20,
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Image.asset(
+          'assets/svg/twitter.png',
+          width: 20,
+          height: 20,
+        ),
+      ],
     );
   }
 
@@ -144,39 +182,6 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _description(BuildContext context, ThemeData themeData) {
-    return RichText(
-      text: TextSpan(
-        text: AppLocalizations.of(context)!.description,
-        style: themeData.textTheme.bodyText2!.copyWith(height: 1.4),
-        children: <TextSpan>[
-          TextSpan(
-            text: AppLocalizations.of(context)!.term,
-            style: themeData.textTheme.bodyText2!
-                .apply(color: themeData.primaryColor),
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                Navigator.pushNamed(context, "/services");
-              },
-          ),
-          TextSpan(
-            text: AppLocalizations.of(context)!.and,
-            style: themeData.textTheme.bodyText2,
-          ),
-          TextSpan(
-            text: AppLocalizations.of(context)!.policy,
-            style: themeData.textTheme.bodyText2!
-                .apply(color: themeData.primaryColor),
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                Navigator.pushNamed(context, "/privacy");
-              },
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _login(BuildContext context, ThemeData themeData) {
     return Row(
       children: [
@@ -186,52 +191,17 @@ class LoginScreen extends StatelessWidget {
             style: themeData.textTheme.headline6,
           ),
           onPressed: () {
-            Navigator.pushNamed(context, "/home");
-          },
+
+            Navigator.of(context, rootNavigator: true).push(
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const RootScreen()));},
         ),
       ],
     );
   }
 
-  Widget _facebook(BuildContext context, ThemeData themeData) {
-    return Row(
-      children: [
-        ElevatedButton(
-          child: Text(AppLocalizations.of(context)!.facebook,
-              style: themeData.textTheme.headline6),
-          style: ButtonStyle(
-            minimumSize: MaterialStateProperty.all(
-              Size(MediaQuery.of(context).size.width - 56, 50),
-            ),
-            backgroundColor:
-                MaterialStateProperty.all<Color>(themeData.primaryColor),
-          ),
-          onPressed: () {},
-        ),
-      ],
-    );
-  }
-
-  Widget _google(BuildContext context, ThemeData themeData) {
-    return Row(
-      children: [
-        ElevatedButton(
-          child: Text(AppLocalizations.of(context)!.google,
-              style: themeData.textTheme.headline6),
-          style: ButtonStyle(
-            minimumSize: MaterialStateProperty.all(
-              Size(MediaQuery.of(context).size.width - 56, 50),
-            ),
-            backgroundColor:
-                MaterialStateProperty.all<Color>(themeData.primaryColor),
-          ),
-          onPressed: () {},
-        ),
-      ],
-    );
-  }
-
-  Widget _email(ThemeData themeData, BuildContext context) {
+Widget _email(ThemeData themeData, BuildContext context) {
     return TextField(
       cursorColor: themeData.primaryColor,
       keyboardType: TextInputType.emailAddress,

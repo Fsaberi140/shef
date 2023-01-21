@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/layout/drawer.dart';
+import 'package:sheff_new/pages/productDetails.dart';
 
 class BooksScreen extends StatelessWidget {
   BooksScreen({Key? key}) : super(key: key);
@@ -43,9 +44,17 @@ class BooksScreen extends StatelessWidget {
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(5),
-                            child: Image.asset(
-                              'assets/img/foods/11.jpg',
-                              width: 90,
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.of(context, rootNavigator: true).push(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ProductDetails()));
+                              },
+                              child: Image.asset(
+                                'assets/img/foods/11.jpg',
+                                width: 90,
+                              ),
                             ),
                           ),
                           const SizedBox(width: 20),
@@ -161,9 +170,16 @@ class BooksScreen extends StatelessWidget {
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(5),
-                            child: Image.asset(
-                              'assets/img/foods/12.jpg',
-                              width: 90,
+                            child: InkWell(
+                              onTap: (){
+                                Navigator.of(context, rootNavigator: true).push(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ProductDetails()));},
+                              child: Image.asset(
+                                'assets/img/foods/12.jpg',
+                                width: 90,
+                              ),
                             ),
                           ),
                           const SizedBox(width: 20),
@@ -258,9 +274,16 @@ class BooksScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 50),
-              Text(AppLocalizations.of(context)!.doWant, style: themeData.textTheme.subtitle1,),
+              Text(
+                AppLocalizations.of(context)!.doWant,
+                style: themeData.textTheme.subtitle1,
+              ),
               const SizedBox(height: 10),
-              Text(AppLocalizations.of(context)!.introduce, style: themeData.textTheme.bodyText2!.copyWith(color: themeData.primaryColor,fontWeight: FontWeight.w500 ),),
+              Text(
+                AppLocalizations.of(context)!.introduce,
+                style: themeData.textTheme.bodyText2!.copyWith(
+                    color: themeData.primaryColor, fontWeight: FontWeight.w500),
+              ),
             ],
           ),
         ),

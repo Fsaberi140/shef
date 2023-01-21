@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:sheff_new/pages/bottomNavigation.dart';
 import 'package:sheff_new/layout/drawer.dart';
-import 'package:sheff_new/pages/root.dart';
+
 
 class OrdersScreen extends StatefulWidget {
   const OrdersScreen({Key? key}) : super(key: key);
@@ -20,7 +19,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
     return Scaffold(
       key: _key,
       appBar: _appBar(themeData, context),
-      // bottomNavigationBar: const RootScreen(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(

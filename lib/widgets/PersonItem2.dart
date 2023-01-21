@@ -114,7 +114,7 @@ class PersonItem2 extends StatelessWidget {
     return ClipRRect(
       borderRadius: const BorderRadius.vertical(top: Radius.circular(10.0)),
       child: Image.asset(
-        'assets/img/foods/31.jpg',
+        'assets/img/foodData/foodData_1.jpg',
         fit: BoxFit.cover,
       ),
     );

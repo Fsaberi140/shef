@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/layout/drawer.dart';
-import 'package:sheff_new/pages/bottomNavigation.dart';
-import 'package:sheff_new/pages/root.dart';
+import 'package:sheff_new/pages/searchScreen.dart';
 import '../widgets/Menu.dart';
 import '../widgets/FavoritesList.dart';
 import 'bottomBar.dart';
@@ -11,6 +10,7 @@ import '../widgets/JapaneseChefsList.dart';
 import '../widgets/IranianChefsList.dart';
 import '../widgets/DiscountList.dart';
 import '../widgets/NewestList.dart';
+import 'cartScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -162,7 +162,7 @@ class _CalendarState extends State<HomeScreen> {
           padding: const EdgeInsets.only(left: 0),
           child: InkWell(
             onTap: () {
-              Navigator.pushNamed(context, "/home");
+              Navigator.pushNamed(context, "/root");
             },
             child: Text(AppLocalizations.of(context)!.header,
                 style: themeData.textTheme.headline4!.copyWith(fontSize: 26)),
@@ -171,7 +171,10 @@ class _CalendarState extends State<HomeScreen> {
         actions: [
           IconButton(
               onPressed: () => {
-                    Navigator.pushNamed(context, "/search"),
+              Navigator.of(context, rootNavigator: true).push(
+              MaterialPageRoute(
+              builder: (context) =>
+              const SearchScreen())),
                   },
               icon: const Icon(
                 Icons.search,
@@ -180,7 +183,10 @@ class _CalendarState extends State<HomeScreen> {
               )),
           IconButton(
               onPressed: () => {
-                    Navigator.pushNamed(context, "/cart"),
+              Navigator.of(context, rootNavigator: true).push(
+              MaterialPageRoute(
+              builder: (context) =>
+              const CartScreen())),
                   },
               icon: const Icon(Icons.shopping_cart,
                   color: Colors.black, size: 26)),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sheff_new/pages/root.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({
@@ -221,7 +222,7 @@ class StartScreen extends StatelessWidget {
           ),
           suffixIcon: IconButton(
               onPressed: () => {
-                    Navigator.pushNamed(context, "/root"),
+                    Navigator.push(context, MaterialPageRoute(builder:(context) => const RootScreen()))
                   },
               icon: Icon(Icons.check_circle,
                   color: themeData.primaryColor, size: 26)),
@@ -229,11 +230,6 @@ class StartScreen extends StatelessWidget {
       ),
     );
   }
-// @override
-// void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-//   super.debugFillProperties(properties);
-//   properties.add(ObjectFlagProperty<Function(int index)>.has('ontap', ontap));
-// }
 }
 
 class _BottomBar extends StatelessWidget {

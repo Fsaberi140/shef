@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sheff_new/pages/productDetails.dart';
 
 class PersonItem1 extends StatelessWidget {
   const PersonItem1({
@@ -22,7 +23,12 @@ class PersonItem1 extends StatelessWidget {
         ],
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        _image(),
+        InkWell(onTap:(){ Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ProductDetails()),
+      );},
+
+        child: _image()),
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 20, 12, 20),
           child: Column(
@@ -44,9 +50,9 @@ class PersonItem1 extends StatelessWidget {
 
   Widget _image() {
     return ClipRRect(
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(10.0)),
+      borderRadius:  const BorderRadius.vertical(top: Radius.circular(10.0)),
       child: Image.asset(
-        'assets/img/foods/32.jpg',
+        'assets/img/foodData/foodData_2.jpg',
         fit: BoxFit.cover,
       ),
     );

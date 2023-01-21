@@ -82,21 +82,6 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    // Container(
-                    //   width: MediaQuery.of(context).size.width,
-                    //   height: 360,
-                    //   // margin: const EdgeInsets.all(1),
-                    //   decoration: BoxDecoration(
-                    //       color: Colors.white,
-                    //       boxShadow: const [
-                    //         BoxShadow(
-                    //           blurRadius: 2,
-                    //         ),
-                    //       ],
-                    //       borderRadius: BorderRadius.circular(10)),
-                    //
-                    //   child:
-
                     ClipRRect(
                       borderRadius: const BorderRadius.vertical(
                           top: Radius.circular(10.0)),
@@ -430,22 +415,8 @@ class _BecomeChefScreenState extends State<BecomeChefScreen> {
       actions: [
         appBarIcon1(context),
         appBarIcon2(context),
-        appBarIcon3(context),
         const SizedBox(width: 10),
       ],
-    );
-  }
-
-  IconButton appBarIcon3(BuildContext context) {
-    return IconButton(
-      onPressed: () => {
-        Navigator.pushNamed(context, "/profile"),
-      },
-      icon: const Icon(
-        Icons.person_sharp,
-        color: Colors.black,
-        size: 26,
-      ),
     );
   }
 

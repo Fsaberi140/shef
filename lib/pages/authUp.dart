@@ -12,21 +12,21 @@ class SignUpScreen extends StatelessWidget {
     final ThemeData themeData = Theme.of(context);
     return Theme(
       data: themeData.copyWith(
-
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
               minimumSize: MaterialStateProperty.all(
                 Size(MediaQuery.of(context).size.width - 56, 50),
               ),
               backgroundColor:
-              MaterialStateProperty.all<Color>(themeData.primaryColor),
+                  MaterialStateProperty.all<Color>(themeData.primaryColor),
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40))),
             ),
           ),
           inputDecorationTheme: InputDecorationTheme(
             enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(width: 2, color: themeData.primaryColor)),
+                borderSide:
+                    BorderSide(width: 2, color: themeData.primaryColor)),
             labelStyle: themeData.textTheme.subtitle2,
             fillColor: const Color(0xFFFBE9E7),
             filled: true,
@@ -36,7 +36,6 @@ class SignUpScreen extends StatelessWidget {
                 width: 2,
               ),
             ),
-
             contentPadding: const EdgeInsets.all(13),
             border: const OutlineInputBorder(),
           )),
@@ -58,11 +57,7 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 25),
-                  // _facebook(context, themeData),
-                  // const SizedBox(height: 8),
-                  // _google(context, themeData),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 35),
                   _first(themeData, context),
                   const SizedBox(height: 13),
                   _last(themeData, context),
@@ -70,11 +65,8 @@ class SignUpScreen extends StatelessWidget {
                   _email(themeData, context),
                   const SizedBox(height: 13),
                   const Password(),
-                  const SizedBox(height: 30
-                  ),
+                  const SizedBox(height: 30),
                   _signUp(context, themeData),
-                  // const SizedBox(height: 25),
-                  // _description(context, themeData),
                   const SizedBox(height: 25),
                   _have(context, themeData),
                   const SizedBox(height: 20),
@@ -90,14 +82,13 @@ class SignUpScreen extends StatelessWidget {
                     const Expanded(child: Divider(thickness: 2)),
                   ]),
                   const SizedBox(height: 20),
-                  Text(" Sign Up with",style:themeData.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w500),),
+                  Text(
+                    " Sign Up with",
+                    style: themeData.textTheme.subtitle1!
+                        .copyWith(fontWeight: FontWeight.w500),
+                  ),
                   const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-
-                    ],
-                  )
+                  svg()
                 ],
               ),
             ),
@@ -107,6 +98,50 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
+  Row svg() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(
+          'assets/svg/telegram_svg.png',
+          width: 20,
+          height: 20,
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Image.asset(
+          'assets/svg/facebook_svg.png',
+          width: 20,
+          height: 20,
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Image.asset(
+          'assets/svg/google_svg.png',
+          width: 20,
+          height: 20,
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Image.asset(
+          'assets/svg/linkedin_svg.png',
+          width: 20,
+          height: 20,
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Image.asset(
+          'assets/svg/twitter.png',
+          width: 20,
+          height: 20,
+        ),
+      ],
+    );
+  }
 
   Widget _have(BuildContext context, ThemeData themeData) {
     return Row(
@@ -133,39 +168,6 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  Widget _description(BuildContext context, ThemeData themeData) {
-    return RichText(
-      text: TextSpan(
-        text: AppLocalizations.of(context)!.description,
-        style: themeData.textTheme.bodyText2!.copyWith(height: 1.4),
-        children: <TextSpan>[
-          TextSpan(
-            text: AppLocalizations.of(context)!.term,
-            style: themeData.textTheme.bodyText2!
-                .apply(color: themeData.primaryColor),
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                Navigator.pushNamed(context, "/services");
-              },
-          ),
-          TextSpan(
-            text: AppLocalizations.of(context)!.and,
-            style: themeData.textTheme.bodyText2,
-          ),
-          TextSpan(
-            text: AppLocalizations.of(context)!.policy,
-            style: themeData.textTheme.bodyText2!
-                .apply(color: themeData.primaryColor),
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                Navigator.pushNamed(context, "/privacy");
-              },
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _signUp(BuildContext context, ThemeData themeData) {
     return Row(
       children: [
@@ -177,45 +179,6 @@ class SignUpScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, "/login");
           },
-
-        ),
-      ],
-    );
-  }
-
-  Widget _facebook(BuildContext context, ThemeData themeData) {
-    return Row(
-      children: [
-        ElevatedButton(
-          child: Text(AppLocalizations.of(context)!.facebook,
-              style: themeData.textTheme.headline6),
-          style: ButtonStyle(
-            minimumSize: MaterialStateProperty.all(
-              Size(MediaQuery.of(context).size.width - 56, 50),
-            ),
-            backgroundColor:
-            MaterialStateProperty.all<Color>(themeData.primaryColor),
-          ),
-          onPressed: () {},
-        ),
-      ],
-    );
-  }
-
-  Widget _google(BuildContext context, ThemeData themeData) {
-    return Row(
-      children: [
-        ElevatedButton(
-          child: Text(AppLocalizations.of(context)!.google,
-              style: themeData.textTheme.headline6),
-          style: ButtonStyle(
-            minimumSize: MaterialStateProperty.all(
-              Size(MediaQuery.of(context).size.width - 56, 50),
-            ),
-            backgroundColor:
-            MaterialStateProperty.all<Color>(themeData.primaryColor),
-          ),
-          onPressed: () {},
         ),
       ],
     );
@@ -234,6 +197,7 @@ class SignUpScreen extends StatelessWidget {
 
 class Password extends StatefulWidget {
   const Password({Key? key}) : super(key: key);
+
   @override
   State<Password> createState() => _PasswordState();
 }
@@ -300,4 +264,3 @@ Widget _first(ThemeData themeData, BuildContext context) {
     ),
   );
 }
-
