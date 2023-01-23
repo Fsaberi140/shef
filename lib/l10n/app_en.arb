@@ -192,7 +192,8 @@
     "biscuit": "biscuit",
     "salt": "salt",
     "recipes": "Recipes",
-    "logOut": "Log Out"
+    "logOut": "Log Out",
+    "refresh": "Refresh"
 
 
 }
