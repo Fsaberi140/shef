@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sheff_new/data/repo/auth_repository.dart';
 import 'package:sheff_new/pages/root.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController usernameController= TextEditingController(text: "test@gmail.com");
+  final TextEditingController passwordController= TextEditingController(text: "123456");
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
@@ -60,7 +68,7 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(height: 35),
                   _email(themeData, context),
                   const SizedBox(height: 13),
-                  const Password(),
+                  Password(controller: passwordController),
                   const SizedBox(height: 15),
                   _forgot(context, themeData),
                   const SizedBox(height: 30),
@@ -191,18 +199,21 @@ class LoginScreen extends StatelessWidget {
             style: themeData.textTheme.headline6,
           ),
           onPressed: () {
+            authRepository.login(usernameController.text, passwordController.text);
+          }
 
-            Navigator.of(context, rootNavigator: true).push(
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const RootScreen()));},
+            // Navigator.of(context, rootNavigator: true).push(
+            //     MaterialPageRoute(
+            //         builder: (context) =>
+            //             const RootScreen()));},
         ),
       ],
     );
   }
 
-Widget _email(ThemeData themeData, BuildContext context) {
+  Widget _email(ThemeData themeData, BuildContext context) {
     return TextField(
+      controller: usernameController,
       cursorColor: themeData.primaryColor,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
@@ -213,7 +224,8 @@ Widget _email(ThemeData themeData, BuildContext context) {
 }
 
 class Password extends StatefulWidget {
-  const Password({Key? key}) : super(key: key);
+  const Password({Key? key, required this.controller}) : super(key: key);
+  final TextEditingController controller;
 
   @override
   State<Password> createState() => _PasswordState();
@@ -226,6 +238,7 @@ class _PasswordState extends State<Password> {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     return TextField(
+      controller:widget.controller ,
       cursorColor: themeData.primaryColor,
       keyboardType: TextInputType.phone,
       obscureText: obscureText,

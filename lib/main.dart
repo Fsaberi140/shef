@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:sheff_new/data/repo/auth_repository.dart';
 import 'package:sheff_new/data/repo/product_repository.dart';
 import 'package:sheff_new/layout/userProfile.dart';
 import 'package:sheff_new/pages/auth.dart';
@@ -32,6 +33,8 @@ import 'pages/signUpScreen.dart';
 import 'pages/startScreen.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  authRepository.loadAuthInfo();
   await Hive.initFlutter();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.white,
@@ -152,7 +155,7 @@ class MyApp extends StatelessWidget {
           caption: TextStyle(fontFamily: defaultFontFamily, fontSize: 15),
         ),
       ),
-      home: const SplashScreen(),
+      home: const LoginScreen(),
     );
   }
 }
