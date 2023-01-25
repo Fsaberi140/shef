@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/data/repo/auth_repository.dart';
+import 'package:sheff_new/pages/auth/bloc/auth_bloc.dart';
 import 'package:sheff_new/pages/root.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -48,56 +50,62 @@ class _LoginScreenState extends State<LoginScreen> {
             border: const OutlineInputBorder(),
           )),
       child: Scaffold(
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(28, 100, 28, 0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.login,
-                        style: themeData.textTheme.headline4,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 35),
-                  _email(themeData, context),
-                  const SizedBox(height: 13),
-                  Password(controller: passwordController),
-                  const SizedBox(height: 15),
-                  _forgot(context, themeData),
-                  const SizedBox(height: 30),
-                  _login(context, themeData),
-                  // const SizedBox(height: 25),
-                  // _description(context, themeData),
-                  const SizedBox(height: 25),
-                  _not(context, themeData),
-                  const SizedBox(height: 20),
-                  Row(children: [
-                    const Expanded(child: Divider(thickness: 2)),
-                    const SizedBox(width: 10),
-                    Text(
-                      AppLocalizations.of(context)!.or,
-                      style: themeData.textTheme.subtitle1!
-                          .apply(color: Colors.black87),
+        body: BlocProvider<AuthBloc >(create: (context){
+          final bloc= AuthBloc(authRepository);
+          bloc.add(AuthStarted());
+          return bloc;
+        },
+          child: SafeArea(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(28, 100, 28, 0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.login,
+                          style: themeData.textTheme.headline4,
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 10),
-                    const Expanded(child: Divider(thickness: 2)),
-                  ]),
-                  const SizedBox(height: 20),
-                  Text(
-                    " Sign In with",
-                    style: themeData.textTheme.subtitle1!
-                        .copyWith(fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 30),
-                  svg()
-                ],
+                    const SizedBox(height: 35),
+                    _email(themeData, context),
+                    const SizedBox(height: 13),
+                    Password(controller: passwordController),
+                    const SizedBox(height: 15),
+                    _forgot(context, themeData),
+                    const SizedBox(height: 30),
+                    _login(context, themeData),
+                    // const SizedBox(height: 25),
+                    // _description(context, themeData),
+                    const SizedBox(height: 25),
+                    _not(context, themeData),
+                    const SizedBox(height: 20),
+                    Row(children: [
+                      const Expanded(child: Divider(thickness: 2)),
+                      const SizedBox(width: 10),
+                      Text(
+                        AppLocalizations.of(context)!.or,
+                        style: themeData.textTheme.subtitle1!
+                            .apply(color: Colors.black87),
+                      ),
+                      const SizedBox(width: 10),
+                      const Expanded(child: Divider(thickness: 2)),
+                    ]),
+                    const SizedBox(height: 20),
+                    Text(
+                      " Sign In with",
+                      style: themeData.textTheme.subtitle1!
+                          .copyWith(fontWeight: FontWeight.w500),
+                    ),
+                    const SizedBox(height: 30),
+                    svg()
+                  ],
+                ),
               ),
             ),
           ),

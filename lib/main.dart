@@ -6,7 +6,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:sheff_new/data/repo/auth_repository.dart';
 import 'package:sheff_new/data/repo/product_repository.dart';
 import 'package:sheff_new/layout/userProfile.dart';
-import 'package:sheff_new/pages/auth.dart';
+import 'package:sheff_new/pages/auth/auth.dart';
 import 'package:sheff_new/pages/authUp.dart';
 import 'package:sheff_new/pages/booksScreen.dart';
 import 'package:sheff_new/pages/ordersScreen.dart';

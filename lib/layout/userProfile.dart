@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/pages/profileScreen.dart';
 
-import '../pages/auth.dart';
+import '../pages/auth/auth.dart';
 import '../pages/booksScreen.dart';
 import '../pages/ordersScreen.dart';
 
