@@ -10,7 +10,7 @@ import '../widgets/JapaneseChefsList.dart';
 import '../widgets/IranianChefsList.dart';
 import '../widgets/DiscountList.dart';
 import '../widgets/NewestList.dart';
-import 'cartScreen.dart';
+import 'cart/cartScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -147,14 +147,14 @@ class _CalendarState extends State<HomeScreen> {
 
   AppBar _appBar(ThemeData themeData, BuildContext context) {
     return AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.deepOrange,
         elevation: 2,
         shadowColor: themeData.primaryColor,
         leading: IconButton(
           onPressed: () => {_key.currentState!.openDrawer()},
           icon: const Icon(
             Icons.menu,
-            color: Colors.black,
+            color: Colors.white,
             size: 26,
           ),
         ),
@@ -165,7 +165,7 @@ class _CalendarState extends State<HomeScreen> {
               Navigator.pushNamed(context, "/root");
             },
             child: Text(AppLocalizations.of(context)!.header,
-                style: themeData.textTheme.headline4!.copyWith(fontSize: 26)),
+                style: themeData.textTheme.headline5!.copyWith(fontWeight: FontWeight.w600)),
           ),
         ),
         actions: [
@@ -178,19 +178,9 @@ class _CalendarState extends State<HomeScreen> {
                   },
               icon: const Icon(
                 Icons.search,
-                color: Colors.black,
+                color: Colors.white,
                 size: 26,
               )),
-          IconButton(
-              onPressed: () => {
-              Navigator.of(context, rootNavigator: true).push(
-              MaterialPageRoute(
-              builder: (context) =>
-              const CartScreen())),
-                  },
-              icon: const Icon(Icons.shopping_cart,
-                  color: Colors.black, size: 26)),
-
           const SizedBox(width: 10),
         ]);
   }

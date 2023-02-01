@@ -193,7 +193,8 @@
     "salt": "salt",
     "recipes": "Recipes",
     "logOut": "Log Out",
-    "refresh": "Refresh"
+    "refresh": "Refresh",
+    "sweets": "Sweets"
 
 
 }

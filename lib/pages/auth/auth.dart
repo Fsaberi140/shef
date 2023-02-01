@@ -3,20 +3,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/data/repo/auth_repository.dart';
 import 'package:sheff_new/pages/auth/bloc/auth_bloc.dart';
-import 'package:sheff_new/pages/root.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({
+class AuthScreen extends StatefulWidget {
+  const AuthScreen({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<AuthScreen> createState() => _AuthScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController usernameController= TextEditingController(text: "test@gmail.com");
-  final TextEditingController passwordController= TextEditingController(text: "123456");
+class _AuthScreenState extends State<AuthScreen> {
+  final TextEditingController usernameController =
+      TextEditingController(text: "test@gmail.com");
+  final TextEditingController passwordController =
+      TextEditingController(text: "123456");
+
+  // bool isLogin = true;
+
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
@@ -33,6 +37,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(40))),
             ),
           ),
+          snackBarTheme: SnackBarThemeData(
+          backgroundColor: themeData.colorScheme.primary,),
           inputDecorationTheme: InputDecorationTheme(
             enabledBorder: OutlineInputBorder(
                 borderSide:
@@ -50,67 +56,157 @@ class _LoginScreenState extends State<LoginScreen> {
             border: const OutlineInputBorder(),
           )),
       child: Scaffold(
-        body: BlocProvider<AuthBloc >(create: (context){
-          final bloc= AuthBloc(authRepository);
-          bloc.add(AuthStarted());
-          return bloc;
-        },
+        body: BlocProvider<AuthBloc>(
+          create: (context) {
+            final bloc = AuthBloc(authRepository);
+            bloc.stream.forEach((state) {
+              if (state is AuthSuccess) {
+                Navigator.of(context).pop();
+              } else if (state is AuthError) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(state.exception.message)));
+              }
+            });
+            bloc.add(AuthStarted());
+            return bloc;
+          },
           child: SafeArea(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(28, 100, 28, 0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!.login,
-                          style: themeData.textTheme.headline4,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 35),
-                    _email(themeData, context),
-                    const SizedBox(height: 13),
-                    Password(controller: passwordController),
-                    const SizedBox(height: 15),
-                    _forgot(context, themeData),
-                    const SizedBox(height: 30),
-                    _login(context, themeData),
-                    // const SizedBox(height: 25),
-                    // _description(context, themeData),
-                    const SizedBox(height: 25),
-                    _not(context, themeData),
-                    const SizedBox(height: 20),
-                    Row(children: [
-                      const Expanded(child: Divider(thickness: 2)),
-                      const SizedBox(width: 10),
-                      Text(
-                        AppLocalizations.of(context)!.or,
-                        style: themeData.textTheme.subtitle1!
-                            .apply(color: Colors.black87),
-                      ),
-                      const SizedBox(width: 10),
-                      const Expanded(child: Divider(thickness: 2)),
-                    ]),
-                    const SizedBox(height: 20),
-                    Text(
-                      " Sign In with",
-                      style: themeData.textTheme.subtitle1!
-                          .copyWith(fontWeight: FontWeight.w500),
-                    ),
-                    const SizedBox(height: 30),
-                    svg()
-                  ],
+                padding: const EdgeInsets.fromLTRB(28, 50, 28, 0),
+                child: BlocBuilder<AuthBloc, AuthState>(
+                  buildWhen: ((previous, current) =>  current is AuthLoading ||
+                  current is AuthInitial ||
+                  current is AuthError),
+                  builder: (context, state) {
+                    return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            state.isLoginMode
+                                ? AppLocalizations.of(context)!.login
+                                : AppLocalizations.of(context)!.signUp,
+                            style: themeData.textTheme.headline4,
+                          ),
+                          const SizedBox(height: 35),
+                          state.isLoginMode
+                              ? signIn(themeData, context)
+                              : signUp(themeData, context),
+                          const SizedBox(height: 10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              _forgot(context, themeData),
+                            ],
+                          ),
+                          const SizedBox(height: 30),
+                          ElevatedButton(
+                            onPressed: () async {
+                              BlocProvider.of<AuthBloc>(context).add(
+                                  AuthButtonIsClicked(usernameController.text,
+                                      passwordController.text));
+                            },
+                            child: state is AuthLoading
+                                ? const SizedBox(
+                                    height: 20,
+                                    width: 20,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                          Colors.white),
+                                    ))
+                                : Text(
+                                    state.isLoginMode
+                                        ? AppLocalizations.of(context)!.login
+                                        : AppLocalizations.of(context)!.signUp,
+                                    style: themeData.textTheme.headline6,
+                                  ),
+
+                            // Navigator.of(context, rootNavigator: true).push(
+                            //     MaterialPageRoute(
+                            //         builder: (context) =>
+                            //             const RootScreen()));},
+                          ),
+                          const SizedBox(height: 25),
+                          GestureDetector(
+                            onTap: () {
+                              BlocProvider.of<AuthBloc>(context)
+                                  .add(AuthModeChangeIsClicked());
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  state.isLoginMode
+                                      ? AppLocalizations.of(context)!.not
+                                      : AppLocalizations.of(context)!.have,
+                                  style: themeData.textTheme.bodyText1!
+                                      .apply(color: Colors.black87),
+                                ),
+                                Text(
+                                  state.isLoginMode
+                                      ? AppLocalizations.of(context)!.signUp
+                                      : AppLocalizations.of(context)!.login,
+                                  style: themeData.textTheme.bodyText1!
+                                      .copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          color: themeData.primaryColor),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Row(children: [
+                            const Expanded(child: Divider(thickness: 2)),
+                            const SizedBox(width: 10),
+                            Text(
+                              AppLocalizations.of(context)!.or,
+                              style: themeData.textTheme.subtitle1!
+                                  .apply(color: Colors.black87),
+                            ),
+                            const SizedBox(width: 10),
+                            const Expanded(child: Divider(thickness: 2)),
+                          ]),
+                          const SizedBox(height: 20),
+                          Text(
+                            AppLocalizations.of(context)!.orWith,
+                            style: themeData.textTheme.subtitle1!
+                                .copyWith(fontWeight: FontWeight.w500),
+                          ),
+                          const SizedBox(height: 30),
+                          svg(),
+                        ]);
+                  },
                 ),
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Column signUp(ThemeData themeData, BuildContext context) {
+    return Column(
+      children: [
+        _first(themeData, context),
+        const SizedBox(height: 13),
+        _last(themeData, context),
+        const SizedBox(height: 13),
+        _email(themeData, context),
+        const SizedBox(height: 13),
+        Password(controller: passwordController),
+      ],
+    );
+  }
+
+  Column signIn(ThemeData themeData, BuildContext context) {
+    return Column(
+      children: [
+        _email(themeData, context),
+        const SizedBox(height: 13),
+        Password(controller: passwordController),
+      ],
     );
   }
 
@@ -167,55 +263,42 @@ class _LoginScreenState extends State<LoginScreen> {
           onTap: () {},
           child: Text(
             AppLocalizations.of(context)!.forgot,
-            style: themeData.textTheme.subtitle1,
+            style: themeData.textTheme.bodyText2,
           ),
         ),
       ],
     );
   }
 
-  Widget _not(BuildContext context, ThemeData themeData) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          AppLocalizations.of(context)!.not,
-          style: themeData.textTheme.bodyText1!.apply(color: Colors.black87),
+  Widget _last(ThemeData themeData, BuildContext context) {
+    return SizedBox(
+      height: 50,
+      child: TextField(
+        cursorColor: themeData.primaryColor,
+        decoration: InputDecoration(
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: themeData.primaryColor, width: 2)),
+          border: const OutlineInputBorder(),
+          labelStyle: themeData.textTheme.subtitle2,
+          labelText: AppLocalizations.of(context)!.last,
         ),
-        InkWell(
-          child: Text(
-            AppLocalizations.of(context)!.create,
-            style: themeData.textTheme.bodyText1!.copyWith(
-              // fontWeight: FontWeight.w500,
-              color: themeData.primaryColor,
-            ),
-          ),
-          onTap: () {
-            Navigator.pushNamed(context, "/signup");
-          },
-        )
-      ],
+      ),
     );
   }
 
-  Widget _login(BuildContext context, ThemeData themeData) {
-    return Row(
-      children: [
-        ElevatedButton(
-          child: Text(
-            AppLocalizations.of(context)!.login,
-            style: themeData.textTheme.headline6,
-          ),
-          onPressed: () {
-            authRepository.login(usernameController.text, passwordController.text);
-          }
-
-            // Navigator.of(context, rootNavigator: true).push(
-            //     MaterialPageRoute(
-            //         builder: (context) =>
-            //             const RootScreen()));},
+  Widget _first(ThemeData themeData, BuildContext context) {
+    return SizedBox(
+      height: 50,
+      child: TextField(
+        cursorColor: themeData.primaryColor,
+        decoration: InputDecoration(
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: themeData.primaryColor, width: 2)),
+          border: const OutlineInputBorder(),
+          labelStyle: themeData.textTheme.subtitle2,
+          labelText: AppLocalizations.of(context)!.first,
         ),
-      ],
+      ),
     );
   }
 
@@ -246,7 +329,7 @@ class _PasswordState extends State<Password> {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     return TextField(
-      controller:widget.controller ,
+      controller: widget.controller,
       cursorColor: themeData.primaryColor,
       keyboardType: TextInputType.phone,
       obscureText: obscureText,

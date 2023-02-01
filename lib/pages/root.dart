@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:sheff_new/pages/booksScreen.dart';
 import '../layout/userProfile.dart';
+import 'cart/cartScreen.dart';
 import 'homeScreen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'ordersScreen.dart';
 
 const int homeIndex = 0;
 const int booksIndex = 1;
-const int ordersIndex = 2;
+const int cartIndex = 2;
 const int profileIndex = 3;
 
 
@@ -24,14 +25,14 @@ class _RootScreenState extends State<RootScreen> {
 
   final GlobalKey<NavigatorState> _homeKey = GlobalKey();
   final GlobalKey<NavigatorState> _booksKey = GlobalKey();
-  final GlobalKey<NavigatorState> _ordersKey = GlobalKey();
+  final GlobalKey<NavigatorState> _cartKey = GlobalKey();
   final GlobalKey<NavigatorState> _profileKey = GlobalKey();
 
 
   late final map = {
     homeIndex: _homeKey,
     booksIndex: _booksKey,
-    ordersIndex: _ordersKey,
+    cartIndex: _cartKey,
     profileIndex: _profileKey,
   };
 
@@ -60,7 +61,7 @@ class _RootScreenState extends State<RootScreen> {
             children: [
               _navigator(_homeKey, homeIndex, const HomeScreen()),
               _navigator(_booksKey, booksIndex, BooksScreen()),
-              _navigator(_ordersKey, ordersIndex, const OrdersScreen()),
+              _navigator(_cartKey, cartIndex, const CartScreen()),
               _navigator(_profileKey, profileIndex, const UserProfile() ),
             ],
           ),
@@ -72,7 +73,7 @@ class _RootScreenState extends State<RootScreen> {
               BottomNavigationBarItem(
                   icon: const Icon(Icons.bookmark_added,), label:AppLocalizations.of(context)!.books ),
               BottomNavigationBarItem(
-                  icon: const Icon(Icons.emoji_food_beverage_outlined,), label:AppLocalizations.of(context)!.orders ),
+                  icon: const Icon(Icons.shopping_cart_rounded,), label:AppLocalizations.of(context)!.orders ),
               BottomNavigationBarItem(
                   icon: const Icon(Icons.person,), label: AppLocalizations.of(context)!.profile),
             ],

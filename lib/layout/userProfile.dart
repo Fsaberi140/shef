@@ -199,7 +199,7 @@ class _UserProfileState extends State<UserProfile> {
                 Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute(
                         builder: (context) =>
-                            const LoginScreen()));
+                            const AuthScreen()));
               },
               child: Row(
                 children: [

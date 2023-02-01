@@ -7,8 +7,9 @@ import 'package:sheff_new/data/repo/auth_repository.dart';
 import 'package:sheff_new/data/repo/product_repository.dart';
 import 'package:sheff_new/layout/userProfile.dart';
 import 'package:sheff_new/pages/auth/auth.dart';
-import 'package:sheff_new/pages/authUp.dart';
+import 'package:sheff_new/pages/auth/auth.dart';
 import 'package:sheff_new/pages/booksScreen.dart';
+import 'package:sheff_new/pages/home/home.dart';
 import 'package:sheff_new/pages/ordersScreen.dart';
 import 'package:sheff_new/pages/productDetails.dart';
 import 'package:sheff_new/pages/root.dart';
@@ -18,18 +19,16 @@ import 'pages/aboutUs.dart';
 import 'pages/americanScreen.dart';
 import 'pages/becomeChef.dart';
 import 'pages/booksScreen.dart';
-import 'pages/cartScreen.dart';
+import 'pages/cart/cartScreen.dart';
 import 'pages/chef.dart';
 import 'pages/homeScreen.dart';
 import 'pages/iranianScreen.dart';
 import 'pages/japaneseScreen.dart';
-import 'pages/loginScreen.dart';
 import 'pages/personScreen.dart';
 import 'pages/privacyScreen.dart';
 import 'pages/profileScreen.dart';
 import 'pages/searchScreen.dart';
 import 'pages/servicesScreen.dart';
-import 'pages/signUpScreen.dart';
 import 'pages/startScreen.dart';
 
 void main() async {
@@ -67,8 +66,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/start': (context) => const StartScreen(),
-        "/login": (context) => const LoginScreen(),
-        "/signup": (context) => const SignUpScreen(),
         "/services": (context) => const ServicesScreen(),
         "/search": (context) => const SearchScreen(),
         "/privacy": (context) => const PrivacyScreen(),
@@ -155,7 +152,7 @@ class MyApp extends StatelessWidget {
           caption: TextStyle(fontFamily: defaultFontFamily, fontSize: 15),
         ),
       ),
-      home: const LoginScreen(),
+      home:  Home(),
     );
   }
 }
