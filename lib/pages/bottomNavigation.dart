@@ -8,7 +8,7 @@ class BottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: 50,
       decoration: const BoxDecoration(color: Colors.white, boxShadow: [
         BoxShadow(blurRadius: 5, color: Colors.black12),
       ]),

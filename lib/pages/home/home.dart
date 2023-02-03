@@ -1,196 +1,173 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sheff_new/pages/home/bloc/home_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../common/utils.dart';
-// import '../../data/foodsData.dart';
+
 import '../../data/productTest.dart';
+import '../../common/utils.dart';
 import '../../data/repo/product_repository.dart';
+import '../error.dart';
+import '../product/product.dart';
 import '../searchScreen.dart';
+import 'bloc/home_bloc.dart';
 
-class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+class Home extends StatelessWidget {
+  const Home({
+    Key? key,
+  }) : super(key: key);
 
-  @override
-  State<Home> createState() => _HomeState();
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
-}
-
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-
     return BlocProvider(
       create: (context) {
-        final homeBloc = HomeBloc(productRepository: productRepository);
+        final homeBloc = HomeBloc(
+            // bannerRepository: bannerRepository,
+            productRepository: productRepository);
         homeBloc.add(HomeStarted());
         return homeBloc;
       },
       child: Scaffold(
-        // key: _key,
         appBar: _appBar(themeData, context),
-        body: SingleChildScrollView(
-          child: BlocBuilder<HomeBloc, HomeState>(
-            builder: ((context, state) {
-              if (state is HomeSuccess) {
-                return ListView.builder(
+        body: SafeArea(
+          child: BlocBuilder<HomeBloc, HomeState>(builder: ((context, state) {
+            if (state is HomeSuccess) {
+              return ListView.builder(
                   physics: defaultScrollPhysics,
                   itemCount: 5,
                   itemBuilder: (context, index) {
                     switch (index) {
                       case 0:
                         return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Column(
                               children: [
                                 ClipRRect(
-                                    // borderRadius:BorderRadius.,
                                     child: Image.asset(
-                                  'assets/img/sweets/sweets_1.jpg',
-                                  width: 100,
-                                )),
+                                      'assets/img/foods/food_1.jpg',
+                                      width: 130,
+                                    )),
                                 Text(
-                                  AppLocalizations.of(context)!.sweets,
-                                  style: themeData.textTheme.headline5!
-                                      .copyWith(color: themeData.primaryColor),
+                                  AppLocalizations.of(context)!.foods,
+                                  style: themeData.textTheme.headline6!
+                                      .copyWith(color: Colors.black87),
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 20),
+                            const SizedBox(width: 30),
                             Column(
                               children: [
                                 ClipRRect(
-                                    // borderRadius:BorderRadius.,
+                                    borderRadius: BorderRadius.circular(80),
                                     child: Image.asset(
-                                  'assets/img/sweets/sweets_1.jpg',
-                                  width: 100,
-                                )),
+                                      'assets/img/sweets/sweet_1.jpg',
+                                      width: 130,
+                                    )),
                                 Text(
-                                  AppLocalizations.of(context)!.newest,
-                                  style: themeData.textTheme.headline5!
-                                      .copyWith(color: themeData.primaryColor),
+                                  AppLocalizations.of(context)!.sweets,
+                                  style: themeData.textTheme.headline6!
+                                      .copyWith(color:Colors.black87),
                                 ),
                               ],
                             ),
                           ],
                         );
                       case 1:
-                        return Column(
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.newest,
-                              style: themeData.textTheme.headline5!
-                                  .copyWith(color: themeData.primaryColor),
-                            ),
-                            const SizedBox(height: 8),
-                            ListView.builder(
-                                itemBuilder: ((context, index) => Container(
-                                      width: 300,
-                                      height: 200,
-                                    )))
-                          ],
+                        return Padding(
+                          padding: const EdgeInsets.fromLTRB(8,5,8,15),
+                          child: Divider(
+                            thickness: 2,
+                            height: 0,
+                            color: Colors.grey[300],
+                          ),
                         );
-                      case 2:
+
+                      // case 2:
+                      // return BannerSlider(
+                      //   banners: state.banners,
+                      // );
+                      case 3:
                         return _HorizontalProductList(
-                          title: 'جدیدترین',
+                          title: AppLocalizations.of(context)!.favorites,
                           onTap: () {},
                           products: state.latestProducts,
                         );
-                      case 3:
+                      case 4:
                         return _HorizontalProductList(
-                          title: 'پربازدیدترین',
+                          title: AppLocalizations.of(context)!.newest,
                           onTap: () {},
                           products: state.popularProducts,
                         );
-                      case 4:
-                        return Container(
-                          height: 100,
-                          width: 300,
-                        );
                       default:
-                        return Container(
-                          height: 100,
-                          width: 300,
-                        );
+                        return Container();
                     }
-                  },
-                );
-              } else if (state is HomeLoading) {
-                return const Center(child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                    Colors.white),),);
-              } else if (state is HomeError) {
-                return Center(
-                  child: Column(
-                    children: [
-                      Text(state.exception.message),
-                      TextButton(
-                        onPressed: () {
-                          BlocProvider.of<HomeBloc>(context).add(HomeRefresh());
-                        },
-                        child: Text(AppLocalizations.of(context)!.refresh),
-                      )
-                    ],
-                  ),
-                );
-              } else {
-                return const Text("developer");
-              }
-            }),
-          ),
+                  });
+            } else if (state is HomeLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is HomeError) {
+              return AppErrorWidget(
+                exception: state.exception,
+                onPressed: () {
+                  BlocProvider.of<HomeBloc>(context).add(HomeRefresh());
+                },
+              );
+            } else {
+              throw Exception('state is not supported');
+            }
+          })),
         ),
       ),
     );
   }
+}
 
-  AppBar _appBar(ThemeData themeData, BuildContext context) {
-    return AppBar(
-        backgroundColor: Colors.deepOrange,
-        elevation: 2,
-        shadowColor: themeData.primaryColor,
-        leading: IconButton(
-          onPressed: () => {
-            // _key.currentState!.openDrawer()
+AppBar _appBar(ThemeData themeData, BuildContext context) {
+  return AppBar(
+      backgroundColor: Colors.deepOrange,
+      elevation: 2,
+      shadowColor: themeData.primaryColor,
+      leading: IconButton(
+        onPressed: () => {
+          // _key.currentState!.openDrawer()
+        },
+        icon: const Icon(
+          Icons.menu,
+          color: Colors.white,
+          size: 26,
+        ),
+      ),
+      title: Padding(
+        padding: const EdgeInsets.only(left: 0),
+        child: InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, "/root");
           },
-          icon: const Icon(
-            Icons.menu,
-            color: Colors.white,
-            size: 26,
-          ),
+          child: Text(AppLocalizations.of(context)!.header,
+              style: themeData.textTheme.headline5!
+                  .copyWith(fontWeight: FontWeight.w600)),
         ),
-        title: Padding(
-          padding: const EdgeInsets.only(left: 0),
-          child: InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, "/root");
-            },
-            child: Text(AppLocalizations.of(context)!.header,
-                style: themeData.textTheme.headline5!.copyWith(fontWeight: FontWeight.w600)),
-          ),
-        ),
-        actions: [
-          IconButton(
-              onPressed: () => {
-                Navigator.of(context, rootNavigator: true).push(
-                    MaterialPageRoute(
-                        builder: (context) =>
-                        const SearchScreen())),
-              },
-              icon: const Icon(
-                Icons.search,
-                color: Colors.white,
-                size: 26,
-              )),
-          const SizedBox(width: 10),
-        ]);
-  }
+      ),
+      actions: [
+        IconButton(
+            onPressed: () => {
+                  Navigator.of(context, rootNavigator: true).push(
+                      MaterialPageRoute(
+                          builder: (context) => const SearchScreen())),
+                },
+            icon: const Icon(
+              Icons.search,
+              color: Colors.white,
+              size: 26,
+            )),
+        const SizedBox(width: 10),
+      ]);
 }
 
 class _HorizontalProductList extends StatelessWidget {
   final String title;
   final GestureTapCallback onTap;
   final List<ProductEntity> products;
+
   const _HorizontalProductList({
     Key? key,
     required this.title,
@@ -200,6 +177,7 @@ class _HorizontalProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
     return Column(
       children: [
         Padding(
@@ -207,13 +185,22 @@ class _HorizontalProductList extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(title, style: Theme.of(context).textTheme.subtitle1),
-              TextButton(onPressed: onTap, child: const Text('مشاهده همه'))
+              Text(
+                title,
+                style: themeData.textTheme.headline5!.copyWith(
+                    color: themeData.primaryColor, fontWeight: FontWeight.w500),
+              ),
+              TextButton(
+                  onPressed: onTap,
+                  child: Text(
+                    AppLocalizations.of(context)!.view,
+                    style: themeData.textTheme.caption,
+                  ))
             ],
           ),
         ),
         SizedBox(
-          height: 290,
+          height: 310,
           child: ListView.builder(
               physics: defaultScrollPhysics,
               itemCount: products.length,
@@ -231,7 +218,3 @@ class _HorizontalProductList extends StatelessWidget {
     );
   }
 }
-
-
-
-
