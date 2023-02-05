@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:sheff_new/data/source/product_data_source.dart';
+import '../../common/http_client.dart';
 import '../productTest.dart';
-
-final httpClient =
-Dio(BaseOptions(baseUrl: 'http://expertdevelopers.ir/api/v1/'));
 
 final productRepository =
 ProductRepository(ProductRemoteDataSource(httpClient));

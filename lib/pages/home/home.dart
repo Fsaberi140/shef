@@ -1,12 +1,18 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sheff_new/data/banner.dart';
+import 'package:sheff_new/pages/image.dart';
 
 import '../../data/productTest.dart';
 import '../../common/utils.dart';
 import '../../data/repo/product_repository.dart';
+import '../../data/source/banner_data_source.dart';
+import '../../widgets/slider.dart';
 import '../error.dart';
 import '../product/product.dart';
+import '../image.dart';
 import '../searchScreen.dart';
 import 'bloc/home_bloc.dart';
 
@@ -44,9 +50,9 @@ class Home extends StatelessWidget {
                               children: [
                                 ClipRRect(
                                     child: Image.asset(
-                                      'assets/img/foods/food_1.jpg',
-                                      width: 130,
-                                    )),
+                                  'assets/img/foods/food_1.jpg',
+                                  width: 130,
+                                )),
                                 Text(
                                   AppLocalizations.of(context)!.foods,
                                   style: themeData.textTheme.headline6!
@@ -66,7 +72,7 @@ class Home extends StatelessWidget {
                                 Text(
                                   AppLocalizations.of(context)!.sweets,
                                   style: themeData.textTheme.headline6!
-                                      .copyWith(color:Colors.black87),
+                                      .copyWith(color: Colors.black87),
                                 ),
                               ],
                             ),
@@ -74,7 +80,7 @@ class Home extends StatelessWidget {
                         );
                       case 1:
                         return Padding(
-                          padding: const EdgeInsets.fromLTRB(8,5,8,15),
+                          padding: const EdgeInsets.fromLTRB(8, 5, 8, 15),
                           child: Divider(
                             thickness: 2,
                             height: 0,
@@ -82,10 +88,9 @@ class Home extends StatelessWidget {
                           ),
                         );
 
-                      // case 2:
-                      // return BannerSlider(
-                      //   banners: state.banners,
-                      // );
+                      case 2:
+                        return BannerSlider(banners: state.banners,);
+
                       case 3:
                         return _HorizontalProductList(
                           title: AppLocalizations.of(context)!.favorites,

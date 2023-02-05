@@ -5,7 +5,7 @@ class ImageLoadingService extends StatelessWidget {
   final String imageUrl;
   final BorderRadius? borderRadius;
   const ImageLoadingService(
-      {Key? key, required this.imageUrl, this.borderRadius})
+      {Key? key, required this.imageUrl , this.borderRadius})
       : super(key: key);
 
   @override

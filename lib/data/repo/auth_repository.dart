@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sheff_new/data/repo/product_repository.dart';
 import 'package:sheff_new/data/source/auth_data_source.dart';
+import '../../common/http_client.dart';
 import '../authInfo.dart';
 
 final authRepository = AuthRepository(AuthRemoteDataSource(

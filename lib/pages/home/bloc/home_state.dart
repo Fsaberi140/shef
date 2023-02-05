@@ -18,11 +18,11 @@ class HomeError extends HomeState {
 }
 
 class HomeSuccess extends HomeState{
-  // final List<BannerEntity> banners;
+  final List<BannerEntity> banners;
   final List<ProductEntity> latestProducts;
   final List<ProductEntity> popularProducts;
 
-  const HomeSuccess({required this.latestProducts,required this.popularProducts});
+  const HomeSuccess({required this.banners, required this.latestProducts,required this.popularProducts});
 
 
 }

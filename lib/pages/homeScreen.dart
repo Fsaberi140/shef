@@ -60,11 +60,11 @@ class _CalendarState extends State<HomeScreen> {
                 padding: EdgeInsets.fromLTRB(5, 8, 0, 0),
                 child: Menu(),
               ),
-              // Divider(
-              //   thickness: 2,
-              //   height: 0,
-              //   color: Colors.grey[300],
-              // ),
+              Divider(
+                thickness: 2,
+                height: 0,
+                color: Colors.grey[300],
+              ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 8, 0, 5),
                 child: Column(children: [

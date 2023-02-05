@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:sheff_new/data/common/constance.dart';
 import 'package:sheff_new/data/authInfo.dart';
-import '../common/http_response_validator.dart';
+import '../common/response_validator.dart';
 
 abstract class IAuthDataSource {
   Future<AuthInfo> login(String username, String password);
@@ -11,9 +11,7 @@ abstract class IAuthDataSource {
   Future<AuthInfo> refreshToken(String token);
 }
 
-class AuthRemoteDataSource
-    with HttpResponseValidator
-    implements IAuthDataSource {
+class AuthRemoteDataSource with HttpResponseValidator implements IAuthDataSource {
   final Dio httpClient;
 
   AuthRemoteDataSource(this.httpClient);
