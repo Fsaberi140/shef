@@ -21,6 +21,7 @@ class AppErrorWidget extends StatelessWidget {
         children: [
           Text(exception.message),
           ElevatedButton(
+
               onPressed: onPressed, child: Text(AppLocalizations.of(context)!.refresh)),
         ],
       ),

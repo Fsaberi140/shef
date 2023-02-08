@@ -1,28 +1,69 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sheff_new/pages/product/bloc/product_bloc.dart';
 
 import '../../common/utils.dart';
 import '../../data/productTest.dart';
+import '../../data/repo/cart_repository.dart';
 import '../image.dart';
 
-
-class ProductDetailScreen extends StatelessWidget {
+class ProductDetailScreen extends StatefulWidget {
   final ProductEntity product;
 
   const ProductDetailScreen({Key? key, required this.product})
       : super(key: key);
 
   @override
+  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
+}
+
+class _ProductDetailScreenState extends State<ProductDetailScreen> {
+ StreamSubscription <ProductState>? stateSubscription;
+  @override
+  void dispose() {
+    stateSubscription?.cancel();
+    super.dispose();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
-    return
-     Scaffold(
+    return BlocProvider<ProductBloc>(
+      create: (context) {
+        final bloc = ProductBloc(cartRepository);
+       stateSubscription= bloc.stream.listen((state) {
+          if (state is ProductAddToCartSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(AppLocalizations.of(context)!.successfully)));}
+            else if (state is ProductAddToCartError){
+            ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.exception.message)));
+          }
+
+        });
+        return bloc;
+      },
+      child: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: SizedBox(
           width: MediaQuery.of(context).size.width - 48,
-          child: FloatingActionButton.extended(
-            onPressed: () {},
-            label: Text(AppLocalizations.of(context)!.refresh),
+          child: BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              return FloatingActionButton.extended(
+                onPressed: () {
+                  BlocProvider.of<ProductBloc>(context)
+                      .add(CartAddButtonClick(widget.product.id));
+                },
+                label: state is ProductAddToCartButtonLoading
+                    ? CupertinoActivityIndicator(
+                        color: Theme.of(context).primaryColor)
+                    : Text(AppLocalizations.of(context)!.add),
+              );
+            },
           ),
         ),
         body: CustomScrollView(
@@ -30,7 +71,7 @@ class ProductDetailScreen extends StatelessWidget {
           slivers: [
             SliverAppBar(
               expandedHeight: MediaQuery.of(context).size.width * 0.8,
-              flexibleSpace: ImageLoadingService(imageUrl: product.imageUrl),
+              flexibleSpace: ImageLoadingService(imageUrl: widget.product.imageUrl),
               foregroundColor: Colors.black87,
               // LightThemeColors.primaryTextColor,
               actions: [
@@ -47,9 +88,9 @@ class ProductDetailScreen extends StatelessWidget {
                       children: [
                         Expanded(
                             child: Text(
-                              product.title,
-                              style: Theme.of(context).textTheme.headline6,
-                            )),
+                          widget.product.title,
+                          style: Theme.of(context).textTheme.headline6,
+                        )),
                         // Column(
                         //   crossAxisAlignment: CrossAxisAlignment.end,
                         //   children: [
@@ -80,7 +121,8 @@ class ProductDetailScreen extends StatelessWidget {
                           'نظرات کاربران',
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
-                        TextButton(onPressed: () {}, child: const Text('ثبت نظر'))
+                        TextButton(
+                            onPressed: () {}, child: const Text('ثبت نظر'))
                       ],
                     ),
                   ],
@@ -90,6 +132,7 @@ class ProductDetailScreen extends StatelessWidget {
             // CommentList(productId: product.id),
           ],
         ),
+      ),
     );
   }
 }

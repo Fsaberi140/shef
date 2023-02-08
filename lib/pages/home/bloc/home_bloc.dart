@@ -17,7 +17,7 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final IProductRepository productRepository;
 
-  HomeBloc({required this.productRepository}) : super(HomeLoading()) {
+  HomeBloc({required this.productRepository, bannerRepository}) : super(HomeLoading()) {
     on<HomeEvent>((event, emit) async {
       if (event is HomeStarted || event is HomeRefresh) {
         try {

@@ -1,18 +1,14 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:sheff_new/data/banner.dart';
-import 'package:sheff_new/pages/image.dart';
 
 import '../../data/productTest.dart';
 import '../../common/utils.dart';
+import '../../data/repo/banner_repository.dart';
 import '../../data/repo/product_repository.dart';
-import '../../data/source/banner_data_source.dart';
 import '../../widgets/slider.dart';
 import '../error.dart';
 import '../product/product.dart';
-import '../image.dart';
 import '../searchScreen.dart';
 import 'bloc/home_bloc.dart';
 
@@ -27,100 +23,98 @@ class Home extends StatelessWidget {
     return BlocProvider(
       create: (context) {
         final homeBloc = HomeBloc(
-            // bannerRepository: bannerRepository,
+            bannerRepository: bannerRepository,
             productRepository: productRepository);
         homeBloc.add(HomeStarted());
         return homeBloc;
       },
       child: Scaffold(
         appBar: _appBar(themeData, context),
-        body: SafeArea(
-          child: BlocBuilder<HomeBloc, HomeState>(builder: ((context, state) {
-            if (state is HomeSuccess) {
-              return ListView.builder(
-                  physics: defaultScrollPhysics,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    switch (index) {
-                      case 0:
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Column(
-                              children: [
-                                ClipRRect(
-                                    child: Image.asset(
-                                  'assets/img/foods/food_1.jpg',
-                                  width: 130,
-                                )),
-                                Text(
-                                  AppLocalizations.of(context)!.foods,
-                                  style: themeData.textTheme.headline6!
-                                      .copyWith(color: Colors.black87),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(width: 30),
-                            Column(
-                              children: [
-                                ClipRRect(
-                                    borderRadius: BorderRadius.circular(80),
-                                    child: Image.asset(
-                                      'assets/img/sweets/sweet_1.jpg',
-                                      width: 130,
-                                    )),
-                                Text(
-                                  AppLocalizations.of(context)!.sweets,
-                                  style: themeData.textTheme.headline6!
-                                      .copyWith(color: Colors.black87),
-                                ),
-                              ],
-                            ),
-                          ],
-                        );
-                      case 1:
-                        return Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 5, 8, 15),
-                          child: Divider(
-                            thickness: 2,
-                            height: 0,
-                            color: Colors.grey[300],
+        body: BlocBuilder<HomeBloc, HomeState>(builder: ((context, state) {
+          if (state is HomeSuccess) {
+            return ListView.builder(
+                physics: defaultScrollPhysics,
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  switch (index) {
+                    case 0:
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              ClipRRect(
+                                  child: Image.asset(
+                                'assets/img/foods/food_1.jpg',
+                                width: 130,
+                              )),
+                              Text(
+                                AppLocalizations.of(context)!.foods,
+                                style: themeData.textTheme.headline6!
+                                    .copyWith(color: Colors.black87),
+                              ),
+                            ],
                           ),
-                        );
+                          const SizedBox(width: 30),
+                          Column(
+                            children: [
+                              ClipRRect(
+                                  borderRadius: BorderRadius.circular(80),
+                                  child: Image.asset(
+                                    'assets/img/sweets/sweet_1.jpg',
+                                    width: 130,
+                                  )),
+                              Text(
+                                AppLocalizations.of(context)!.sweets,
+                                style: themeData.textTheme.headline6!
+                                    .copyWith(color: Colors.black87),
+                              ),
+                            ],
+                          ),
+                        ],
+                      );
+                    case 1:
+                      return Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 5, 8, 15),
+                        child: Divider(
+                          thickness: 2,
+                          height: 0,
+                          color: Colors.grey[300],
+                        ),
+                      );
 
-                      case 2:
-                        return BannerSlider(banners: state.banners,);
+                    case 2:
+                      return BannerSlider(banners: state.banners,);
 
-                      case 3:
-                        return _HorizontalProductList(
-                          title: AppLocalizations.of(context)!.favorites,
-                          onTap: () {},
-                          products: state.latestProducts,
-                        );
-                      case 4:
-                        return _HorizontalProductList(
-                          title: AppLocalizations.of(context)!.newest,
-                          onTap: () {},
-                          products: state.popularProducts,
-                        );
-                      default:
-                        return Container();
-                    }
-                  });
-            } else if (state is HomeLoading) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is HomeError) {
-              return AppErrorWidget(
-                exception: state.exception,
-                onPressed: () {
-                  BlocProvider.of<HomeBloc>(context).add(HomeRefresh());
-                },
-              );
-            } else {
-              throw Exception('state is not supported');
-            }
-          })),
-        ),
+                    case 3:
+                      return _HorizontalProductList(
+                        title: AppLocalizations.of(context)!.favorites,
+                        onTap: () {},
+                        products: state.latestProducts,
+                      );
+                    case 4:
+                      return _HorizontalProductList(
+                        title: AppLocalizations.of(context)!.newest,
+                        onTap: () {},
+                        products: state.popularProducts,
+                      );
+                    default:
+                      return Container();
+                  }
+                });
+          } else if (state is HomeLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is HomeError) {
+            return AppErrorWidget(
+              exception: state.exception,
+              onPressed: () {
+                BlocProvider.of<HomeBloc>(context).add(HomeRefresh());
+              },
+            );
+          } else {
+            throw Exception('state is not supported');
+          }
+        })),
       ),
     );
   }
