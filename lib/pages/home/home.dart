@@ -103,7 +103,7 @@ class Home extends StatelessWidget {
                   }
                 });
           } else if (state is HomeLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator(color: themeData.primaryColor,));
           } else if (state is HomeError) {
             return AppErrorWidget(
               exception: state.exception,
@@ -122,7 +122,7 @@ class Home extends StatelessWidget {
 
 AppBar _appBar(ThemeData themeData, BuildContext context) {
   return AppBar(
-      backgroundColor: Colors.deepOrange,
+      backgroundColor: themeData.primaryColor,
       elevation: 2,
       shadowColor: themeData.primaryColor,
       leading: IconButton(

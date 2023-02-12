@@ -10,6 +10,7 @@ import '../../common/utils.dart';
 import '../../data/productTest.dart';
 import '../../data/repo/cart_repository.dart';
 import '../image.dart';
+import 'comment/commentList.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final ProductEntity product;
@@ -118,18 +119,18 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'نظرات کاربران',
+                          AppLocalizations.of(context)!.reviews,
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
                         TextButton(
-                            onPressed: () {}, child: const Text('ثبت نظر'))
+                            onPressed: () {}, child: Text(AppLocalizations.of(context)!.reviews))
                       ],
                     ),
                   ],
                 ),
               ),
             ),
-            // CommentList(productId: product.id),
+            CommentList(productId: widget.product.id),
           ],
         ),
       ),
