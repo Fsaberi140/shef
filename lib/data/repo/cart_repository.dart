@@ -1,5 +1,4 @@
-import 'package:sheff_new/data/banner.dart';
-import 'package:sheff_new/data/cart_item.dart';
+import 'package:sheff_new/data/add_to_cart_response.dart';
 import 'package:sheff_new/data/cart_response.dart';
 import '../../common/http_client.dart';
 import '../source/cart_data_source.dart';
@@ -14,12 +13,12 @@ class CartRepository implements ICartRepository {
   CartRepository(this.dataSource);
 
   @override
-  Future<CartResponse> add(int productId) {
+  Future<AddToCartResponse> add(int productId) {
     return dataSource.add(productId);
   }
 
   @override
-  Future<CartResponse> changeCount(int cartItemId, int count) {
+  Future<AddToCartResponse> changeCount(int cartItemId, int count) {
   return dataSource.changeCount(cartItemId, count);
   }
 
@@ -34,7 +33,7 @@ return dataSource.delete(cartItemId);
   }
 
   @override
-  Future<List<CartItemEntity>> getAll() {
+  Future<CartResponse> getAll() {
 return dataSource.getAll();
   }
 }

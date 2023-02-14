@@ -47,7 +47,7 @@
     "save": "Save Change",
     "sukhdeep": "Chef Sukhdeep Menu",
     "north": "North Indian  . Punjabi",
-    "reviews": "152 reviews",
+    "reviews": "reviews",
     "safety": "Slogan: Food Safety Certified",
     "i": "I grew up in Punjab, where I learned to cook, Punjabi dishes from my mother... ",
     "more": "More",
@@ -197,6 +197,7 @@
     "sweets": "Sweets",
     "view": "view all",
     "successfully": "َAdded Successfully",
-    "register": "Register a Comment"
+    "register": "Register a Comment",
+    "current": "current cart state is not valid"
 
 }

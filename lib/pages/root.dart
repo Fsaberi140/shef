@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sheff_new/pages/booksScreen.dart';
 import '../layout/userProfile.dart';
-import 'cart/cartScreen.dart';
-import 'homeScreen.dart';
+import 'cart/cart.dart';
+import 'home/home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'ordersScreen.dart';
 
 const int homeIndex = 0;
 const int booksIndex = 1;
@@ -59,7 +58,7 @@ class _RootScreenState extends State<RootScreen> {
           body: IndexedStack(
             index: selectedScreenIndex,
             children: [
-              _navigator(_homeKey, homeIndex, const HomeScreen()),
+              _navigator(_homeKey, homeIndex, const Home()),
               _navigator(_booksKey, booksIndex, BooksScreen()),
               _navigator(_cartKey, cartIndex, const CartScreen()),
               _navigator(_profileKey, profileIndex, const UserProfile() ),

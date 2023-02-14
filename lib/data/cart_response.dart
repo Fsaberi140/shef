@@ -1,12 +1,16 @@
-class CartResponse {
-  final int productId;
-  final int cartItemId;
-  final int count;
+import 'package:sheff_new/data/cart_item.dart';
 
-  CartResponse(this.productId, this.cartItemId, this.count);
+class CartResponse {
+  final List<CartItemEntity> cartItem;
+  final int payablePrice;
+  final int totalPrice;
+  final int shippingCost;
 
   CartResponse.fromJson(Map<String, dynamic> json)
-      : productId = json['product_Id'],
-        cartItemId = json['cart_Item_id'],
-        count = json['count'];
+      : cartItem = CartItemEntity.parseJsonArray(
+    json['cart_items'],
+  ),
+        payablePrice= json['payable_price'],
+        totalPrice= json['total_price'],
+        shippingCost=json['shipping_cost'];
 }

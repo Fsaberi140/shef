@@ -10,6 +10,7 @@ import 'package:sheff_new/layout/userProfile.dart';
 import 'package:sheff_new/pages/auth/auth.dart';
 import 'package:sheff_new/pages/auth/auth.dart';
 import 'package:sheff_new/pages/booksScreen.dart';
+import 'package:sheff_new/pages/cart/cart.dart';
 import 'package:sheff_new/pages/home/home.dart';
 import 'package:sheff_new/pages/ordersScreen.dart';
 import 'package:sheff_new/pages/product/details.dart';
@@ -105,7 +106,6 @@ class MyApp extends StatelessWidget {
       ],
       locale: const Locale('en'),
       theme: ThemeData(
-        primarySwatch: Colors.blue,
         primaryColor: Colors.deepOrange,
         inputDecorationTheme: InputDecorationTheme(
           focusedBorder: OutlineInputBorder(
@@ -156,7 +156,7 @@ class MyApp extends StatelessWidget {
           caption: TextStyle(fontFamily: defaultFontFamily, fontSize: 15),
         ),
       ),
-      home:  Home(),
+      home:  RootScreen(),
     );
   }
 }

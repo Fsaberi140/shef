@@ -13,6 +13,7 @@ class CommentList extends StatelessWidget {
   const CommentList({Key? key, required this.productId}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData= Theme.of(context);
     return BlocProvider(
       create: (context) {
         final CommentListBloc bloc = CommentListBloc(
@@ -31,9 +32,9 @@ class CommentList extends StatelessWidget {
                 }, childCount: state.comments.length),
               );
             } else if (state is CommentListLoading) {
-              return const SliverToBoxAdapter(
+              return SliverToBoxAdapter(
                 child: Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(color:themeData.primaryColor ,),
                 ),
               );
             } else if (state is CommentListError) {

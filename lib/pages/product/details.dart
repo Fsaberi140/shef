@@ -23,28 +23,28 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
- StreamSubscription <ProductState>? stateSubscription;
+  StreamSubscription<ProductState>? stateSubscription;
+
   @override
   void dispose() {
     stateSubscription?.cancel();
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
     return BlocProvider<ProductBloc>(
       create: (context) {
         final bloc = ProductBloc(cartRepository);
-       stateSubscription= bloc.stream.listen((state) {
+        stateSubscription = bloc.stream.listen((state) {
           if (state is ProductAddToCartSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(AppLocalizations.of(context)!.successfully)));}
-            else if (state is ProductAddToCartError){
-            ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.exception.message)));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(AppLocalizations.of(context)!.successfully)));
+          } else if (state is ProductAddToCartError) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(state.exception.message)));
           }
-
         });
         return bloc;
       },
@@ -55,6 +55,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           child: BlocBuilder<ProductBloc, ProductState>(
             builder: (context, state) {
               return FloatingActionButton.extended(
+                backgroundColor: Colors.black,
                 onPressed: () {
                   BlocProvider.of<ProductBloc>(context)
                       .add(CartAddButtonClick(widget.product.id));
@@ -72,7 +73,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           slivers: [
             SliverAppBar(
               expandedHeight: MediaQuery.of(context).size.width * 0.8,
-              flexibleSpace: ImageLoadingService(imageUrl: widget.product.imageUrl),
+              flexibleSpace:
+                  ImageLoadingService(imageUrl: widget.product.imageUrl),
               foregroundColor: Colors.black87,
               // LightThemeColors.primaryTextColor,
               actions: [
@@ -123,7 +125,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
                         TextButton(
-                            onPressed: () {}, child: Text(AppLocalizations.of(context)!.reviews))
+                            onPressed: () {},
+                            child: Text(AppLocalizations.of(context)!.register,
+                                style: themeData.textTheme.caption))
                       ],
                     ),
                   ],

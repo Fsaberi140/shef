@@ -1,17 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:sheff_new/data/cart_item.dart';
+import 'package:sheff_new/data/add_to_cart_response.dart';
 import 'package:sheff_new/data/cart_response.dart';
 
 abstract class ICartDataSource {
-  Future<CartResponse> add(int productId);
+  Future<AddToCartResponse> add(int productId);
 
-  Future<CartResponse> changeCount(int cartItemId, int count);
+  Future<AddToCartResponse> changeCount(int cartItemId, int count);
 
   Future<void> delete(int cartItemId);
 
   Future<int> count();
 
-  Future<List<CartItemEntity>> getAll();
+  Future<CartResponse> getAll();
 }
 
 class CartRemoteDataSource implements ICartDataSource {
@@ -20,17 +21,17 @@ class CartRemoteDataSource implements ICartDataSource {
   CartRemoteDataSource(this.httpClient);
 
   @override
-  Future<CartResponse> add(int productId) async {
+  Future<AddToCartResponse> add(int productId) async {
     final response =
         await httpClient.post('cart/add', data: {"product_id": productId});
 
-    return CartResponse.fromJson(response.data);
+    return AddToCartResponse.fromJson(response.data);
     //   // TODO: implement add
     //   throw UnimplementedError();
   }
 
   @override
-  Future<CartResponse> changeCount(int cartItemId, int count) {
+  Future<AddToCartResponse> changeCount(int cartItemId, int count) {
     // TODO: implement changeCount
     throw UnimplementedError();
   }
@@ -48,8 +49,9 @@ class CartRemoteDataSource implements ICartDataSource {
   }
 
   @override
-  Future<List<CartItemEntity>> getAll() {
-    // TODO: implement getAll
-    throw UnimplementedError();
+  Future<CartResponse> getAll() async{
+   final response=await httpClient.get('cart_list');
+   return CartResponse.fromJson(response.data);
   }
+
 }
