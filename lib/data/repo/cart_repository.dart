@@ -19,21 +19,21 @@ class CartRepository implements ICartRepository {
 
   @override
   Future<AddToCartResponse> changeCount(int cartItemId, int count) {
-  return dataSource.changeCount(cartItemId, count);
+    return dataSource.changeCount(cartItemId, count);
   }
 
   @override
   Future<int> count() {
-   return dataSource.count();
+    return dataSource.count();
   }
 
   @override
   Future<void> delete(int cartItemId) {
-return dataSource.delete(cartItemId);
+    return dataSource.delete(cartItemId);
   }
 
   @override
   Future<CartResponse> getAll() {
-return dataSource.getAll();
+    return dataSource.getAll();
   }
 }

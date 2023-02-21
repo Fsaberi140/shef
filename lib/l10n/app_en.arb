@@ -198,6 +198,8 @@
     "view": "view all",
     "successfully": "َAdded Successfully",
     "register": "Register a Comment",
-    "current": "current cart state is not valid"
+    "current": "current cart state is not valid",
+    "cart": "Cart",
+    "account" : "Login to your account"
 
 }

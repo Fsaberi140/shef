@@ -1,4 +1,4 @@
-import 'package:sheff_new/data/foodsData.dart';
+import 'package:sheff_new/data/productTest.dart';
 
 class CartItemEntity {
   final ProductEntity product;

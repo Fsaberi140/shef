@@ -10,7 +10,6 @@ const int booksIndex = 1;
 const int cartIndex = 2;
 const int profileIndex = 3;
 
-
 class RootScreen extends StatefulWidget {
   const RootScreen({Key? key}) : super(key: key);
 
@@ -27,7 +26,6 @@ class _RootScreenState extends State<RootScreen> {
   final GlobalKey<NavigatorState> _cartKey = GlobalKey();
   final GlobalKey<NavigatorState> _profileKey = GlobalKey();
 
-
   late final map = {
     homeIndex: _homeKey,
     booksIndex: _booksKey,
@@ -37,7 +35,7 @@ class _RootScreenState extends State<RootScreen> {
 
   Future<bool> _onWillPop() async {
     final NavigatorState currentSelectedTabNavigatorState =
-    map[selectedScreenIndex]!.currentState!;
+        map[selectedScreenIndex]!.currentState!;
     if (currentSelectedTabNavigatorState.canPop()) {
       currentSelectedTabNavigatorState.pop();
       return false;
@@ -61,20 +59,32 @@ class _RootScreenState extends State<RootScreen> {
               _navigator(_homeKey, homeIndex, const Home()),
               _navigator(_booksKey, booksIndex, BooksScreen()),
               _navigator(_cartKey, cartIndex, const CartScreen()),
-              _navigator(_profileKey, profileIndex, const UserProfile() ),
+              _navigator(_profileKey, profileIndex, const UserProfile()),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(
-            type : BottomNavigationBarType.fixed,
-            items:  [
+            type: BottomNavigationBarType.fixed,
+            items: [
               BottomNavigationBarItem(
-                  icon: const Icon(Icons.home,), label: AppLocalizations.of(context)!.home),
+                  icon: const Icon(
+                    Icons.home,
+                  ),
+                  label: AppLocalizations.of(context)!.home),
               BottomNavigationBarItem(
-                  icon: const Icon(Icons.bookmark_added,), label:AppLocalizations.of(context)!.books ),
+                  icon: const Icon(
+                    Icons.bookmark_added,
+                  ),
+                  label: AppLocalizations.of(context)!.books),
               BottomNavigationBarItem(
-                  icon: const Icon(Icons.shopping_cart_rounded,), label:AppLocalizations.of(context)!.orders ),
+                  icon: const Icon(
+                    Icons.shopping_cart_rounded,
+                  ),
+                  label: AppLocalizations.of(context)!.cart),
               BottomNavigationBarItem(
-                  icon: const Icon(Icons.person,), label: AppLocalizations.of(context)!.profile),
+                  icon: const Icon(
+                    Icons.person,
+                  ),
+                  label: AppLocalizations.of(context)!.profile),
             ],
             unselectedItemColor: Colors.white60,
             backgroundColor: Colors.deepOrange,
@@ -96,9 +106,9 @@ class _RootScreenState extends State<RootScreen> {
     return key.currentState == null && selectedScreenIndex != index
         ? Container()
         : Navigator(
-        key: key,
-        onGenerateRoute: (settings) => MaterialPageRoute(
-            builder: (context) => Offstage(
-                offstage: selectedScreenIndex != index, child: child)));
+            key: key,
+            onGenerateRoute: (settings) => MaterialPageRoute(
+                builder: (context) => Offstage(
+                    offstage: selectedScreenIndex != index, child: child)));
   }
 }

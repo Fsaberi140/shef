@@ -32,9 +32,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           .copyWith(color: Colors.black87)),
                   const SizedBox(height: 10),
                   Container(
-                    // alignment: Alignment.center,
                     width: MediaQuery.of(context).size.width - 30,
-                    height: 157,
                     decoration: BoxDecoration(
                         color: Colors.deepOrange[50],
                         boxShadow: const [

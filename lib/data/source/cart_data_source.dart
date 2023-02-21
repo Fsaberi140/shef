@@ -50,7 +50,8 @@ class CartRemoteDataSource implements ICartDataSource {
 
   @override
   Future<CartResponse> getAll() async{
-   final response=await httpClient.get('cart_list');
+   final response=await httpClient.get('cart/list');
+   print(response);
    return CartResponse.fromJson(response.data);
   }
 
