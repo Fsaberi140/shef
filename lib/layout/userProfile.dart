@@ -209,7 +209,9 @@ class _UserProfileState extends State<UserProfile> {
                     size: 30,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.login,
+                    AppLocalizations.of(context)!.login
+                    // signOut
+                    ,
                     style:
                         themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),

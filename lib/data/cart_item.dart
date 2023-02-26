@@ -4,6 +4,7 @@ class CartItemEntity {
   final ProductEntity product;
   final int id;
   final int count;
+  bool deleteItemLoading = false;
 
   CartItemEntity(this.product, this.id, this.count);
 

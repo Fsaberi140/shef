@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sheff_new/data/repo/auth_repository.dart';
 import 'package:sheff_new/pages/booksScreen.dart';
+import 'package:sheff_new/pages/profileScreen.dart';
 import '../layout/userProfile.dart';
 import 'cart/cart.dart';
 import 'home/home.dart';
@@ -59,7 +61,15 @@ class _RootScreenState extends State<RootScreen> {
               _navigator(_homeKey, homeIndex, const Home()),
               _navigator(_booksKey, booksIndex, BooksScreen()),
               _navigator(_cartKey, cartIndex, const CartScreen()),
-              _navigator(_profileKey, profileIndex, const UserProfile()),
+              _navigator(_profileKey, profileIndex, const UserProfile()
+                //   Column(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                // children: [
+                //   ElevatedButton(onPressed: (){
+                //     authRepository.signOut();
+                //   }, child: Text('signOut'))
+                // ],
+              ),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(

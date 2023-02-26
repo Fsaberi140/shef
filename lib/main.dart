@@ -106,6 +106,10 @@ class MyApp extends StatelessWidget {
       ],
       locale: const Locale('en'),
       theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          backgroundColor: themeData.primaryColor,
+          foregroundColor: Colors.white
+        ),
         primaryColor: Colors.deepOrange,
         inputDecorationTheme: InputDecorationTheme(
           focusedBorder: OutlineInputBorder(
@@ -156,7 +160,7 @@ class MyApp extends StatelessWidget {
           caption: TextStyle(fontFamily: defaultFontFamily, fontSize: 15),
         ),
       ),
-      home:  OrdersScreen(),
+      home:  RootScreen(),
     );
   }
 }

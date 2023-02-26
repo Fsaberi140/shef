@@ -82,6 +82,8 @@ flutter:
 
     - assets/img/foodData/
 
+    - assets/img/empty/
+
     - assets/img/chefData/
 
     - assets/img/types/

@@ -18,16 +18,59 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         final authInfo = event.authInfo;
         if (authInfo == null || authInfo.accessToken.isEmpty) {
           emit(CartAuthRequired());
-        } else {
+        }
+        else {
           try {
             emit(CartLoading());
             final result = await cartRepository.getAll();
-            emit(CartSuccess(result));
+            if (result.cartItems.isEmpty) {
+              emit(CartEmpty());
+            } else {
+              emit(CartSuccess(result));
+            }
           } catch (e) {
             emit(CartError(AppException()));
           }
         }
-      } else if (event is CartDeleteButton) {}
+      } else if (event is CartDeleteButtonClicked) {
+        try {
+          if (state is CartSuccess) {
+            final successState = (state as CartSuccess);
+            final cartItem = successState.cartResponse.cartItems
+                .firstWhere((element) => element.id == event.cartItemId);
+            cartItem.deleteItemLoading = true;
+            emit(successState);
+          }
+
+          await cartRepository.delete(event.cartItemId);
+          if (state is CartSuccess) {
+            final successState = (state as CartSuccess);
+            successState.cartResponse.cartItems
+                .removeWhere((element) => element.id == event.cartItemId);
+            emit(successState);
+          }
+
+        } catch (e) {
+
+
+        }
+      }
+      else if (event is CartAuthInfoChanged) {
+        if (event.authInfo == null || event.authInfo!.accessToken.isEmpty) {
+          emit(CartAuthRequired());
+        }
+        else {
+          if (state is CartAuthRequired) {
+            try {
+              emit(CartLoading());
+              final result = await cartRepository.getAll();
+              emit(CartSuccess(result));
+            } catch (e) {
+              emit(CartError(AppException()));
+            }
+          }
+        }
+      }
     });
   }
 }
