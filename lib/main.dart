@@ -11,6 +11,7 @@ import 'package:sheff_new/pages/auth/auth.dart';
 import 'package:sheff_new/pages/auth/auth.dart';
 import 'package:sheff_new/pages/booksScreen.dart';
 import 'package:sheff_new/pages/cart/cart.dart';
+import 'package:sheff_new/pages/cart/cart_item.dart';
 import 'package:sheff_new/pages/home/home.dart';
 import 'package:sheff_new/pages/ordersScreen.dart';
 import 'package:sheff_new/pages/product/details.dart';
@@ -18,6 +19,7 @@ import 'package:sheff_new/pages/product/product.dart';
 import 'package:sheff_new/pages/productDetails.dart';
 import 'package:sheff_new/pages/root.dart';
 import 'package:sheff_new/pages/splash.dart';
+import 'package:sheff_new/theme.dart';
 import 'package:sheff_new/widgets/slider.dart';
 import 'layout/drawer.dart';
 import 'pages/aboutUs.dart';
@@ -63,11 +65,9 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
     );
-    const primaryTextColor = Colors.black87;
-    const secondaryTextColor = Color(0xff757575);
-    const thirdTextColor = Colors.white;
-    const primaryColor = Colors.deepOrange;
-    const secondaryColor = Color(0xFFFBE9E7);
+
+    // const thirdTextColor = Colors.white;
+
     return MaterialApp(
       routes: {
         '/start': (context) => const StartScreen(),
@@ -90,7 +90,6 @@ class MyApp extends StatelessWidget {
         "/books": (context) => BooksScreen(),
         "/profileDrawer": (context) => const UserProfile(),
         "/product": (context) => ProductDetails(),
-
       },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -107,9 +106,8 @@ class MyApp extends StatelessWidget {
       locale: const Locale('en'),
       theme: ThemeData(
         appBarTheme: AppBarTheme(
-          backgroundColor: themeData.primaryColor,
-          foregroundColor: Colors.white
-        ),
+            backgroundColor: themeData.primaryColor,
+            foregroundColor: Colors.white),
         primaryColor: Colors.deepOrange,
         inputDecorationTheme: InputDecorationTheme(
           focusedBorder: OutlineInputBorder(
@@ -118,49 +116,53 @@ class MyApp extends StatelessWidget {
           labelStyle: themeData.textTheme.subtitle2,
         ),
         textTheme: const TextTheme(
-          headline6: TextStyle(
-            fontFamily: defaultFontFamily,
-            fontWeight: FontWeight.w600,
-            color: thirdTextColor,
-            fontSize: 22,
-          ),
           headline4: TextStyle(
             fontFamily: defaultFontFamily,
             fontWeight: FontWeight.bold,
-            color: primaryColor,
+            color: LightThemeColors.primaryColor,
             fontSize: 34,
           ),
           headline5: TextStyle(
             fontFamily: defaultFontFamily,
+            color: LightThemeColors.primaryTextColor,
             fontWeight: FontWeight.bold,
-            color: thirdTextColor,
             fontSize: 26,
           ),
-          headline3: TextStyle(fontFamily: defaultFontFamily),
+          headline6: TextStyle(
+            fontFamily: defaultFontFamily,
+            color: LightThemeColors.primaryTextColor,
+            fontWeight: FontWeight.w600,
+            fontSize: 22,
+          ),
           subtitle1: TextStyle(
             fontFamily: defaultFontFamily,
             fontSize: 19,
-            color: primaryTextColor,
+            color: LightThemeColors.primaryTextColor,
           ),
           bodyText1: TextStyle(
             fontFamily: defaultFontFamily,
-            color: secondaryTextColor,
+            color: LightThemeColors.secondaryTextColor,
             fontSize: 19,
           ),
           subtitle2: TextStyle(
             fontFamily: defaultFontFamily,
-            color: secondaryTextColor,
+            color: LightThemeColors.secondaryTextColor,
             fontSize: 17,
           ),
           bodyText2: TextStyle(
             fontFamily: defaultFontFamily,
-            color: primaryTextColor,
+            color: LightThemeColors.primaryTextColor,
             fontSize: 17,
           ),
           caption: TextStyle(fontFamily: defaultFontFamily, fontSize: 15),
         ),
+        colorScheme: const ColorScheme.light(
+          primary: LightThemeColors.primaryColor,
+          secondary: LightThemeColors.secondaryColor,
+          onSecondary: Colors.white,
+        ),
       ),
-      home:  RootScreen(),
+      home: RootScreen(),
     );
   }
 }

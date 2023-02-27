@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/layout/drawer.dart';
 
-
 class OrdersScreen extends StatefulWidget {
   const OrdersScreen({Key? key}) : super(key: key);
 
@@ -28,8 +27,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 children: [
                   Text(AppLocalizations.of(context)!.orders,
                       textAlign: TextAlign.left,
-                      style: themeData.textTheme.headline6!
-                          .copyWith(color: Colors.black87)),
+                      style: themeData.textTheme.headline6),
                   const SizedBox(height: 10),
                   Container(
                     width: MediaQuery.of(context).size.width - 30,
@@ -85,7 +83,9 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                 child: Text(
                                     AppLocalizations.of(context)!.invoice,
                                     style: themeData.textTheme.bodyText1!
-                                        .copyWith(color: Colors.white)),
+                                        .copyWith(
+                                            color: themeData
+                                                .colorScheme.onSecondary)),
                                 onPressed: () {
                                   Navigator.pushNamed(context, "/login");
                                 },
@@ -111,7 +111,9 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                 child: Text(
                                     AppLocalizations.of(context)!.reOrder,
                                     style: themeData.textTheme.bodyText1!
-                                        .copyWith(color: Colors.white)),
+                                        .copyWith(
+                                            color: themeData
+                                                .colorScheme.onSecondary)),
                                 onPressed: () {
                                   Navigator.pushNamed(context, "/login");
                                 },
@@ -194,7 +196,9 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                 child: Text(
                                     AppLocalizations.of(context)!.invoice,
                                     style: themeData.textTheme.bodyText1!
-                                        .copyWith(color: Colors.white)),
+                                        .copyWith(
+                                            color: themeData
+                                                .colorScheme.onSecondary)),
                                 onPressed: () {
                                   Navigator.pushNamed(context, "/login");
                                 },
@@ -220,7 +224,9 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                 child: Text(
                                     AppLocalizations.of(context)!.reOrder,
                                     style: themeData.textTheme.bodyText1!
-                                        .copyWith(color: Colors.white)),
+                                        .copyWith(
+                                            color: themeData
+                                                .colorScheme.onSecondary)),
                                 onPressed: () {
                                   Navigator.pushNamed(context, "/login");
                                 },

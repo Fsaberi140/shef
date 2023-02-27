@@ -144,7 +144,7 @@ class DrawerWidget extends StatelessWidget {
                 InkWell(
                   onTap: () {},
                   child: Text(
-                    AppLocalizations.of(context)!.logOut,
+                    AppLocalizations.of(context)!.signOut,
                     style:
                     themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),

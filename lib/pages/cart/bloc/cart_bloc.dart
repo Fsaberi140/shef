@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:sheff_new/common/exceptions.dart';
 import 'package:sheff_new/data/authInfo.dart';
 import 'package:sheff_new/data/cart_response.dart';
@@ -39,7 +40,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
             final cartItem = successState.cartResponse.cartItems
                 .firstWhere((element) => element.id == event.cartItemId);
             cartItem.deleteItemLoading = true;
-            emit(successState);
+            emit(CartSuccess(successState.cartResponse));
           }
 
           await cartRepository.delete(event.cartItemId);
@@ -47,10 +48,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
             final successState = (state as CartSuccess);
             successState.cartResponse.cartItems
                 .removeWhere((element) => element.id == event.cartItemId);
-            emit(successState);
+            if (successState.cartResponse.cartItems.isEmpty){
+              emit (CartEmpty());
+            }else{
+            emit(CartSuccess(successState.cartResponse));}
           }
 
         } catch (e) {
+          debugPrint(e.toString());
 
 
         }

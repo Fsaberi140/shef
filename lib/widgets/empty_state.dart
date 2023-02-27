@@ -21,7 +21,7 @@ class EmptyView extends StatelessWidget {
         children: [
           image,
           Padding(
-            padding: const EdgeInsets.fromLTRB(52, 34, 52, 16),
+            padding: const EdgeInsets.fromLTRB(52, 30, 52, 16),
             child: Text(
               message,
               style: themeData.textTheme.subtitle1,

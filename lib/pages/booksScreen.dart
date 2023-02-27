@@ -22,8 +22,8 @@ class BooksScreen extends StatelessWidget {
             children: [
               Text(AppLocalizations.of(context)!.list,
                   textAlign: TextAlign.left,
-                  style: themeData.textTheme.headline6!
-                      .copyWith(color: Colors.black87)),
+                  style: themeData.textTheme.headline6
+                     ),
               const SizedBox(height: 10),
               Container(
                 width: MediaQuery.of(context).size.width - 20,
@@ -102,7 +102,7 @@ class BooksScreen extends StatelessWidget {
                           ElevatedButton(
                             child: Text(AppLocalizations.of(context)!.detail,
                                 style: themeData.textTheme.bodyText1!
-                                    .copyWith(color: Colors.white)),
+                                    .copyWith(color: themeData.colorScheme.onSecondary)),
                             onPressed: () {
                               Navigator.pushNamed(context, "/login");
                             },
@@ -124,7 +124,7 @@ class BooksScreen extends StatelessWidget {
                           ElevatedButton(
                             child: Text(AppLocalizations.of(context)!.remove,
                                 style: themeData.textTheme.bodyText1!
-                                    .copyWith(color: Colors.white)),
+                                    .copyWith(color: themeData.colorScheme.onSecondary)),
                             onPressed: () {
                               Navigator.pushNamed(context, "/login");
                             },
@@ -227,7 +227,7 @@ class BooksScreen extends StatelessWidget {
                           ElevatedButton(
                             child: Text(AppLocalizations.of(context)!.detail,
                                 style: themeData.textTheme.bodyText1!
-                                    .copyWith(color: Colors.white)),
+                                    .copyWith(color: themeData.colorScheme.onSecondary)),
                             onPressed: () {
                               Navigator.pushNamed(context, "/login");
                             },
@@ -249,7 +249,7 @@ class BooksScreen extends StatelessWidget {
                           ElevatedButton(
                             child: Text(AppLocalizations.of(context)!.remove,
                                 style: themeData.textTheme.bodyText1!
-                                    .copyWith(color: Colors.white)),
+                                    .copyWith(color: themeData.colorScheme.onSecondary)),
                             onPressed: () {
                               Navigator.pushNamed(context, "/login");
                             },

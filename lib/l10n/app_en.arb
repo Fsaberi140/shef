@@ -192,7 +192,7 @@
     "biscuit": "biscuit",
     "salt": "salt",
     "recipes": "Recipes",
-    "signout": "Sign Out",
+    "signOut": "Sign Out",
     "refresh": "Refresh",
     "sweets": "Sweets",
     "view": "view all",
@@ -202,6 +202,7 @@
     "cart": "Cart",
     "shopping": "To view the shopping cart, login to your account",
     "account" : "Login to your account",
-    "empty": "Your cart is empty"
-
+    "empty": "Your cart is empty",
+    "removeCart": "Remove from cart",
+    "totalPrice": "Total Price"
 }

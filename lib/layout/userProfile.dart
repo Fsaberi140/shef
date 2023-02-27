@@ -2,18 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/pages/profileScreen.dart';
 
-import '../pages/auth/auth.dart';
+import '../data/repo/auth_repository.dart';
 import '../pages/booksScreen.dart';
 import '../pages/ordersScreen.dart';
 
-class UserProfile extends StatefulWidget {
+class UserProfile extends StatelessWidget {
   const UserProfile({Key? key}) : super(key: key);
 
-  @override
-  State<UserProfile> createState() => _UserProfileState();
-}
-
-class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
@@ -23,12 +18,6 @@ class _UserProfileState extends State<UserProfile> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            IconButton(
-              onPressed: () => {
-                Navigator.pop(context),
-              },
-              icon: const Icon(Icons.close, color: Colors.black, size: 30),
-            ),
             const SizedBox(height: 20),
             ClipRRect(
               borderRadius: BorderRadius.circular(60),
@@ -48,8 +37,7 @@ class _UserProfileState extends State<UserProfile> {
               onTap: () {
                 Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const ProfileScreen()));
+                        builder: (context) => const ProfileScreen()));
               },
               child: Row(
                 children: [
@@ -61,10 +49,10 @@ class _UserProfileState extends State<UserProfile> {
                   const SizedBox(
                     width: 10,
                   ),
-                   Text(
-                      AppLocalizations.of(context)!.profile,
-                      style: themeData.textTheme.subtitle1,
-                    ),
+                  Text(
+                    AppLocalizations.of(context)!.profile,
+                    style: themeData.textTheme.subtitle1,
+                  ),
                 ],
               ),
             ),
@@ -72,9 +60,7 @@ class _UserProfileState extends State<UserProfile> {
             InkWell(
               onTap: () {
                 Navigator.of(context, rootNavigator: true).push(
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            BooksScreen()));
+                    MaterialPageRoute(builder: (context) => BooksScreen()));
               },
               child: Row(
                 children: [
@@ -89,7 +75,7 @@ class _UserProfileState extends State<UserProfile> {
                   Text(
                     AppLocalizations.of(context)!.books,
                     style:
-                    themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
+                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
                 ],
               ),
@@ -99,8 +85,7 @@ class _UserProfileState extends State<UserProfile> {
               onTap: () {
                 Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const OrdersScreen()));
+                        builder: (context) => const OrdersScreen()));
               },
               child: Row(
                 children: [
@@ -115,7 +100,7 @@ class _UserProfileState extends State<UserProfile> {
                   Text(
                     AppLocalizations.of(context)!.orders,
                     style:
-                    themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
+                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
                 ],
               ),
@@ -124,10 +109,8 @@ class _UserProfileState extends State<UserProfile> {
             InkWell(
               onTap: () {
                 Navigator.of(context, rootNavigator: true).push(
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            ProfileScreen()));
-                          // AddressScreen
+                    MaterialPageRoute(builder: (context) => const ProfileScreen()));
+                // AddressScreen
               },
               child: Row(
                 children: [
@@ -142,7 +125,7 @@ class _UserProfileState extends State<UserProfile> {
                   Text(
                     AppLocalizations.of(context)!.delivery,
                     style:
-                    themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
+                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
                 ],
               ),
@@ -154,17 +137,18 @@ class _UserProfileState extends State<UserProfile> {
                 //     MaterialPageRoute(
                 //         builder: (context) =>
                 //             ProfileScreen()));
-                          // GiftScreen
+                // GiftScreen
               },
               child: Row(
-          children: [
-              Icon(Icons.card_giftcard_outlined,
-                  color: themeData.primaryColor, size: 30),
-              const SizedBox(width: 10),
-              Text(AppLocalizations.of(context)!.gift,
-                  style: themeData.textTheme.subtitle1!.copyWith(fontSize: 18)),
-          ],
-        ),
+                children: [
+                  Icon(Icons.card_giftcard_outlined,
+                      color: themeData.primaryColor, size: 30),
+                  const SizedBox(width: 10),
+                  Text(AppLocalizations.of(context)!.gift,
+                      style: themeData.textTheme.subtitle1!
+                          .copyWith(fontSize: 18)),
+                ],
+              ),
             ),
             const SizedBox(height: 20),
             InkWell(
@@ -173,7 +157,7 @@ class _UserProfileState extends State<UserProfile> {
                 //     MaterialPageRoute(
                 //         builder: (context) =>
                 //             const ProfileScreen()));
-                              // MassageScreen
+                // MassageScreen
               },
               child: Row(
                 children: [
@@ -196,10 +180,7 @@ class _UserProfileState extends State<UserProfile> {
             const SizedBox(height: 20),
             InkWell(
               onTap: () {
-                Navigator.of(context, rootNavigator: true).push(
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const AuthScreen()));
+                authRepository.signOut();
               },
               child: Row(
                 children: [
@@ -209,9 +190,7 @@ class _UserProfileState extends State<UserProfile> {
                     size: 30,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.login
-                    // signOut
-                    ,
+                    AppLocalizations.of(context)!.signOut,
                     style:
                         themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),

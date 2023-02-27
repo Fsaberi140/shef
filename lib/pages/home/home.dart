@@ -6,16 +6,22 @@ import '../../data/productTest.dart';
 import '../../common/utils.dart';
 import '../../data/repo/banner_repository.dart';
 import '../../data/repo/product_repository.dart';
+import '../../layout/drawer.dart';
 import '../../widgets/slider.dart';
 import '../error.dart';
 import '../product/product.dart';
 import '../searchScreen.dart';
 import 'bloc/home_bloc.dart';
 
-class Home extends StatelessWidget {
-  const Home({
-    Key? key,
-  }) : super(key: key);
+class Home extends StatefulWidget {
+  Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +35,7 @@ class Home extends StatelessWidget {
         return homeBloc;
       },
       child: Scaffold(
+        key: _key,
         appBar: _appBar(themeData, context),
         body: BlocBuilder<HomeBloc, HomeState>(builder: ((context, state) {
           if (state is HomeSuccess) {
@@ -45,13 +52,12 @@ class Home extends StatelessWidget {
                             children: [
                               ClipRRect(
                                   child: Image.asset(
-                                'assets/img/foods/food_1.jpg',
-                                width: 130,
-                              )),
+                                    'assets/img/foods/food_1.jpg',
+                                    width: 130,
+                                  )),
                               Text(
                                 AppLocalizations.of(context)!.foods,
-                                style: themeData.textTheme.headline6!
-                                    .copyWith(color: Colors.black87),
+                                style: themeData.textTheme.headline6,
                               ),
                             ],
                           ),
@@ -64,11 +70,8 @@ class Home extends StatelessWidget {
                                     'assets/img/sweets/sweet_1.jpg',
                                     width: 130,
                                   )),
-                              Text(
-                                AppLocalizations.of(context)!.sweets,
-                                style: themeData.textTheme.headline6!
-                                    .copyWith(color: Colors.black87),
-                              ),
+                              Text(AppLocalizations.of(context)!.sweets,
+                                  style: themeData.textTheme.headline6),
                             ],
                           ),
                         ],
@@ -84,7 +87,9 @@ class Home extends StatelessWidget {
                       );
 
                     case 2:
-                      return BannerSlider(banners: state.banners,);
+                      return BannerSlider(
+                        banners: state.banners,
+                      );
 
                     case 3:
                       return _HorizontalProductList(
@@ -103,7 +108,10 @@ class Home extends StatelessWidget {
                   }
                 });
           } else if (state is HomeLoading) {
-            return Center(child: CircularProgressIndicator(color: themeData.primaryColor,));
+            return Center(
+                child: CircularProgressIndicator(
+                  color: themeData.primaryColor,
+                ));
           } else if (state is HomeError) {
             return AppErrorWidget(
               exception: state.exception,
@@ -115,53 +123,47 @@ class Home extends StatelessWidget {
             throw Exception('state is not supported');
           }
         })),
+        drawer: const Drawer(
+          child: DrawerWidget(),
+        ),
       ),
     );
   }
-}
 
-AppBar _appBar(ThemeData themeData, BuildContext context) {
-  return AppBar(
-      backgroundColor: themeData.primaryColor,
-      elevation: 2,
-      shadowColor: themeData.primaryColor,
-      leading: IconButton(
-        onPressed: () => {
-          // _key.currentState!.openDrawer()
-        },
-        icon: const Icon(
-          Icons.menu,
-          color: Colors.white,
-          size: 26,
+  AppBar _appBar(ThemeData themeData, BuildContext context) {
+    return AppBar(
+        backgroundColor: themeData.primaryColor,
+        elevation: 2,
+        shadowColor: themeData.primaryColor,
+        leading: IconButton(
+          onPressed: () => {_key.currentState!.openDrawer()},
+          icon: const Icon(Icons.menu, color: Colors.white, size: 26),
         ),
-      ),
-      title: Padding(
-        padding: const EdgeInsets.only(left: 0),
-        child: InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, "/root");
-          },
-          child: Text(AppLocalizations.of(context)!.header,
-              style: themeData.textTheme.headline5!
-                  .copyWith(fontWeight: FontWeight.w600)),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 0),
+          child: InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, "/root");
+            },
+            child: Text(AppLocalizations.of(context)!.header,
+                style: themeData.textTheme.headline5!.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: themeData.colorScheme.onSecondary)),
+          ),
         ),
-      ),
-      actions: [
-        IconButton(
-            onPressed: () => {
-                  Navigator.of(context, rootNavigator: true).push(
-                      MaterialPageRoute(
-                          builder: (context) => const SearchScreen())),
-                },
-            icon: const Icon(
-              Icons.search,
-              color: Colors.white,
-              size: 26,
-            )),
-        const SizedBox(width: 10),
-      ]);
+        actions: [
+          IconButton(
+              onPressed: () =>
+              {
+                Navigator.of(context, rootNavigator: true).push(
+                    MaterialPageRoute(
+                        builder: (context) => const SearchScreen())),
+              },
+              icon: const Icon(Icons.search, color: Colors.white, size: 26)),
+          const SizedBox(width: 10),
+        ]);
+  }
 }
-
 class _HorizontalProductList extends StatelessWidget {
   final String title;
   final GestureTapCallback onTap;
