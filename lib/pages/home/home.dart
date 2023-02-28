@@ -25,6 +25,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     final ThemeData themeData = Theme.of(context);
     return BlocProvider(
       create: (context) {
@@ -56,7 +57,7 @@ class _HomeState extends State<Home> {
                                     width: 130,
                                   )),
                               Text(
-                                AppLocalizations.of(context)!.foods,
+                                localization.foods,
                                 style: themeData.textTheme.headline6,
                               ),
                             ],
@@ -70,7 +71,7 @@ class _HomeState extends State<Home> {
                                     'assets/img/sweets/sweet_1.jpg',
                                     width: 130,
                                   )),
-                              Text(AppLocalizations.of(context)!.sweets,
+                              Text(localization.sweets,
                                   style: themeData.textTheme.headline6),
                             ],
                           ),
@@ -93,13 +94,13 @@ class _HomeState extends State<Home> {
 
                     case 3:
                       return _HorizontalProductList(
-                        title: AppLocalizations.of(context)!.favorites,
+                        title: localization.favorites,
                         onTap: () {},
                         products: state.latestProducts,
                       );
                     case 4:
                       return _HorizontalProductList(
-                        title: AppLocalizations.of(context)!.newest,
+                        title: localization.newest,
                         onTap: () {},
                         products: state.popularProducts,
                       );

@@ -34,13 +34,15 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
+    final localization = AppLocalizations.of(context)!;
+
     return BlocProvider<ProductBloc>(
       create: (context) {
         final bloc = ProductBloc(cartRepository);
         stateSubscription = bloc.stream.listen((state) {
           if (state is ProductAddToCartSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text(AppLocalizations.of(context)!.successfully)));
+                content: Text(localization.successfully)));
           } else if (state is ProductAddToCartError) {
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(state.exception.message)));
@@ -63,7 +65,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 label: state is ProductAddToCartButtonLoading
                     ? CupertinoActivityIndicator(
                         color: Theme.of(context).primaryColor)
-                    : Text(AppLocalizations.of(context)!.add),
+                    : Text(localization.add),
               );
             },
           ),
@@ -121,12 +123,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          AppLocalizations.of(context)!.reviews,
+                          localization.reviews,
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
                         TextButton(
                             onPressed: () {},
-                            child: Text(AppLocalizations.of(context)!.register,
+                            child: Text(localization.register,
                                 style: themeData.textTheme.caption))
                       ],
                     ),

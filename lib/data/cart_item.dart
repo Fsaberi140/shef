@@ -3,8 +3,9 @@ import 'package:sheff_new/data/productTest.dart';
 class CartItemEntity {
   final ProductEntity product;
   final int id;
-  final int count;
+  int count;
   bool deleteItemLoading = false;
+  bool changeCountLoading = false;
 
   CartItemEntity(this.product, this.id, this.count);
 

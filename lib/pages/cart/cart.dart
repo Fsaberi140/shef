@@ -44,13 +44,14 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
+    final localization = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          AppLocalizations.of(context)!.cart,
+          localization.cart,
           style: themeData.textTheme.headline5!.copyWith(
               fontWeight: FontWeight.w500, color: themeData.primaryColor),
         ),
@@ -79,6 +80,14 @@ class _CartScreenState extends State<CartScreen> {
                     onDeleteButtonClick: () {
                       cartBloc?.add(CartDeleteButtonClicked(data.id));
                     },
+                    onDecreaseButtonClick: () {
+                      if (data.count > 1) {
+                        cartBloc?.add(CartDecreaseCountButtonClicked(data.id));
+                      }
+                    },
+                    onIncreaseButtonClick: () {
+                      cartBloc?.add(CartIncreaseCountButtonClicked(data.id));
+                    },
                   );
                 } else {
                   return PriceInfo(
@@ -94,13 +103,13 @@ class _CartScreenState extends State<CartScreen> {
             return Center(child: Text(state.exception.message));
           } else if (state is CartAuthRequired) {
             return EmptyView(
-              message: AppLocalizations.of(context)!.shopping,
+              message: localization.shopping,
               callToAction: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const AuthScreen()));
                 },
-                child: Text(AppLocalizations.of(context)!.account),
+                child: Text(localization.account),
                 style:
                     ElevatedButton.styleFrom(primary: themeData.primaryColor),
               ),
@@ -111,14 +120,14 @@ class _CartScreenState extends State<CartScreen> {
             );
           } else if (state is CartEmpty) {
             return EmptyView(
-              message: AppLocalizations.of(context)!.empty,
+              message: localization.empty,
               image: Image.asset(
                 'assets/img/empty/cart_empty_1.png',
                 width: 350,
               ),
             );
           } else {
-            throw Exception(AppLocalizations.of(context)!.current);
+            throw Exception(localization.current);
           }
         }),
       ),

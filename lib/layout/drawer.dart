@@ -9,6 +9,8 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
+    final localization = AppLocalizations.of(context)!;
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
@@ -16,8 +18,7 @@ class DrawerWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             IconButton(
-              onPressed: () =>
-              {
+              onPressed: () => {
                 Navigator.pop(context),
               },
               icon: const Icon(
@@ -26,32 +27,6 @@ class DrawerWidget extends StatelessWidget {
                 size: 30,
               ),
             ),
-            // const SizedBox(
-            //   height: 20,
-            // ),
-            // ClipRRect(
-            //   borderRadius: BorderRadius.circular(60),
-            //   child: Image.asset(
-            //     'assets/img/persons/person_1.jpg',
-            //     width: 70,
-            //     height: 70,
-            //   ),
-            // ),
-            // const SizedBox(
-            //   height: 20,
-            // ),
-            // Text(
-            //   AppLocalizations.of(context)!.zyazdani,
-            //   style:
-            //       themeData.textTheme.headline6!.copyWith(fontWeight:FontWeight.w600, color: Colors.black87),
-            // ),
-            // const SizedBox(
-            //   height: 10,
-            // ),
-            // Divider(
-            //   thickness: 3,
-            //   color: themeData.primaryColor,
-            // ),
             const SizedBox(
               height: 25,
             ),
@@ -67,20 +42,20 @@ class DrawerWidget extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => const AboutUsScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AboutUsScreen()));
                   },
                   child: Text(
-                    AppLocalizations.of(context)!.about,
+                    localization.about,
                     style:
-                    themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
+                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-                height: 20
-            ),
+            const SizedBox(height: 20),
             Row(
               children: [
                 Icon(
@@ -93,20 +68,20 @@ class DrawerWidget extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => const BecomeChefScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const BecomeChefScreen()));
                   },
                   child: Text(
-                    AppLocalizations.of(context)!.become,
+                    localization.become,
                     style:
-                    themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
+                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-                height: 20
-            ),
+            const SizedBox(height: 20),
             Row(
               children: [
                 Icon(
@@ -120,17 +95,14 @@ class DrawerWidget extends StatelessWidget {
                 InkWell(
                   onTap: () {},
                   child: Text(
-                    AppLocalizations.of(context)!.gift,
+                    localization.gift,
                     style:
-                    themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
+                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-                height: 20
-            ),
-
+            const SizedBox(height: 20),
             Row(
               children: [
                 Icon(
@@ -144,9 +116,9 @@ class DrawerWidget extends StatelessWidget {
                 InkWell(
                   onTap: () {},
                   child: Text(
-                    AppLocalizations.of(context)!.signOut,
+                    localization.signOut,
                     style:
-                    themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
+                        themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
                 ),
               ],

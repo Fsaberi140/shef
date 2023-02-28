@@ -10,6 +10,8 @@ class BooksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
+    final localization = AppLocalizations.of(context)!;
+
     return Scaffold(
       key: _key,
       appBar: _appBar(themeData, context),
@@ -20,7 +22,7 @@ class BooksScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(AppLocalizations.of(context)!.list,
+              Text(localization.list,
                   textAlign: TextAlign.left,
                   style: themeData.textTheme.headline6
                      ),
@@ -64,7 +66,7 @@ class BooksScreen extends StatelessWidget {
                               children: [
                                 Row(
                                   children: [
-                                    Text(AppLocalizations.of(context)!.asian),
+                                    Text(localization.asian),
                                   ],
                                 ),
                                 const SizedBox(height: 5),
@@ -74,7 +76,7 @@ class BooksScreen extends StatelessWidget {
                                   onTap: () {},
                                   child: Row(children: [
                                     Text(
-                                      AppLocalizations.of(context)!.no1,
+                                      localization.no1,
                                       style: themeData.textTheme.caption!
                                           .copyWith(color: Colors.black87),
                                     ),
@@ -100,7 +102,7 @@ class BooksScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           ElevatedButton(
-                            child: Text(AppLocalizations.of(context)!.detail,
+                            child: Text(localization.detail,
                                 style: themeData.textTheme.bodyText1!
                                     .copyWith(color: themeData.colorScheme.onSecondary)),
                             onPressed: () {
@@ -122,7 +124,7 @@ class BooksScreen extends StatelessWidget {
                           ),
                           const SizedBox(width: 15),
                           ElevatedButton(
-                            child: Text(AppLocalizations.of(context)!.remove,
+                            child: Text(localization.remove,
                                 style: themeData.textTheme.bodyText1!
                                     .copyWith(color: themeData.colorScheme.onSecondary)),
                             onPressed: () {
@@ -189,7 +191,7 @@ class BooksScreen extends StatelessWidget {
                               children: [
                                 Row(
                                   children: [
-                                    Text(AppLocalizations.of(context)!.asian),
+                                    Text(localization.asian),
                                   ],
                                 ),
                                 const SizedBox(height: 5),
@@ -199,7 +201,7 @@ class BooksScreen extends StatelessWidget {
                                   onTap: () {},
                                   child: Row(children: [
                                     Text(
-                                      AppLocalizations.of(context)!.no3,
+                                      localization.no3,
                                       style: themeData.textTheme.caption!
                                           .copyWith(color: Colors.black87),
                                     ),
@@ -225,7 +227,7 @@ class BooksScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           ElevatedButton(
-                            child: Text(AppLocalizations.of(context)!.detail,
+                            child: Text(localization.detail,
                                 style: themeData.textTheme.bodyText1!
                                     .copyWith(color: themeData.colorScheme.onSecondary)),
                             onPressed: () {
@@ -247,7 +249,7 @@ class BooksScreen extends StatelessWidget {
                           ),
                           const SizedBox(width: 15),
                           ElevatedButton(
-                            child: Text(AppLocalizations.of(context)!.remove,
+                            child: Text(localization.remove,
                                 style: themeData.textTheme.bodyText1!
                                     .copyWith(color: themeData.colorScheme.onSecondary)),
                             onPressed: () {
@@ -275,12 +277,12 @@ class BooksScreen extends StatelessWidget {
               ),
               const SizedBox(height: 50),
               Text(
-                AppLocalizations.of(context)!.doWant,
+         localization.doWant,
                 style: themeData.textTheme.subtitle1,
               ),
               const SizedBox(height: 10),
               Text(
-                AppLocalizations.of(context)!.introduce,
+                localization.introduce,
                 style: themeData.textTheme.bodyText2!.copyWith(
                     color: themeData.primaryColor, fontWeight: FontWeight.w500),
               ),

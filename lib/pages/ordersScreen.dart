@@ -14,6 +14,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     final ThemeData themeData = Theme.of(context);
     return Scaffold(
       key: _key,
@@ -25,7 +26,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(AppLocalizations.of(context)!.orders,
+                  Text(localization.orders,
                       textAlign: TextAlign.left,
                       style: themeData.textTheme.headline6),
                   const SizedBox(height: 10),
@@ -66,7 +67,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                     const SizedBox(height: 3),
                                     Row(
                                       children: [
-                                        Text(AppLocalizations.of(context)!
+                                        Text(localization
                                             .asian),
                                       ],
                                     ),
@@ -81,7 +82,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                             children: [
                               ElevatedButton(
                                 child: Text(
-                                    AppLocalizations.of(context)!.invoice,
+                                   localization.invoice,
                                     style: themeData.textTheme.bodyText1!
                                         .copyWith(
                                             color: themeData
@@ -109,7 +110,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                               const SizedBox(width: 15),
                               ElevatedButton(
                                 child: Text(
-                                    AppLocalizations.of(context)!.reOrder,
+                                    localization.reOrder,
                                     style: themeData.textTheme.bodyText1!
                                         .copyWith(
                                             color: themeData
@@ -179,8 +180,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                     const SizedBox(height: 3),
                                     Row(
                                       children: [
-                                        Text(AppLocalizations.of(context)!
-                                            .asian),
+                                        Text(localization.asian),
                                       ],
                                     ),
                                     const SizedBox(height: 3),
@@ -194,7 +194,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                             children: [
                               ElevatedButton(
                                 child: Text(
-                                    AppLocalizations.of(context)!.invoice,
+                                    localization.invoice,
                                     style: themeData.textTheme.bodyText1!
                                         .copyWith(
                                             color: themeData
@@ -222,7 +222,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                               const SizedBox(width: 15),
                               ElevatedButton(
                                 child: Text(
-                                    AppLocalizations.of(context)!.reOrder,
+                                    localization.reOrder,
                                     style: themeData.textTheme.bodyText1!
                                         .copyWith(
                                             color: themeData

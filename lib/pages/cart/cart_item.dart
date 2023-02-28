@@ -9,15 +9,21 @@ import '../image.dart';
 class CartItem extends StatelessWidget {
   const CartItem({
     Key? key,
-    required this.data, required this.onDeleteButtonClick,
+    required this.data,
+    required this.onDeleteButtonClick,
+    required this.onIncreaseButtonClick,
+    required this.onDecreaseButtonClick,
   }) : super(key: key);
 
   final CartItemEntity data;
   final GestureTapCallback onDeleteButtonClick;
+  final GestureTapCallback onIncreaseButtonClick;
+  final GestureTapCallback onDecreaseButtonClick;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
+    final localization = AppLocalizations.of(context)!;
     return Container(
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -59,11 +65,11 @@ class CartItem extends StatelessWidget {
                 Row(
                   children: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: onIncreaseButtonClick,
                         icon: const Icon(Icons.add_circle_outline_outlined)),
-                    Text(data.count.toString()),
+                    data.changeCountLoading? CupertinoActivityIndicator(color: themeData.primaryColor,):Text(data.count.toString()),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: onDecreaseButtonClick,
                         icon: const Icon(Icons.remove_circle_outline_outlined)),
                   ],
                 ),
@@ -80,9 +86,9 @@ class CartItem extends StatelessWidget {
                 : TextButton(
                     onPressed: onDeleteButtonClick,
                     child: Text(
-                      AppLocalizations.of(context)!.removeCart,
+                      localization.removeCart,
                       style: themeData.textTheme.subtitle2!
-                          .copyWith(color: Color(0xff262A35)),
+                          .copyWith(color: const Color(0xff262A35)),
                     ))
           ],
         ),

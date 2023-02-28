@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 const defaultScrollPhysics = BouncingScrollPhysics();
 
 extension PriceLabel on int {
-  String get withPriceLabel => '$this تومان';
+  String get withPriceLabel =>
+      this > 0 ? '$this' : 'Free';
 }

@@ -23,6 +23,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     final ThemeData themeData = Theme.of(context);
     return Theme(
       data: themeData.copyWith(
@@ -85,8 +86,8 @@ class _AuthScreenState extends State<AuthScreen> {
                         children: [
                           Text(
                             state.isLoginMode
-                                ? AppLocalizations.of(context)!.login
-                                : AppLocalizations.of(context)!.signUp,
+                                ? localization.login
+                                : localization.signUp,
                             style: themeData.textTheme.headline4,
                           ),
                           const SizedBox(height: 35),
@@ -117,8 +118,8 @@ class _AuthScreenState extends State<AuthScreen> {
                                     ))
                                 : Text(
                                     state.isLoginMode
-                                        ? AppLocalizations.of(context)!.login
-                                        : AppLocalizations.of(context)!.signUp,
+                                        ? localization.login
+                                        : localization.signUp,
                                     style: themeData.textTheme.headline6,
                                   ),
 
@@ -138,15 +139,15 @@ class _AuthScreenState extends State<AuthScreen> {
                               children: [
                                 Text(
                                   state.isLoginMode
-                                      ? AppLocalizations.of(context)!.not
-                                      : AppLocalizations.of(context)!.have,
+                                      ? localization.not
+                                      : localization.have,
                                   style: themeData.textTheme.bodyText1!
                                       .apply(color: Colors.black87),
                                 ),
                                 Text(
                                   state.isLoginMode
-                                      ? AppLocalizations.of(context)!.signUp
-                                      : AppLocalizations.of(context)!.login,
+                                      ? localization.signUp
+                                      : localization.login,
                                   style: themeData.textTheme.bodyText1!
                                       .copyWith(
                                           fontWeight: FontWeight.w500,
@@ -160,7 +161,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             const Expanded(child: Divider(thickness: 2)),
                             const SizedBox(width: 10),
                             Text(
-                              AppLocalizations.of(context)!.or,
+                              localization.or,
                               style: themeData.textTheme.subtitle1!
                                   .apply(color: Colors.black87),
                             ),
@@ -169,7 +170,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           ]),
                           const SizedBox(height: 20),
                           Text(
-                            AppLocalizations.of(context)!.orWith,
+                            localization.orWith,
                             style: themeData.textTheme.subtitle1!
                                 .copyWith(fontWeight: FontWeight.w500),
                           ),

@@ -204,5 +204,8 @@
     "account" : "Login to your account",
     "empty": "Your cart is empty",
     "removeCart": "Remove from cart",
-    "totalPrice": "Total Price"
+    "totalPrice": "Total Price",
+    "shipping": "Shipping Cart",
+    "Payable": "Payable Price",
+    "free": "Free"
 }

@@ -12,6 +12,8 @@ class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
+    final localization = AppLocalizations.of(context)!;
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
@@ -26,7 +28,7 @@ class UserProfile extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              AppLocalizations.of(context)!.zyazdani,
+              localization.zyazdani,
               style: themeData.textTheme.headline6!
                   .copyWith(fontWeight: FontWeight.w600, color: Colors.black87),
             ),
@@ -50,7 +52,7 @@ class UserProfile extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.profile,
+                    localization.profile,
                     style: themeData.textTheme.subtitle1,
                   ),
                 ],
@@ -73,7 +75,7 @@ class UserProfile extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.books,
+                    localization.books,
                     style:
                         themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
@@ -98,7 +100,7 @@ class UserProfile extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.orders,
+                    localization.orders,
                     style:
                         themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
@@ -123,7 +125,7 @@ class UserProfile extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.delivery,
+                    localization.delivery,
                     style:
                         themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
@@ -144,7 +146,7 @@ class UserProfile extends StatelessWidget {
                   Icon(Icons.card_giftcard_outlined,
                       color: themeData.primaryColor, size: 30),
                   const SizedBox(width: 10),
-                  Text(AppLocalizations.of(context)!.gift,
+                  Text(localization.gift,
                       style: themeData.textTheme.subtitle1!
                           .copyWith(fontSize: 18)),
                 ],
@@ -170,7 +172,7 @@ class UserProfile extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.message,
+                    localization.message,
                     style:
                         themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
@@ -190,7 +192,7 @@ class UserProfile extends StatelessWidget {
                     size: 30,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.signOut,
+                    localization.signOut,
                     style:
                         themeData.textTheme.subtitle1!.copyWith(fontSize: 18),
                   ),
