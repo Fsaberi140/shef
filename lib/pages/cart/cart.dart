@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sheff_new/common/utils.dart';
@@ -22,6 +25,8 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   CartBloc? cartBloc;
+  StreamSubscription? stateStreamSubscription;
+  bool stateIsSuccess = false;
 
   @override
   void initState() {
@@ -56,9 +61,28 @@ class _CartScreenState extends State<CartScreen> {
               fontWeight: FontWeight.w500, color: themeData.primaryColor),
         ),
       ),
+      floatingActionButton: Visibility(
+        visible: stateIsSuccess,
+        child: Container(
+          margin: const EdgeInsets.only(left: 48, right: 48),
+          width: MediaQuery.of(context).size.width,
+          child: FloatingActionButton.extended(
+              onPressed: () {}, label: Text(localization.payment),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: BlocProvider<CartBloc>(
         create: (context) {
           final bloc = CartBloc(cartRepository);
+          stateStreamSubscription= bloc.stream.listen((state) {
+              setState(() {
+                stateIsSuccess= state is CartSuccess;
+              });
+
+          });
+
+
           cartBloc = bloc;
           bloc.add(CartStarted(AuthRepository.authChangeNotifier.value));
           return bloc;
@@ -72,6 +96,7 @@ class _CartScreenState extends State<CartScreen> {
             ));
           } else if (state is CartSuccess) {
             return ListView.builder(
+              padding: const EdgeInsets.only(bottom: 60),
               itemBuilder: (context, index) {
                 if (index < state.cartResponse.cartItems.length) {
                   final data = state.cartResponse.cartItems[index];

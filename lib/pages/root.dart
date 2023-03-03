@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sheff_new/data/repo/auth_repository.dart';
+import 'package:sheff_new/data/repo/cart_repository.dart';
 import 'package:sheff_new/pages/booksScreen.dart';
 import 'package:sheff_new/pages/profileScreen.dart';
+import 'package:sheff_new/widgets/badge.dart';
 import '../layout/userProfile.dart';
 import 'cart/cart.dart';
 import 'home/home.dart';
@@ -61,34 +63,44 @@ class _RootScreenState extends State<RootScreen> {
               _navigator(_homeKey, homeIndex, Home()),
               _navigator(_booksKey, booksIndex, BooksScreen()),
               _navigator(_cartKey, cartIndex, const CartScreen()),
-              _navigator(_profileKey, profileIndex, const UserProfile()
-                //   Column(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                // children: [
-                //   ElevatedButton(onPressed: (){
-                //     authRepository.signOut();
-                //   }, child: Text('signOut'))
-                // ],
-              ),
+              _navigator(
+                _profileKey,
+                profileIndex,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {
+                          CartRepository.cartItemCountNotifier.value = 0;
+                          authRepository.signOut();
+                        },
+                        child: Text('signOut'))
+                  ],
+                ),
+              )
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
-                  icon: const Icon(
-                    Icons.home,
-                  ),
+                  icon: const Icon(Icons.home),
                   label: AppLocalizations.of(context)!.home),
               BottomNavigationBarItem(
-                  icon: const Icon(
-                    Icons.bookmark_added,
-                  ),
+                  icon: const Icon(Icons.bookmark_added),
                   label: AppLocalizations.of(context)!.books),
               BottomNavigationBarItem(
-                  icon: const Icon(
-                    Icons.shopping_cart_rounded,
-                  ),
+                  icon: Stack(clipBehavior: Clip.none, children: [
+                    const Icon(Icons.shopping_cart_rounded),
+                    Positioned(
+                        right: -10,
+                        child: ValueListenableBuilder<int>(
+                          valueListenable: CartRepository.cartItemCountNotifier,
+                          builder: (context, value, child) {
+                            return Badge(value: value);
+                          },
+                        ))
+                  ]),
                   label: AppLocalizations.of(context)!.cart),
               BottomNavigationBarItem(
                   icon: const Icon(
@@ -120,5 +132,11 @@ class _RootScreenState extends State<RootScreen> {
             onGenerateRoute: (settings) => MaterialPageRoute(
                 builder: (context) => Offstage(
                     offstage: selectedScreenIndex != index, child: child)));
+  }
+
+  @override
+  void initState() {
+    cartRepository.count();
+    super.initState();
   }
 }

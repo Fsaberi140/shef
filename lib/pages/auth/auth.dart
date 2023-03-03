@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/data/repo/auth_repository.dart';
+import 'package:sheff_new/data/repo/cart_repository.dart';
 import 'package:sheff_new/pages/auth/bloc/auth_bloc.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -39,7 +40,8 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
           ),
           snackBarTheme: SnackBarThemeData(
-          backgroundColor: themeData.colorScheme.primary,),
+            backgroundColor: themeData.colorScheme.primary,
+          ),
           inputDecorationTheme: InputDecorationTheme(
             enabledBorder: OutlineInputBorder(
                 borderSide:
@@ -59,7 +61,8 @@ class _AuthScreenState extends State<AuthScreen> {
       child: Scaffold(
         body: BlocProvider<AuthBloc>(
           create: (context) {
-            final bloc = AuthBloc(authRepository);
+            final bloc =
+                AuthBloc(authRepository, cartRepository);
             bloc.stream.forEach((state) {
               if (state is AuthSuccess) {
                 Navigator.of(context).pop();
@@ -76,9 +79,10 @@ class _AuthScreenState extends State<AuthScreen> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(28, 50, 28, 0),
                 child: BlocBuilder<AuthBloc, AuthState>(
-                  buildWhen: ((previous, current) =>  current is AuthLoading ||
-                  current is AuthInitial ||
-                  current is AuthError),
+                  buildWhen: ((previous, current) =>
+                      current is AuthLoading ||
+                      current is AuthInitial ||
+                      current is AuthError),
                   builder: (context, state) {
                     return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
