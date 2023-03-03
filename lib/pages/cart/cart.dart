@@ -14,6 +14,7 @@ import 'package:sheff_new/pages/image.dart';
 import 'package:sheff_new/widgets/empty_state.dart';
 
 import '../../data/repo/auth_repository.dart';
+import '../shipping/shipping.dart';
 import 'cart_item.dart';
 
 class CartScreen extends StatefulWidget {
@@ -67,7 +68,19 @@ class _CartScreenState extends State<CartScreen> {
           margin: const EdgeInsets.only(left: 48, right: 48),
           width: MediaQuery.of(context).size.width,
           child: FloatingActionButton.extended(
-              onPressed: () {}, label: Text(localization.payment),
+            onPressed: () {
+              final state = cartBloc!.state;
+
+              if (state is CartSuccess) {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ShippingScreen(
+                          totalPrice: state.cartResponse.totalPrice,
+                          payablePrice: state.cartResponse.payablePrice,
+                          shippingCost: state.cartResponse.shippingCost,
+                        )));
+              }
+            },
+            label: Text(localization.payment),
           ),
         ),
       ),
@@ -75,13 +88,11 @@ class _CartScreenState extends State<CartScreen> {
       body: BlocProvider<CartBloc>(
         create: (context) {
           final bloc = CartBloc(cartRepository);
-          stateStreamSubscription= bloc.stream.listen((state) {
-              setState(() {
-                stateIsSuccess= state is CartSuccess;
-              });
-
+          stateStreamSubscription = bloc.stream.listen((state) {
+            setState(() {
+              stateIsSuccess = state is CartSuccess;
+            });
           });
-
 
           cartBloc = bloc;
           bloc.add(CartStarted(AuthRepository.authChangeNotifier.value));
