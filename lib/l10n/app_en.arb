@@ -207,5 +207,10 @@
     "totalPrice": "Total Price",
     "shipping": "Shipping Cart",
     "Payable": "Payable Price",
-    "free": "Free"
+    "free": "Free",
+    "paymentSuccessful": "Payment Successful",
+    "status": "Order Status",
+    "Paid": "Paid",
+    "amount": "Amount",
+    "return": "Return to Home"
 }
