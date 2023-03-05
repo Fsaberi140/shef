@@ -67,10 +67,14 @@ class CartItem extends StatelessWidget {
                     IconButton(
                         onPressed: onIncreaseButtonClick,
                         icon: const Icon(Icons.add_circle_outline_outlined)),
-                    data.changeCountLoading? CupertinoActivityIndicator(color: themeData.primaryColor,):Text(data.count.toString()),
+                    data.changeCountLoading
+                        ? CupertinoActivityIndicator(
+                            color: themeData.primaryColor)
+                        : Text(data.count.toString()),
                     IconButton(
                         onPressed: onDecreaseButtonClick,
                         icon: const Icon(Icons.remove_circle_outline_outlined)),
+
                   ],
                 ),
                 Text(data.product.price.withPriceLabel),

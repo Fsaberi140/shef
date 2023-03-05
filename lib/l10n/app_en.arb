@@ -206,11 +206,11 @@
     "removeCart": "Remove from cart",
     "totalPrice": "Total Price",
     "shipping": "Shipping Cart",
-    "Payable": "Payable Price",
+    "payable": "Payable Price",
     "free": "Free",
     "paymentSuccessful": "Payment Successful",
     "status": "Order Status",
-    "Paid": "Paid",
+    "paid2": "Paid",
     "amount": "Amount",
-    "return": "Return to Home"
+    "toHome": "Return to Home"
 }

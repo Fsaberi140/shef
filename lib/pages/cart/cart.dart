@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sheff_new/common/utils.dart';
@@ -73,13 +71,16 @@ class _CartScreenState extends State<CartScreen> {
 
               if (state is CartSuccess) {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ShippingScreen(
+                    builder: (context) =>
+                        ShippingScreen(
                           totalPrice: state.cartResponse.totalPrice,
                           payablePrice: state.cartResponse.payablePrice,
                           shippingCost: state.cartResponse.shippingCost,
-                        )));
+                        )
+                ));
               }
             },
+            backgroundColor: themeData.primaryColor,
             label: Text(localization.payment),
           ),
         ),

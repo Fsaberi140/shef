@@ -14,4 +14,7 @@ class CartAddButtonClick extends ProductEvent{
 
   const CartAddButtonClick(this.productId);
 
+  // @override
+  // List<Object> get props => [productId];
+
 }
