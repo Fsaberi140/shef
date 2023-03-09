@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:sheff_new/data/order.dart';
+import 'package:sheff_new/data/payment_receipt.dart';
 
 abstract class IOrderDataSource{
   Future<CreateOrderResult> create(CreateOrderParams params);
+  Future<PaymentReceiptData> getPaymentReceipt(int orderId);
 }
 
 class OrderRemoteDataSource implements IOrderDataSource{
@@ -21,5 +23,11 @@ final response = await httpClient.post('order/submit', data: {
   'payment_method': params.paymentMethod == PaymentMethod.online?'online':'cash_on_delivery'
 });
 return CreateOrderResult.fromJson(response.data);
+  }
+
+  @override
+  Future<PaymentReceiptData> getPaymentReceipt(int orderId) async{
+final response =  await httpClient.get('order/checkout?order_id=$orderId');
+return PaymentReceiptData.fromJson(response.data);
   }
 }

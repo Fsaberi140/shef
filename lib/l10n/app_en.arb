@@ -209,6 +209,7 @@
     "payable": "Payable Price",
     "free": "Free",
     "paymentSuccessful": "Payment Successful",
+    "paymentFailed": "Payment Failed",
     "status": "Order Status",
     "paid2": "Paid",
     "amount": "Amount",

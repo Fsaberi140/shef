@@ -9,6 +9,8 @@ import 'package:sheff_new/pages/cart/price_info.dart';
 import 'package:sheff_new/pages/receipt/payment_receipt.dart';
 import 'package:sheff_new/pages/shipping/bloc/shipping_bloc.dart';
 
+import '../payment-webview/payment_webview.dart';
+
 class ShippingScreen extends StatefulWidget {
   final int payablePrice;
   final int totalPrice;
@@ -54,8 +56,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
     final localization = AppLocalizations.of(context)!;
     final ThemeData themeData = Theme.of(context);
     return Scaffold(
-      body:
-      BlocProvider<ShippingBloc>(
+      body: BlocProvider<ShippingBloc>(
         create: (context) {
           final bloc = ShippingBloc(orderRepository);
           subscription = bloc.stream.listen((event) {
@@ -63,14 +64,22 @@ class _ShippingScreenState extends State<ShippingScreen> {
               ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text(event.appException.message)));
             } else if (event is ShippingSuccess) {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const PaymentReceiptScreen()));
+              if (event.result.bankGatewayUrl.isNotEmpty) {
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                    PaymentGatewayScreen(
+                      bankGatewayUrl: event.result.bankGatewayUrl,)));
+              }else {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        PaymentReceiptScreen(
+                          orderId: event.result.orderId,
+                        )));
+              }
             }
           });
           return bloc;
         },
-        child:
-        SingleChildScrollView(
+        child: SingleChildScrollView(
           child: Column(
             children: [
               TextField(
@@ -110,7 +119,13 @@ class _ShippingScreenState extends State<ShippingScreen> {
               const SizedBox(height: 12),
               BlocBuilder<ShippingBloc, ShippingState>(
                 builder: (context, state) {
-                  return state is ShippingLoading?Center(child: CupertinoActivityIndicator(color: themeData.primaryColor,),): ElevatedButton(
+                  return state is ShippingLoading
+                      ? Center(
+                    child: CupertinoActivityIndicator(
+                      color: themeData.primaryColor,
+                    ),
+                  )
+                      : ElevatedButton(
                       onPressed: () {
                         BlocProvider.of<ShippingBloc>(context)
                             .add(ShippingCreateOrder(CreateOrderParams(
@@ -119,7 +134,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
                           phoneNumberController.text,
                           addressController.text,
                           postalCodeController.text,
-                          PaymentMethod.cashDelivery,
+                          PaymentMethod.online,
                         )));
                       },
                       child: Text(localization.payment));

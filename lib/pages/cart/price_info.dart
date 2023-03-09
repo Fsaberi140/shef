@@ -42,7 +42,7 @@ class PriceInfo extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(localization.shopping),
+                Text(localization.shipping),
                 Text(shippingCost.withPriceLabel),
               ],
             ),
