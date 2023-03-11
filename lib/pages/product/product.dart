@@ -10,28 +10,36 @@ class ProductItem extends StatelessWidget {
     Key? key,
     required this.product,
     required this.borderRadius,
+    this.itemWidth = 176,
+    this.itemHeight = 189,
   }) : super(key: key);
 
   final ProductEntity product;
   final BorderRadius borderRadius;
+
+  final double itemWidth;
+  final double itemHeight;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(4.0),
         child: InkWell(
           borderRadius: borderRadius,
-          onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => ProductDetailScreen(product: product,))),
-          child: SizedBox(
-            width: 200,
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ProductDetailScreen(
+                    product: product,
+                  ))),
+          child: AspectRatio(
+            aspectRatio: 0.93,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(
                   children: [
                     SizedBox(
-                      // width: 200,
-                      height: 150,
+                      width: itemWidth,
+                      height: itemHeight,
                       child: ImageLoadingService(
                         imageUrl: product.imageUrl,
                         borderRadius: borderRadius,

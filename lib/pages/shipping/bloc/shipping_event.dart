@@ -3,7 +3,7 @@ part of 'shipping_bloc.dart';
 abstract class ShippingEvent extends Equatable{
 
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props =>[];
 }
 
 class ShippingCreateOrder extends ShippingEvent{

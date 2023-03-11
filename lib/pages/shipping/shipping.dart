@@ -8,7 +8,6 @@ import 'package:sheff_new/data/repo/order_repository.dart';
 import 'package:sheff_new/pages/cart/price_info.dart';
 import 'package:sheff_new/pages/receipt/payment_receipt.dart';
 import 'package:sheff_new/pages/shipping/bloc/shipping_bloc.dart';
-
 import '../payment-webview/payment_webview.dart';
 
 class ShippingScreen extends StatefulWidget {
@@ -63,20 +62,23 @@ class _ShippingScreenState extends State<ShippingScreen> {
             if (event is ShippingError) {
               ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text(event.appException.message)));
-            } else if (event is ShippingSuccess) {
-              if (event.result.bankGatewayUrl.isNotEmpty) {
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                    PaymentGatewayScreen(
-                      bankGatewayUrl: event.result.bankGatewayUrl,)));
-              }else {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        PaymentReceiptScreen(
-                          orderId: event.result.orderId,
-                        )));
-              }
             }
-          });
+            else if (event is ShippingSuccess) {
+              if (event.result.bankGatewayUrl.isNotEmpty) {
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => PaymentGatewayScreen(
+                //               bankGatewayUrl: event.result.bankGatewayUrl,
+                //             )));
+              } else {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      PaymentReceiptScreen(
+                        orderId: event.result.orderId,
+                      )));
+            }
+          }});
           return bloc;
         },
         child: SingleChildScrollView(

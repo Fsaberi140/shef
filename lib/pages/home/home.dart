@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sheff_new/pages/list/list.dart';
 
 import '../../data/productTest.dart';
 import '../../common/utils.dart';
@@ -95,14 +96,24 @@ class _HomeState extends State<Home> {
                     case 3:
                       return _HorizontalProductList(
                         title: localization.favorites,
-                        onTap: () {},
-                        products: state.latestProducts,
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                              const ProductListScreen(
+                                  sort: ProductSort.popular)));
+                        },
+                        products: state.popularProducts,
                       );
                     case 4:
                       return _HorizontalProductList(
                         title: localization.newest,
-                        onTap: () {},
-                        products: state.popularProducts,
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                              const ProductListScreen(
+                                  sort: ProductSort.latest)));
+                        },
+                        products: state.latestProducts,
                       );
                     default:
                       return Container();
@@ -165,6 +176,7 @@ class _HomeState extends State<Home> {
         ]);
   }
 }
+
 class _HorizontalProductList extends StatelessWidget {
   final String title;
   final GestureTapCallback onTap;

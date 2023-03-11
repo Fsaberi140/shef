@@ -1,14 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sheff_new/common/utils.dart';
-import 'package:sheff_new/data/cart_item.dart';
 import 'package:sheff_new/data/repo/cart_repository.dart';
 import 'package:sheff_new/pages/auth/auth.dart';
 import 'package:sheff_new/pages/cart/bloc/cart_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sheff_new/pages/cart/price_info.dart';
-import 'package:sheff_new/pages/image.dart';
 import 'package:sheff_new/widgets/empty_state.dart';
 
 import '../../data/repo/auth_repository.dart';
