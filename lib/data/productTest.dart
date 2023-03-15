@@ -5,8 +5,8 @@ class ProductSort {
   static const int priceLowToHigh = 3;
 
   static const List<String> names = [
-    'latest',
-    'popular',
+    'Latest',
+    'Favorites',
     'priceHighToLow',
     'priceLowToHigh'
   ];

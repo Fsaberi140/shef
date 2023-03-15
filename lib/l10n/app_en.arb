@@ -213,5 +213,10 @@
     "status": "Order Status",
     "paid2": "Paid",
     "amount": "Amount",
-    "toHome": "Return to Home"
+    "toHome": "Return to Home",
+    "product": "Product",
+    "sure": "Do you want to sign out?",
+    "yes": "Yes",
+    "no": "No",
+    "guest": "guest user"
 }

@@ -15,7 +15,7 @@ import '../searchScreen.dart';
 import 'bloc/home_bloc.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -99,7 +99,7 @@ class _HomeState extends State<Home> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
-                              const ProductListScreen(
+                               const ProductListScreen(
                                   sort: ProductSort.popular)));
                         },
                         products: state.popularProducts,
@@ -110,7 +110,7 @@ class _HomeState extends State<Home> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
-                              const ProductListScreen(
+                               const ProductListScreen(
                                   sort: ProductSort.latest)));
                         },
                         products: state.latestProducts,

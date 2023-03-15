@@ -11,7 +11,9 @@ abstract class IAuthDataSource {
   Future<AuthInfo> refreshToken(String token);
 }
 
-class AuthRemoteDataSource with HttpResponseValidator implements IAuthDataSource {
+class AuthRemoteDataSource
+    with HttpResponseValidator
+    implements IAuthDataSource {
   final Dio httpClient;
 
   AuthRemoteDataSource(this.httpClient);
@@ -27,8 +29,8 @@ class AuthRemoteDataSource with HttpResponseValidator implements IAuthDataSource
     });
     validateResponse(response);
 
-    return AuthInfo(
-        response.data["access_token"], response.data["refresh_token"]);
+    return AuthInfo(response.data["access_token"],
+        response.data["refresh_token"], username);
   }
 
   @override
@@ -40,8 +42,8 @@ class AuthRemoteDataSource with HttpResponseValidator implements IAuthDataSource
       "client_secret": Constants.clientSecret,
     });
     validateResponse(response);
-    return AuthInfo(
-        response.data["access_token"], response.data["refresh_token"]);
+    return AuthInfo(response.data["access_token"],
+        response.data["refresh_token"], '');
   }
 
   @override
