@@ -39,9 +39,9 @@ import 'pages/servicesScreen.dart';
 import 'pages/startScreen.dart';
 
 void main() async {
+  await Hive.initFlutter();
   WidgetsFlutterBinding.ensureInitialized();
   authRepository.loadAuthInfo();
-  await Hive.initFlutter();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.white,
     statusBarIconBrightness: Brightness.dark,
