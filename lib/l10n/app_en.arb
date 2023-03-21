@@ -44,7 +44,7 @@
     "zahra": "Zahra",
     "yazdani": "Yazdani",
     "zahray": "z.yazdani623@gmail.com",
-    "save": "Save Change",
+    "save": "Save",
     "sukhdeep": "Chef Sukhdeep Menu",
     "north": "North Indian  . Punjabi",
     "reviews": "reviews",
@@ -218,5 +218,7 @@
     "sure": "Do you want to sign out?",
     "yes": "Yes",
     "no": "No",
-    "guest": "guest user"
+    "guest": "guest user",
+    "title": "title",
+    "text": "comment text"
 }

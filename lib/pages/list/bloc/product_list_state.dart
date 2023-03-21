@@ -23,4 +23,7 @@ class ProductListError extends ProductListState{
   final AppException exception;
 
   ProductListError(this.exception);
+
+  @override
+  List<Object?> get props => [exception];
 }

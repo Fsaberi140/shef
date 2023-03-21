@@ -54,9 +54,9 @@ class _HomeState extends State<Home> {
                             children: [
                               ClipRRect(
                                   child: Image.asset(
-                                    'assets/img/foods/food_1.jpg',
-                                    width: 130,
-                                  )),
+                                'assets/img/foods/food_1.jpg',
+                                width: 130,
+                              )),
                               Text(
                                 localization.foods,
                                 style: themeData.textTheme.headline6,
@@ -98,8 +98,7 @@ class _HomeState extends State<Home> {
                         title: localization.favorites,
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                               const ProductListScreen(
+                              builder: (context) => const ProductListScreen(
                                   sort: ProductSort.popular)));
                         },
                         products: state.popularProducts,
@@ -109,8 +108,7 @@ class _HomeState extends State<Home> {
                         title: localization.newest,
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                               const ProductListScreen(
+                              builder: (context) => const ProductListScreen(
                                   sort: ProductSort.latest)));
                         },
                         products: state.latestProducts,
@@ -122,8 +120,8 @@ class _HomeState extends State<Home> {
           } else if (state is HomeLoading) {
             return Center(
                 child: CircularProgressIndicator(
-                  color: themeData.primaryColor,
-                ));
+              color: themeData.primaryColor,
+            ));
           } else if (state is HomeError) {
             return AppErrorWidget(
               exception: state.exception,
@@ -165,12 +163,11 @@ class _HomeState extends State<Home> {
         ),
         actions: [
           IconButton(
-              onPressed: () =>
-              {
-                Navigator.of(context, rootNavigator: true).push(
-                    MaterialPageRoute(
-                        builder: (context) => const SearchScreen())),
-              },
+              onPressed: () => {
+                    Navigator.of(context, rootNavigator: true).push(
+                        MaterialPageRoute(
+                            builder: (context) => const SearchScreen())),
+                  },
               icon: const Icon(Icons.search, color: Colors.white, size: 26)),
           const SizedBox(width: 10),
         ]);

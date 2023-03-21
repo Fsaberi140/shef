@@ -11,7 +11,7 @@ class CartItemEntity {
 
   CartItemEntity.fromJson(Map<String, dynamic> json)
       : product = ProductEntity.fromJson(json['product']),
-        id = json['cart_item_id'],
+        id = json['id'],
         count = json['count'];
 
   static List<CartItemEntity> parseJsonArray(List<dynamic> jsonArray) {

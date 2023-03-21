@@ -6,6 +6,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:sheff_new/data/foodsData.dart';
 import 'package:sheff_new/data/repo/auth_repository.dart';
 import 'package:sheff_new/data/repo/product_repository.dart';
+import 'package:sheff_new/pages/list/list.dart';
 import 'package:sheff_new/pages/userProfile.dart';
 import 'package:sheff_new/pages/auth/auth.dart';
 import 'package:sheff_new/pages/auth/auth.dart';
@@ -39,9 +40,9 @@ import 'pages/servicesScreen.dart';
 import 'pages/startScreen.dart';
 
 void main() async {
-  await Hive.initFlutter();
   WidgetsFlutterBinding.ensureInitialized();
   authRepository.loadAuthInfo();
+  await Hive.initFlutter();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.white,
     statusBarIconBrightness: Brightness.dark,
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-
+    final int sort;
     const MaterialApp(
       title: 'Localizations Sample App',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -125,13 +126,13 @@ class MyApp extends StatelessWidget {
           headline5: TextStyle(
             fontFamily: defaultFontFamily,
             color: LightThemeColors.primaryTextColor,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w500,
             fontSize: 26,
           ),
           headline6: TextStyle(
             fontFamily: defaultFontFamily,
             color: LightThemeColors.primaryTextColor,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w500,
             fontSize: 22,
           ),
           subtitle1: TextStyle(

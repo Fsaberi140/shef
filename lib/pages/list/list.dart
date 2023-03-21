@@ -38,15 +38,20 @@ class ProductListScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(12, 26, 12, 0),
-                    child: Row(
-                      children: [
-                        Text(
-                          ProductSort.names[state.sort],
-                          style: themeData.textTheme.headline5!.copyWith(
-                              color: themeData.primaryColor,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ],
+                    child: Container(
+                      height: 60,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(color:Colors.black.withOpacity(0.2),
+                          blurRadius: 10)
+                        ]
+                      ),
+                      child: Text(
+                        ProductSort.names[state.sort],
+                        style: themeData.textTheme.headline5!.copyWith(
+                            color: themeData.primaryColor,
+                            fontWeight: FontWeight.w500),
+                      ),
                     ),
                   ),
                   Expanded(
