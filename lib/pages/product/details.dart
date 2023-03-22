@@ -141,7 +141,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                             top: Radius.circular(16))),
                                     useRootNavigator: true,
                                     builder: (context) {
-                                      return const InsertCommentDialog();
+                                      return  InsertCommentDialog(
+                                        productId: widget.product.id,
+                                        scaffoldMessenger:
+                                            _scaffoldKey.currentState,
+                                      );
                                     });
                               },
                               child: Text(localization.register,

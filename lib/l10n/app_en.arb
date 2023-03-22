@@ -220,5 +220,7 @@
     "no": "No",
     "guest": "guest user",
     "title": "title",
-    "text": "comment text"
+    "text": "comment text",
+    "content": "enter title and content",
+    "saved": "saved successfully"
 }

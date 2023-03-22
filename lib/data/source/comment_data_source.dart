@@ -4,6 +4,8 @@ import '../common/response_validator.dart';
 
 abstract class ICommentDataSource {
   Future<List<CommentEntity>> getAll({required int productId});
+
+  Future<CommentEntity> insert(String title, String content, int productId);
 }
 
 class CommentRemoteDataSource
@@ -21,5 +23,16 @@ class CommentRemoteDataSource
       comments.add(CommentEntity.fromJson(element));
     });
     return comments;
+  }
+
+  @override
+  Future<CommentEntity> insert(String title, String content, int productId) async{
+final response = await httpClient.post('comment/add', data: {
+  'title':title,
+  'content': content,
+  'product_id': productId
+});
+validateResponse(response);
+return CommentEntity.fromJson(response.data);
   }
 }
