@@ -38,7 +38,7 @@ class _InsertCommentDialogState extends State<InsertCommentDialog> {
             Navigator.of(context, rootNavigator: true).pop();
           } else if (state is InsertCommentError) {
             widget.scaffoldMessenger?.showSnackBar(
-                SnackBar(content: Text(state.message)));
+                SnackBar(content: Text(state.appException.message)));
             Navigator.of(context, rootNavigator: true).pop();
           }
         });
@@ -88,7 +88,7 @@ class _InsertCommentDialogState extends State<InsertCommentDialog> {
                   ),
                   style: ButtonStyle(
                     minimumSize:
-                        MaterialStateProperty.all(const Size.fromHeight(40)),
+                        MaterialStateProperty.all(const Size.fromHeight(46)),
                     backgroundColor: MaterialStateProperty.all<Color>(
                         themeData.primaryColor),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(

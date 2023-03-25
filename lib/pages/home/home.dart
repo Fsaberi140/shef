@@ -15,7 +15,8 @@ import '../searchScreen.dart';
 import 'bloc/home_bloc.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
+  final TextEditingController _searchController= TextEditingController();
 
   @override
   State<Home> createState() => _HomeState();
@@ -47,44 +48,47 @@ class _HomeState extends State<Home> {
                 itemBuilder: (context, index) {
                   switch (index) {
                     case 0:
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Column(
-                            children: [
-                              ClipRRect(
-                                  child: Image.asset(
-                                'assets/img/foods/food_1.jpg',
-                                width: 130,
-                              )),
-                              Text(
-                                localization.foods,
-                                style: themeData.textTheme.headline6,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(width: 30),
-                          Column(
-                            children: [
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(80),
-                                  child: Image.asset(
-                                    'assets/img/sweets/sweet_1.jpg',
-                                    width: 130,
-                                  )),
-                              Text(localization.sweets,
-                                  style: themeData.textTheme.headline6),
-                            ],
-                          ),
-                        ],
-                      );
-                    case 1:
                       return Padding(
                         padding: const EdgeInsets.fromLTRB(8, 5, 8, 15),
-                        child: Divider(
-                          thickness: 2,
-                          height: 0,
-                          color: Colors.grey[300],
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  children: [
+                                    ClipRRect(
+                                        child: Image.asset(
+                                          'assets/img/foods/food_1.jpg',
+                                          width: 130,
+                                        )),
+                                    Text(
+                                      localization.foods,
+                                      style: themeData.textTheme.headline6,
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(width: 30),
+                                Column(
+                                  children: [
+                                    ClipRRect(
+                                        borderRadius: BorderRadius.circular(80),
+                                        child: Image.asset(
+                                          'assets/img/sweets/sweet_1.jpg',
+                                          width: 130,
+                                        )),
+                                    Text(localization.sweets,
+                                        style: themeData.textTheme.headline6),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Divider(
+                              thickness: 2,
+                              height: 0,
+                              color: Colors.grey[300],
+                            ),
+                          ],
                         ),
                       );
 
@@ -98,7 +102,8 @@ class _HomeState extends State<Home> {
                         title: localization.favorites,
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const ProductListScreen(
+                              builder: (context) =>
+                              const ProductListScreen(
                                   sort: ProductSort.popular)));
                         },
                         products: state.popularProducts,
@@ -108,7 +113,8 @@ class _HomeState extends State<Home> {
                         title: localization.newest,
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const ProductListScreen(
+                              builder: (context) =>
+                              const ProductListScreen(
                                   sort: ProductSort.latest)));
                         },
                         products: state.latestProducts,
@@ -120,8 +126,8 @@ class _HomeState extends State<Home> {
           } else if (state is HomeLoading) {
             return Center(
                 child: CircularProgressIndicator(
-              color: themeData.primaryColor,
-            ));
+                  color: themeData.primaryColor,
+                ));
           } else if (state is HomeError) {
             return AppErrorWidget(
               exception: state.exception,
@@ -141,6 +147,7 @@ class _HomeState extends State<Home> {
   }
 
   AppBar _appBar(ThemeData themeData, BuildContext context) {
+    final TextEditingController _searchController= TextEditingController();
     return AppBar(
         backgroundColor: themeData.primaryColor,
         elevation: 2,
@@ -162,15 +169,40 @@ class _HomeState extends State<Home> {
           ),
         ),
         actions: [
-          IconButton(
-              onPressed: () => {
-                    Navigator.of(context, rootNavigator: true).push(
-                        MaterialPageRoute(
-                            builder: (context) => const SearchScreen())),
-                  },
-              icon: const Icon(Icons.search, color: Colors.white, size: 26)),
-          const SizedBox(width: 10),
+          SizedBox(
+              height: 46,
+              child: TextField(
+                controller: _searchController,
+                decoration: InputDecoration(
+                    isCollapsed: false,
+                    prefixIcon: IconButton(
+                        onPressed: ()
+                        {
+                        _search(context);
+                        },
+                        icon: const Icon(Icons.search,
+                            color: Colors.white, size: 26)),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                            color: Colors.deepOrange, width: 2)),
+                    floatingLabelBehavior: FloatingLabelBehavior.never),
+                textInputAction: TextInputAction.search,
+                cursorColor: Colors.deepOrange,
+                style: themeData.textTheme.bodyText2,
+                onSubmitted: (value){
+                  _search(context);
+                },
+              )),
         ]);
+  }
+
+  void _search(BuildContext context) {
+    final TextEditingController _searchController= TextEditingController();
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => ProductListScreen.search(searchTerm: _searchController.text,)));
   }
 }
 

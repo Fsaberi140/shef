@@ -9,8 +9,15 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductListScreen extends StatelessWidget {
   final int sort;
+  final String searchTerm;
 
-  const ProductListScreen({Key? key, required this.sort}) : super(key: key);
+  const ProductListScreen({Key? key, required this.sort})
+      : searchTerm = '',
+        super(key: key);
+
+  const ProductListScreen.search({Key? key, required this.searchTerm})
+      : sort = ProductSort.latest,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,40 +29,40 @@ class ProductListScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          localization.product,
+          searchTerm.isEmpty?localization.product:localization.message,
+          //search
           style: themeData.textTheme.headline5!.copyWith(
               fontWeight: FontWeight.w500, color: themeData.primaryColor),
         ),
       ),
       body: BlocProvider<ProductListBloc>(
         create: (context) =>
-            ProductListBloc(productRepository)..add(ProductListStarted(sort)),
+            ProductListBloc(productRepository)..add(ProductListStarted(sort, searchTerm)),
         child: BlocBuilder<ProductListBloc, ProductListState>(
           builder: (context, state) {
             if (state is ProductListSuccess) {
               final products = state.products;
               return Column(
                 children: [
-                  Padding(
+                  if(searchTerm.isEmpty)
+                  Container(
                     padding: const EdgeInsets.fromLTRB(12, 26, 12, 0),
-                    child: Container(
-                      height: 60,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(color:Colors.black.withOpacity(0.2),
+                    height: 60,
+                    decoration: BoxDecoration(boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
                           blurRadius: 10)
-                        ]
-                      ),
-                      child: Text(
-                        ProductSort.names[state.sort],
-                        style: themeData.textTheme.headline5!.copyWith(
-                            color: themeData.primaryColor,
-                            fontWeight: FontWeight.w500),
-                      ),
+                    ]),
+                    child: Text(
+                      ProductSort.names[state.sort],
+                      style: themeData.textTheme.headline5!.copyWith(
+                          color: themeData.primaryColor,
+                          fontWeight: FontWeight.w500),
                     ),
                   ),
                   Expanded(
                     child: GridView.builder(
+                        padding: const EdgeInsets.fromLTRB(12, 26, 12, 0),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                                 childAspectRatio: 0.65,
@@ -70,6 +77,9 @@ class ProductListScreen extends StatelessWidget {
                         }),
                   ),
                 ],
+              );}else if(state is ProductListEmpty){
+              return Center(
+                child: Text(state.message),
               );
             } else {
               return Center(

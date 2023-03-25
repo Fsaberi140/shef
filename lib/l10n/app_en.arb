@@ -222,5 +222,6 @@
     "title": "title",
     "text": "comment text",
     "content": "enter title and content",
-    "saved": "saved successfully"
+    "saved": "saved successfully",
+    "search": "Search Result"
 }

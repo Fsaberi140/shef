@@ -20,8 +20,6 @@ class _AuthScreenState extends State<AuthScreen> {
   final TextEditingController passwordController =
       TextEditingController(text: "123456");
 
-  // bool isLogin = true;
-
   @override
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
@@ -31,7 +29,7 @@ class _AuthScreenState extends State<AuthScreen> {
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
               minimumSize: MaterialStateProperty.all(
-                Size(MediaQuery.of(context).size.width - 56, 50),
+                const Size.fromHeight(46),
               ),
               backgroundColor:
                   MaterialStateProperty.all<Color>(themeData.primaryColor),
@@ -61,8 +59,7 @@ class _AuthScreenState extends State<AuthScreen> {
       child: Scaffold(
         body: BlocProvider<AuthBloc>(
           create: (context) {
-            final bloc =
-                AuthBloc(authRepository, cartRepository);
+            final bloc = AuthBloc(authRepository, cartRepository);
             bloc.stream.forEach((state) {
               if (state is AuthSuccess) {
                 Navigator.of(context).pop();
@@ -79,10 +76,11 @@ class _AuthScreenState extends State<AuthScreen> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(28, 50, 28, 0),
                 child: BlocBuilder<AuthBloc, AuthState>(
-                  buildWhen: ((previous, current) =>
-                      current is AuthLoading ||
-                      current is AuthInitial ||
-                      current is AuthError),
+                  buildWhen: (previous, current) {
+                    return current is AuthLoading ||
+                        current is AuthInitial ||
+                        current is AuthError;
+                  },
                   builder: (context, state) {
                     return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -126,11 +124,6 @@ class _AuthScreenState extends State<AuthScreen> {
                                         : localization.signUp,
                                     style: themeData.textTheme.headline6,
                                   ),
-
-                            // Navigator.of(context, rootNavigator: true).push(
-                            //     MaterialPageRoute(
-                            //         builder: (context) =>
-                            //             const RootScreen()));},
                           ),
                           const SizedBox(height: 25),
                           GestureDetector(
@@ -320,7 +313,10 @@ class _AuthScreenState extends State<AuthScreen> {
 }
 
 class Password extends StatefulWidget {
-  const Password({Key? key, required this.controller}) : super(key: key);
+  const Password({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
   final TextEditingController controller;
 
   @override
@@ -336,7 +332,7 @@ class _PasswordState extends State<Password> {
     return TextField(
       controller: widget.controller,
       cursorColor: themeData.primaryColor,
-      keyboardType: TextInputType.phone,
+      keyboardType: TextInputType.visiblePassword,
       obscureText: obscureText,
       enableSuggestions: false,
       autocorrect: false,
