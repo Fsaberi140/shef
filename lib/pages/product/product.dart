@@ -11,7 +11,7 @@ class ProductItem extends StatelessWidget {
     required this.product,
     required this.borderRadius,
     this.itemWidth = 176,
-    this.itemHeight = 189,
+    this.itemHeight = 169,
   }) : super(key: key);
 
   final ProductEntity product;

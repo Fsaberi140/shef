@@ -34,8 +34,8 @@ class OrderEntity {
 
   OrderEntity.fromJson(Map<String, dynamic > json)
       : id = json['id'],
-        payablePrice = json['payable_price'],
-        items = (json['items'] as List)
+        payablePrice = json['payable'],
+        items = (json['order_items'] as List)
             .map((item) => ProductEntity.fromJson(item['product']))
             .toList();
 }

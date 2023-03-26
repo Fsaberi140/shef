@@ -15,10 +15,8 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  final TextEditingController usernameController =
-      TextEditingController(text: "test@gmail.com");
-  final TextEditingController passwordController =
-      TextEditingController(text: "123456");
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -351,6 +349,33 @@ class _PasswordState extends State<Password> {
               color: Colors.black45.withOpacity(0.4),
             ),
           )),
+    );
+  }
+}
+
+class AuthTextField extends StatelessWidget {
+  final String label;
+  final TextInputType keyboardType;
+
+  const AuthTextField(
+      {Key? key, required this.label, required this.keyboardType})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+
+    return SizedBox(
+      height: 50,
+      child: TextField(
+        cursorColor: themeData.primaryColor,
+        decoration: InputDecoration(
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: themeData.primaryColor, width: 2)),
+          border: const OutlineInputBorder(),
+          labelStyle: themeData.textTheme.subtitle2,
+        ),
+      ),
     );
   }
 }

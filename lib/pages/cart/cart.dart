@@ -68,13 +68,11 @@ class _CartScreenState extends State<CartScreen> {
 
               if (state is CartSuccess) {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        ShippingScreen(
+                    builder: (context) => ShippingScreen(
                           totalPrice: state.cartResponse.totalPrice,
                           payablePrice: state.cartResponse.payablePrice,
                           shippingCost: state.cartResponse.shippingCost,
-                        )
-                ));
+                        )));
               }
             },
             backgroundColor: themeData.primaryColor,

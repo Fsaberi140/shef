@@ -74,7 +74,6 @@ class CartItem extends StatelessWidget {
                     IconButton(
                         onPressed: onDecreaseButtonClick,
                         icon: const Icon(Icons.remove_circle_outline_outlined)),
-
                   ],
                 ),
                 Text(data.product.price.withPriceLabel),
@@ -82,6 +81,7 @@ class CartItem extends StatelessWidget {
             ),
             data.deleteItemLoading
                 ? const SizedBox(
+                    width: 48,
                     height: 48,
                     child: Center(
                       child: CupertinoActivityIndicator(),

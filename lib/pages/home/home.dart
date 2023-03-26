@@ -11,12 +11,10 @@ import '../../layout/drawer.dart';
 import '../../widgets/slider.dart';
 import '../error.dart';
 import '../product/product.dart';
-import '../searchScreen.dart';
 import 'bloc/home_bloc.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
-  final TextEditingController _searchController= TextEditingController();
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -24,6 +22,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+  bool typing = false;
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +58,9 @@ class _HomeState extends State<Home> {
                                   children: [
                                     ClipRRect(
                                         child: Image.asset(
-                                          'assets/img/foods/food_1.jpg',
-                                          width: 130,
-                                        )),
+                                      'assets/img/foods/food_1.jpg',
+                                      width: 130,
+                                    )),
                                     Text(
                                       localization.foods,
                                       style: themeData.textTheme.headline6,
@@ -102,8 +101,7 @@ class _HomeState extends State<Home> {
                         title: localization.favorites,
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                              const ProductListScreen(
+                              builder: (context) => const ProductListScreen(
                                   sort: ProductSort.popular)));
                         },
                         products: state.popularProducts,
@@ -113,8 +111,7 @@ class _HomeState extends State<Home> {
                         title: localization.newest,
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                              const ProductListScreen(
+                              builder: (context) => const ProductListScreen(
                                   sort: ProductSort.latest)));
                         },
                         products: state.latestProducts,
@@ -126,8 +123,8 @@ class _HomeState extends State<Home> {
           } else if (state is HomeLoading) {
             return Center(
                 child: CircularProgressIndicator(
-                  color: themeData.primaryColor,
-                ));
+              color: themeData.primaryColor,
+            ));
           } else if (state is HomeError) {
             return AppErrorWidget(
               exception: state.exception,
@@ -147,7 +144,7 @@ class _HomeState extends State<Home> {
   }
 
   AppBar _appBar(ThemeData themeData, BuildContext context) {
-    final TextEditingController _searchController= TextEditingController();
+    final TextEditingController _searchController = TextEditingController();
     return AppBar(
         backgroundColor: themeData.primaryColor,
         elevation: 2,
@@ -169,16 +166,24 @@ class _HomeState extends State<Home> {
           ),
         ),
         actions: [
+          // IconButton(
+          //   icon: Icon(typing ? Icons.done : Icons.search),
+          //   onPressed: () {
+              // setState(() {
+              //   typing = !typing;
+              // });
+          //   },
+          // ),
           SizedBox(
-              height: 46,
+              height: 26,
+              width: MediaQuery.of(context).size.width-200,
               child: TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
                     isCollapsed: false,
                     prefixIcon: IconButton(
-                        onPressed: ()
-                        {
-                        _search(context);
+                        onPressed: () {
+                          _search(context);
                         },
                         icon: const Icon(Icons.search,
                             color: Colors.white, size: 26)),
@@ -192,7 +197,7 @@ class _HomeState extends State<Home> {
                 textInputAction: TextInputAction.search,
                 cursorColor: Colors.deepOrange,
                 style: themeData.textTheme.bodyText2,
-                onSubmitted: (value){
+                onSubmitted: (value) {
                   _search(context);
                 },
               )),
@@ -200,11 +205,26 @@ class _HomeState extends State<Home> {
   }
 
   void _search(BuildContext context) {
-    final TextEditingController _searchController= TextEditingController();
+    final TextEditingController _searchController = TextEditingController();
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => ProductListScreen.search(searchTerm: _searchController.text,)));
+        builder: (context) => ProductListScreen.search(
+              searchTerm: _searchController.text,
+            )));
   }
 }
+// class TextBox extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       alignment: Alignment.centerLeft,
+//       color: Colors.white,
+//       child: TextField(
+//         decoration:
+//         InputDecoration(border: InputBorder.none, hintText: 'Search'),
+//       ),
+//     );
+//   }
+// }
 
 class _HorizontalProductList extends StatelessWidget {
   final String title;

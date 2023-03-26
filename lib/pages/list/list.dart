@@ -29,37 +29,33 @@ class ProductListScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          searchTerm.isEmpty?localization.product:localization.message,
+          searchTerm.isEmpty ? localization.product : localization.search,
           //search
           style: themeData.textTheme.headline5!.copyWith(
               fontWeight: FontWeight.w500, color: themeData.primaryColor),
         ),
       ),
       body: BlocProvider<ProductListBloc>(
-        create: (context) =>
-            ProductListBloc(productRepository)..add(ProductListStarted(sort, searchTerm)),
+        create: (context) => ProductListBloc(productRepository)
+          ..add(ProductListStarted(sort, searchTerm)),
         child: BlocBuilder<ProductListBloc, ProductListState>(
           builder: (context, state) {
             if (state is ProductListSuccess) {
               final products = state.products;
               return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if(searchTerm.isEmpty)
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(12, 26, 12, 0),
-                    height: 60,
-                    decoration: BoxDecoration(boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          blurRadius: 10)
-                    ]),
-                    child: Text(
-                      ProductSort.names[state.sort],
-                      style: themeData.textTheme.headline5!.copyWith(
-                          color: themeData.primaryColor,
-                          fontWeight: FontWeight.w500),
+                  if (searchTerm.isEmpty)
+                    Container(
+                      padding: const EdgeInsets.fromLTRB(12, 26, 12, 0),
+                      height: 60,
+                      child: Text(
+                        ProductSort.names[state.sort],
+                        style: themeData.textTheme.headline5!.copyWith(
+                            color: themeData.primaryColor,
+                            fontWeight: FontWeight.w500),
+                      ),
                     ),
-                  ),
                   Expanded(
                     child: GridView.builder(
                         padding: const EdgeInsets.fromLTRB(12, 26, 12, 0),
@@ -77,7 +73,8 @@ class ProductListScreen extends StatelessWidget {
                         }),
                   ),
                 ],
-              );}else if(state is ProductListEmpty){
+              );
+            } else if (state is ProductListEmpty) {
               return Center(
                 child: Text(state.message),
               );

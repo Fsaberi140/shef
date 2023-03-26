@@ -45,7 +45,7 @@ class _InsertCommentDialogState extends State<InsertCommentDialog> {
         return bloc;
       },
       child: Container(
-        height: 300,
+        height: 270,
         padding: const EdgeInsets.all(16),
         child: BlocBuilder<InsertCommentBloc, InsertCommentState>(
           builder: (context, state) {
@@ -54,20 +54,26 @@ class _InsertCommentDialogState extends State<InsertCommentDialog> {
                 Text(localization.register,
                     style: themeData.textTheme.bodyText2),
                 const SizedBox(height: 16),
-                TextField(
-                  controller: _titleController,
-                  decoration: InputDecoration(
-                      label: Text(localization.title,
-                          style: themeData.textTheme.subtitle2)),
+                SizedBox(
+                  height: 50,
+                  child: TextField(
+                    controller: _titleController,
+                    decoration: InputDecoration(
+                        label: Text(localization.title,
+                            style: themeData.textTheme.subtitle2)),
+                  ),
                 ),
-                const SizedBox(height: 16),
-                TextField(
-                  controller: _contentController,
-                  decoration: InputDecoration(
-                      label: Text(localization.text,
-                          style: themeData.textTheme.subtitle2)),
+                const SizedBox(height: 12),
+                SizedBox(
+                  height: 50,
+                  child: TextField(
+                    controller: _contentController,
+                    decoration: InputDecoration(
+                        label: Text(localization.text,
+                            style: themeData.textTheme.subtitle2)),
+                  ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 20),
                 TextButton(
                   onPressed: () {
                     context.read<InsertCommentBloc>().add(
@@ -75,6 +81,7 @@ class _InsertCommentDialogState extends State<InsertCommentDialog> {
                             _titleController.text, _contentController.text));
                   },
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       if (state is InsertCommentLoading)
                         CupertinoActivityIndicator(

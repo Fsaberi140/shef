@@ -7,7 +7,7 @@ import 'package:sheff_new/pages/profileScreen.dart';
 
 import '../data/repo/auth_repository.dart';
 import 'booksScreen.dart';
-import 'ordersScreen.dart';
+import 'order/order_history.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({Key? key}) : super(key: key);
@@ -99,7 +99,7 @@ class UserProfile extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context, rootNavigator: true).push(
                             MaterialPageRoute(
-                                builder: (context) => const OrdersScreen()));
+                                builder: (context) => const OrderHistoryScreen()));
                       },
                       child: Row(
                         children: [
